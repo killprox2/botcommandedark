@@ -15,10 +15,18 @@ client.on('message', message => {
         message.delete()
       message.channel.send({
         embed: {
-          title: '-fm "Object a FM" + "Information"',
-          description: `Permet de passer une commande a un joueur`,
-          title: '-bug "Indiqué le bug"',
-          description: `Rapporter tous beug au modo sur le bot`,
+          title: 'HELP',
+          description: `Permet de connaitre toute les commandes`,
+          fields: [
+            {
+              name: '-fm',
+              value: 'Permet de passer une commande a un joueur'
+            },
+            {
+              name: '-bug',
+              value: `Permet de rapporter un bug sur le bot`
+            }
+          ],
       }
       });
     };
