@@ -40,14 +40,39 @@ client.on('message', message => {
       
       let bug1 = args.slice(0).join(" ");
       let hereRole = message.guild.roles.find("name", "Modérateur Discord");
+      
       message.channel.send('Votre bug a était envoyé')
-     
+
           message.delete()
           message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${bug1}.`);
            // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
          
   } return })
 
+  client.on('message', message => {
+    
+    let bug1 = args.slice(0).join(" ");
+    let hereRole = message.guild.roles.find("name", "Modérateur Discord");
+    
+    if (message.content.startsWith('-bug1')) {
+      const bug1 = args.slice(0).join(" ");
+      
+      if (bug1) {
+       
+       
+        
+        message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${bug1}.`).then(() => {
+          message.channel.send('Votre bug a était envoyé');
+
+            message.delete()
+          
+          }).catch(err => {
+            
+            message.reply('Impossible');
+         
+            console.error(err);
+          });
+    
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
