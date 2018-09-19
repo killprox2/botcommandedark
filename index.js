@@ -17,10 +17,8 @@ client.on('message', message => {
         embed: {
           title: '-fm "Object a FM" + "Information"',
           description: `Permet de passer une commande a un joueur`,
-        embed: {
           title: '-bug "Indiqué le bug"',
           description: `Rapporter tous beug au modo sur le bot`,
-        }
       }
       });
     };
@@ -33,10 +31,11 @@ client.on('message', message => {
   if (command === "bug") {
       
       let bug1 = args.slice(0).join(" ");
+      let hereRole = message.guild.roles.find("name", "Modérateur Discord");
       message.channel.send('Votre bug a était envoyé')
      
           message.delete()
-          message.guild.channels.find("name", "liste-commande-fm").send(` Salut ` + message.member.displayName + ` rapport un bug le voici: ${bug1}.`);
+          message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${bug1}.`);
            // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
          
   } return })
