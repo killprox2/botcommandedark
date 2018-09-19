@@ -15,12 +15,16 @@ client.on('message', message => {
         message.delete()
       message.channel.send({
         embed: {
+          
           title: '-fm "Object a FM" + "Information"',
           description: `Permet de passer une commande a un joueur`,
+          },
+          
           title: '-bug "Indiqué le bug"',
           description: `Rapporter tous beug au modo sur le bot`,
-      }
-      });
+          },
+      
+      );
     };
 })
 client.on('message', message => {
