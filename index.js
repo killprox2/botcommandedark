@@ -11,7 +11,7 @@ client.login(process.env.TOKEN)
 
 client.on('message', message => {
 if (message.content.startsWith("-sondage")){
-  if(message.guild.roles.find("name", "Modérateur Discord")){
+  if(message.author.id == "351809725513465867"){
 
     let args = message.content.split(" ").slice(1);
     let thingToEcho = args.join("")
