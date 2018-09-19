@@ -46,12 +46,7 @@ client.on('message', message => {
         if(reason)
         message.delete()
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${reason}.`);
-  
-  
-         //   message.delete()
-           // message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${reason}.`);
-             // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
-           
+             
     } return })
 
 
