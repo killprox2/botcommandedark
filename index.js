@@ -11,7 +11,8 @@ client.login(process.env.TOKEN)
 
 client.on('message', message => {
 if (message.content.startsWith("-sondage")){
-  if(message.author.id == ""){
+  if(message.author.id == "351809725513465867" + message.author.id == "491549173624209420"){
+
     let args = message.content.split(" ").slice(1);
     let thingToEcho = args.join("")
     var embed = new Discord.RichEmbed()
@@ -19,7 +20,7 @@ if (message.content.startsWith("-sondage")){
       .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
       .setColor("0xB40404")
       .setTimestamp()
-  message.guild.channels.find("name", "sondage").sendEmbed(embed)
+  message.guild.channels.find("name", "bugs").sendEmbed(embed)
   .then(function (message){
     message.react("Oui")
     message.react("Non")
