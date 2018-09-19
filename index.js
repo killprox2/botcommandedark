@@ -9,50 +9,8 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 
-client.on('message', message => {
-if (message.content.startsWith("-sondage")){
-  let msg = message.content.split(' ')
-msg.shift()
-let question = msg.join(' ')
-
-var sondage = new Discord.RichEmbed()
-.setDescription("SONDAGE")
-.addField(thingToEcho, "Répondre avec ✅ ou ❌ ")
-.setColor("0xB40404")
-
-message.channel.send(sondage)
-.then(function(message){
-  message.react("✅")
-  message.react("❌")
-
-})
-message.delete()
-}});
-/*
-client.on('message', message => {
-  if(message.content.startsWith('-sondage')){
-
-let msg = message.content.split(' ')
-msg.shift()
-let question = msg.join(' ')
-
-var sondage = new Discord.RichEmbed()
-.setDescription("SONDAGE")
-.addField(thingToEcho, "Répondre avec ✅ ou ❌ ")
-.setColor("0xB40404")
-
-message.channel.send(sondage)
-.then(function(message){
-  message.react("✅")
-  message.react("❌")
-
-})
-
-message.delete()
 
 
-}
-}}}*/
 
 client.on('message', message => {
     if (message.content === '-help') {   
