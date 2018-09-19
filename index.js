@@ -11,6 +11,7 @@ client.login(process.env.TOKEN)
 
 client.on('message', message => {
 if (message.content.startsWith("-sondage")){
+  if(message.guild.id == "Modérateur Discord"){
     let args = message.content.split(" ").slice(1);
     let thingToEcho = args.join("")
     var embed = new Discord.RichEmbed()
@@ -27,7 +28,7 @@ if (message.content.startsWith("-sondage")){
     });
   }else{
     return message.reply("Tu n'as pas la permission.")
-}})
+}}})
 
 client.on('message', message => {
     if (message.content === '-help') {   
