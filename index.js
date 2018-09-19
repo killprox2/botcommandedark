@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
-const BASTION = new Tesseract.Client
 
 
 client.on('ready', function () {
@@ -9,7 +8,6 @@ client.on('ready', function () {
 })
 
 client.login(process.env.TOKEN)
-BASTION.colors = Tesseract.Constants.Colors;
 
 client.on('message', message => {
     if (message.content === '-help') {   
@@ -20,11 +18,11 @@ client.on('message', message => {
           description: `Permet de connaitre toute les commandes`,
           fields: [
             {
-              name: '-fm '+ BASTION.colors.GOLD + 'object_souhaitais'+ BASTION.colors.RED + 'Information_du_fm',
+              name: '-fm   object_souhaitait   Information_du_fm',
               value: 'Permet de passer une commande a un joueur'
             },
             {
-              name: '-bug decrire_le_bug',
+              name: '-bug   decrire_le_bug',
               value: `Permet de rapporter un bug sur le bot`
             }
           ],
