@@ -49,7 +49,7 @@ client.on('message', message => {
          
   } return })
 
-  client.on('message', message => {
+ /* client.on('message', message => {
     
     let bug1 = args.slice(0).join(" ");
     let hereRole = message.guild.roles.find("name", "Modérateur Discord");
@@ -65,31 +65,30 @@ client.on('message', message => {
           message.channel.send('Votre bug a était envoyé');
 
             message.delete()
-          
+      
           }).catch(err => {
             
             message.reply('Impossible');
          
             console.error(err);
-          });
-    
-client.on('message', message => {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    const member = message.mentions.users.first();
-    
-    if (command === "fm") {
-        
-        let object = args[0];
-        let detail = args.slice(1).join(" ");
-        let hereRole = message.guild.roles.find("name", "Forgemages");
-        message.channel.send('Votre commande a était envoyé')
-       
-            message.delete()
-            message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
-             // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
-           
-    } return 
-    
+          
+          });*/
 
-})
+          client.on('message', message => {
+            const args = message.content.slice(prefix.length).trim().split(/ +/g);
+            const command = args.shift().toLowerCase();
+            const member = message.mentions.users.first();
+            
+            if (command === "fm") {
+                
+                let object = args[0];
+                let detail = args.slice(1).join(" ");
+                let hereRole = message.guild.roles.find("name", "Forgemages");
+                message.channel.send('Votre commande a était envoyé')
+               
+                    message.delete()
+                    message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
+                     // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
+                   
+            } return }
+          )
