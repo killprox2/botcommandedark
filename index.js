@@ -42,12 +42,13 @@ client.on('message', message => {
         let reason = args.slice(0).join(" ");
         let hereRole = message.guild.roles.find("name", "Modérateur Discord");
               
-        if(!reason) reason = "Aucune raison";
-        message.channel.send('Aucune raison écrite')
+        
         if(reason)
         message.delete()
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${reason}.`);
-  
+        if(!reason) reason = "Aucune raison";
+        message.delete()
+        message.channel.send('Aucune raison écrite')
   
          //   message.delete()
            // message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${reason}.`);
