@@ -61,7 +61,7 @@ client.on('message', message => {
               
         if(!reason) reason = "Aucune raison";
         message.channel.send('Aucune raison écrite')
-        elfe (reason);
+        await (reason);
         message.delete()
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${reason}.`);
   
