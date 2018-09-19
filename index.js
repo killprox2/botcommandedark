@@ -17,12 +17,30 @@ client.on('message', message => {
         embed: {
           title: '-fm "Object a FM" + "Information"',
           description: `Permet de passer une commande a un joueur`,
-          exemple: `-fm `,
+        embed: {
+          title: '-bug "Indiqué le bug"',
+          description: `Rapporter tous beug au modo sur le bot`,
         }
-
+      }
       });
     };
 })
+client.on('message', message => {
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+  const member = message.mentions.users.first();
+  
+  if (command === "bug") {
+      
+      let bug1 = args.slice(0).join(" ");
+      message.channel.send('Votre bug a était envoyé')
+     
+          message.delete()
+          message.guild.channels.find("name", "liste-commande-fm").send(` Salut ` + message.member.displayName + ` rapport un bug le voici: ${bug1}.`);
+           // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
+         
+  } return })
+
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
@@ -40,5 +58,6 @@ client.on('message', message => {
              // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
            
     } return 
+    
 
 })
