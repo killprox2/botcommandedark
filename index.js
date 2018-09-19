@@ -19,6 +19,8 @@ client.on('message', message => {
           description: `Permet de passer une commande a un joueur`,
           title: '-bug "Indiqué le bug"',
           description: `Rapporter tous beug au modo sur le bot`,
+          title: '-play "Lien youtube de la musique"',
+          description: `Permet de jouer de la musique`,
       }
       });
     };
@@ -57,6 +59,36 @@ client.on('message', message => {
              // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
            
     } return 
+    client.on('message', message => {
+
+      if (message.content.startsWith('-play')) {
+        // On récupère le premier channel audio du serveur
+        let voiceChannel = message.guild.channels
+          .filter(function (channel) { return channel.type === 'voice' })
+          .first()
+        // On récupère les arguments de la commande 
+        // il faudrait utiliser une expression régulière pour valider le lien youtube
+        let args = message.content.split(' ')
+        // On rejoint le channel audio
+        voiceChannel
+          .join()
+          .then(function (connection) {
+            // On démarre un stream à partir de la vidéo youtube
+            let stream = YoutubeStream(args[1])
+            stream.on('error', function () {
+              message.reply("Je n'ai pas réussi à lire cette vidéo :(")
+              connection.disconnect()
+            })
+            // On envoie le stream au channel audio
+            // Il faudrait ici éviter les superpositions (envoie de plusieurs vidéo en même temps)
+            connection
+              .playStream(stream)
+              .on('end', function () {
+                connection.disconnect()
+              })
+          })
+      }
     
+    })
 
 })
