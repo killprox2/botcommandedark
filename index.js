@@ -11,7 +11,7 @@ client.login(process.env.TOKEN)
 
 client.on('message', message => {
 if (message.content.startsWith("-sondage")){
- // if(message.author.id == ""){
+  if(message.author.id == ""){
     let args = message.content.split(" ").slice(1);
     let thingToEcho = args.join("")
     var embed = new Discord.RichEmbed()
