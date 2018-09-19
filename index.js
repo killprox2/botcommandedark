@@ -19,7 +19,7 @@ client.on('message', message => {
           description: `Permet de connaitre toute les commandes`,
           fields: [
             {
-              name: '-fm object_souhaitais Information_du_fm',
+              name: '-fm '+ message.colors.GOLD + 'object_souhaitais'+ message.colors.RED + 'Information_du_fm',
               value: 'Permet de passer une commande a un joueur'
             },
             {
