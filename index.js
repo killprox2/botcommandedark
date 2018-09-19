@@ -60,6 +60,8 @@ client.on('message', message => {
                 let object = args[0];
                 let detail = args.slice(1).join(" ");
                 let hereRole = message.guild.roles.find("name", "Forgemages");
+                if(!object) object = "Aucun object";
+                if(!detail) detail = "Aucune information";
                 message.channel.send('Votre commande a était envoyé')
                
                     message.delete()
