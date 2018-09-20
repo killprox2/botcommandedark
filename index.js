@@ -40,13 +40,12 @@ client.on('message', message => {
   return})
 
   client.on('message', message => {
-   if(message.content === `-report`){
+    if(command == "report"){
+      let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+      if(!rUser) return message.channel.send("Impossible de trouver l'utilisateur.");
+      let rreason = args.join(" ").slice(22);
 
-    /* let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-     if(!rUser) return message.channel.send("Impossible de trouver l'utilisateur.");
-     let rreason = args.join(" ").slice(22);*/
-  
-     let reportEmbed = new Discord.RichEmbed()
+      let reportEmbed = new Discord.RichEmbed()
      .setDescription("Reports")
      .setColor("#15f153")
      .addField("Joueur report", `${rUser} with ID: ${rUser.id}`)
@@ -56,13 +55,13 @@ client.on('message', message => {
      .addField("Raison", rreason);
   
      let reportschannel = message.guild.channels.find(`name`, "bugs");
-     //if(!reportschannel) return message.channel.send("Impossible de trouver le canal des reports.");
-  
-  
-     message.delete().catch(O_o=>{});
+     if(!reportschannel) return message.channel.send("Impossible de trouver le canal des reports.");
+
+     message.delete();
      reportschannel.send(reportEmbed);
-    
-   }return})
+    }
+
+  })
 
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
