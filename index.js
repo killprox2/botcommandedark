@@ -23,21 +23,22 @@ client.on('message', message => {
   };
 })
 client.on('message', message => {
-  if (message.content === '-cf') {   
-    let hugUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!hugUser) return message.channel.send("Make sure you mention someone!");
+  if (message.content === '-google') {   
+    let google = args.slice(0).join('+');
 
-    const {body} = await superagent
-    .get(`https://nekos.life/api/v2/img/hug`);
+    let link = `https://www.google.com/search?q=` + google;
+    if(!link)return message.reply("Console error")
+    let embed = new Discord.RichEmbed()
 
-    let hugEmbed = new Discord.RichEmbed()
-    .setTitle("Hug! c:")
-    .setDescription(`**${message.author.username}** hugged **${message.mentions.users.first().username}**!`)
-    .setImage(body.url)
-    .setColor("RANDOM")
-    .setFooter("Bot Version: 0.0.4", bot.user.displayAvatarURL);
-
-    message.channel.send(hugEmbed)
+.setColor("RED")
+.setTimestamp()
+.addField('Action:', 'Searching on Google')
+.addField("Word:", `${args.slice(0).join(' ')}`)
+.addField('Link:', `${link}`)
+.setFooter("You're avatar", message.author.avatarURL);
+      
+message.channel.send(embed);
+message.author.send(`You have searched for ${link} in ${ message.guild.name}`);
   };
 })
 
