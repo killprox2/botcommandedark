@@ -13,7 +13,7 @@ client.on('message', message => {
   if (message.content === '-help') {   
     message.delete()
       var embed = new Discord.RichEmbed()
-      .setTitle("	\u27A4__**HELP**__\u27A4")
+      .setTitle("                   	\u27A4__**HELP**__")
       .setColor(0x00AE86)
       .setDescription("Permet de connaitre toutes les commandes")
       .setColor("0xB40404") 
