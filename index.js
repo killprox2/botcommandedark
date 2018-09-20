@@ -12,6 +12,7 @@ client.login(process.env.TOKEN)
 
   client.on('message', message => {
     if (message.content === '-help2') {   
+      message.delete()
         var embed = new Discord.RichEmbed()
         .setTitle("HELP")
         .setDescription("Permet de connaitre toute les commandes")
@@ -22,27 +23,6 @@ client.login(process.env.TOKEN)
     };
 })
 
-client.on('message', message => {
-    if (message.content === '-help') {   
-        message.delete()
-      message.channel.send({
-        embed: {
-          title: 'HELP',
-          description: `Permet de connaitre toute les commandes`,
-          fields: [
-            {
-              name: '-fm object_souhaitais Information_du_fm',
-              value: 'Permet de passer une commande a un joueur'
-            },
-            {
-              name: '-bug decrire_le_bug',
-              value: `Permet de rapporter un bug sur le bot`
-            }
-          ],
-      }
-      });
-    };
-})
   client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
