@@ -44,13 +44,7 @@ client.on('message', message => {
   .then(function (message){
     message.react("Oui")
     message.react("Non")
-  }).catch(function(){
-
-  });
-}else{
-  return message.reply("Tu n'as pas la permission.")
-    message.delete()       
-  } return })
+   })
 
 
 
@@ -115,3 +109,4 @@ client.on('message', message => {
             } return }
           )
          
+          }})
