@@ -20,7 +20,7 @@ client.on('message', message => {
       .addField("**-fm** :arrow_forward: ***object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm***", "Permet de passer une commande a un forgemage")
       .addField("**-bug** :arrow_forward: ***decrire_le_bug***", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_forward: ***votre_idee***", "Permet de donner vos idée pour le bot")
-      .setImage("https://imgur.com/a/vBNI8rl")
+      .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
   };
 })
