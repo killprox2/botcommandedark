@@ -48,16 +48,16 @@ client.login(process.env.TOKEN)
       const member = message.mentions.users.first();
     if (command === "idee") {
         
-      let reason = args.slice(0).join(" ");
+      let idee = args.slice(0).join(" ");
       let hereRole = message.guild.roles.find("name", "Modérateur Discord");
             
-      if(!reason) reason = "Aucune idée";
-      if(reason)
+      if(!idee) idee = "Aucune idée";
+      if(idee)
       message.delete()
-      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.username}** a une idée la voici: ${reason}.`);
+      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.username}** a une idée la voici: ${idee}.`);
     message.channel.send(`:white_check_mark: **${message.author.username}**, Votre idée a était envoyé.`);
 
-  } return }
+  } return })
 
    /* client.on('message', message => {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
