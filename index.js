@@ -10,7 +10,7 @@ client.on('ready', function () {
 client.login(process.env.TOKEN)
 
 /*client.on('message', message => {
-if (message.content.startsWith("-sondage")){
+if (message.content === '-sondage'){
   if(message.guild.id == "Modérateur Discord"){
     let args = message.content.split(" ").slice(1);
     let thingToEcho = args.join("")
@@ -33,20 +33,18 @@ client.on('message', message => {
             
   if (message.content === '-sondage'){
       
-    let msg = message.content.split(' ').slice(1);
-    let thingToEcho = msg.join("")
-    msg.shift()
-    let question = msg.join(' ')
-    var sondage = new Discord.RichEmbed()
-    .setTitle("SONDAGE")
-    .addField(thingToEcho, "Répondre avec ✅ ou ❌ ")
-    .setColor("0xB40404")
-    
-    message.channel.send(sondage)
-    .then(function(message){
-      message.react("✅")
-      message.react("❌")  
-    })    
+    let args = message.content.split(" ").slice(1);
+    let thingToEcho = args.join("")
+    var embed = new Discord.RichEmbed()
+      .setDescription("Sondage")
+      .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
+      .setColor("0xB40404")
+      .setTimestamp()
+  message.guild.channels.find("name", "sondage").sendEmbed(embed)
+  .then(function (message){
+    message.react("Oui")
+    message.react("Non")
+  }) 
     message.delete()       
   } return })
 
