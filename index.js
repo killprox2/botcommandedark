@@ -36,9 +36,7 @@ client.login(process.env.TOKEN)
         if(!reason) reason = "Aucune raison";
         if(reason)
         message.delete()
-        message.channel.send("Votre bug a été envoyée.")
-        var sugest = args.slice(0).join(" ")
-        if(!rbug) return message.reply("Quelles est le bug ?")            
+        message.channel.send("Votre bug a été envoyée.")   
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.id +` rapport un bug le voici: ${reason}.`);
              
     } return })
