@@ -31,12 +31,16 @@ client.login(process.env.TOKEN)
   }})*/
 
   client.on('message', message => {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
     if (message.content.startsWith(prefix + 'sondage')){ 
-      let args = message.content.split(" ").slice(1);     
+      
+      let quest = args.slice(0).join(" ");
         var sondage = new Discord.RichEmbed()
-        .setTitle("Sondage")
+        .setTitle("SONDAGE")
         .setColor("0xB40404") 
-    message.channel.sendEmbed(sondage)
+        message.guild.channels.find("name", "bugs").sendEmbed(sondage).send(`${quest}`)
     .then(function (message){
       message.react("Oui")
       message.react("Non")
