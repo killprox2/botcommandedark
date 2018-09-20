@@ -38,19 +38,6 @@ client.on('message', message => {
   message.channel.sendEmbed(embed)
   };return})
 
-  client.on('message', message => {
-    if (command == "report") {   
-      message.delete()
-        var embed = new Discord.RichEmbed()
-        .addField("Nom du Discord", message.guild.name)
-        .addField("Crée le", message.guild.createdAt)
-        .addField("Tu as rejoint le", message.member.joinedAt)
-        .addField("Utilisateur sur le Discord", message.guild.memberCount)
-        .addField("Nom du BOT", client.user.username)
-        .setColor('#01FE23')
-        .setImage("https://i.imgur.com/A1wcXrl.png")
-    message.channel.sendEmbed(embed)
-    };return})
 
  /* client.on('message', message => {
     if(command == "report"){
