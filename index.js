@@ -9,45 +9,6 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
             
-/*client.on('message', message => {
-  if (message.content.startsWith(prefix + 'sondage')){
-    if(message.guild.roles.find("name", "Modérateur Discord")) 
-    let args = message.content.split(" ").slice(1);
-    let thingToEcho = args.join(" ")
-    var embed = new Discord.RichEmbed()
-      .setTitle("Sondage")
-      .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
-      .setColor("0xB40404")
-      .setTimestamp()
-  message.channel.sendEmbed(embed)
-  .then(function (message){
-    message.react("Oui")
-    message.react("Non")
-   }).catch(function(){
-  
-   });
-  }else{
-    return message.reply("Tu n'as pas la permission")
-  }})*/
-
-  client.on('message', message => {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-
-    if (message.content.startsWith(prefix + 'sondage')){ 
-      
-      let quest = args.slice(0).join(" ");
-        var sondage = new Discord.RichEmbed()
-        .setTitle("SONDAGE")
-        .setColor("0xB40404") 
-        message.channel.sendEmbed(sondage).send(`${quest}`)
-    .then(function (message){
-      message.react("Oui")
-      message.react("Non")
-    }).catch(function(){
-  
-    });
-   }})
 
   client.on('message', message => {
     if (message.content === '-help2') {   
@@ -55,6 +16,10 @@ client.login(process.env.TOKEN)
         .setTitle("HELP")
         .setDescription("Permet de connaitre toute les commandes")
         .setColor("0xB40404") 
+        .addField("-fm object_souhaitais Information_du_fm")
+        .setDescription('Permet de passer une commande a un joueur')
+        .addField("-bug decrire_le_bug")
+        .setDescription('Permet de rapporter un bug sur le bot')
     message.channel.sendEmbed(embed)
     };
 })
