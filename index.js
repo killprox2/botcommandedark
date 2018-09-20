@@ -40,7 +40,7 @@ client.login(process.env.TOKEN)
         var sondage = new Discord.RichEmbed()
         .setTitle("SONDAGE")
         .setColor("0xB40404") 
-        message.guild.channels.find("name", "bugs").sendEmbed(sondage).send(`${quest}`)
+        message.channel.sendEmbed(sondage).send(`${quest}`)
     .then(function (message){
       message.react("Oui")
       message.react("Non")
