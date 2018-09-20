@@ -8,28 +8,42 @@ client.on('ready', function () {
 })
 
 client.login(process.env.TOKEN)
-
+            
 /*client.on('message', message => {
-if (message.content === '-sondage'){
-  if(message.guild.id == "Modérateur Discord"){
+  if (message.content.startsWith(prefix + 'sondage')){
+    if(message.guild.roles.find("name", "Modérateur Discord")) 
     let args = message.content.split(" ").slice(1);
-    let thingToEcho = args.join("")
+    let thingToEcho = args.join(" ")
     var embed = new Discord.RichEmbed()
-      .setDescription("Sondage")
+      .setTitle("Sondage")
       .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
       .setColor("0xB40404")
       .setTimestamp()
-  message.guild.channels.find("name", "sondage").sendEmbed(embed)
+  message.channel.sendEmbed(embed)
   .then(function (message){
     message.react("Oui")
     message.react("Non")
-  }).catch(function(){
-
-    });
+   }).catch(function(){
+  
+   });
   }else{
-    return message.reply("Tu n'as pas la permission.")
-}}})*/            
+    return message.reply("Tu n'as pas la permission")
+  }})*/
 
+  client.on('message', message => {
+    if (message.content.startsWith(prefix + 'sondage')){ 
+      let args = message.content.split(" ").slice(1);     
+        var sondage = new Discord.RichEmbed()
+        .setTitle("Sondage")
+        .setColor("0xB40404") 
+    message.channel.sendEmbed(sondage)
+    .then(function (message){
+      message.react("Oui")
+      message.react("Non")
+    }).catch(function(){
+  
+    });
+   }})
 
   client.on('message', message => {
     if (message.content === '-help2') {   
@@ -62,28 +76,6 @@ client.on('message', message => {
       });
     };
 })
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'sondage')){
-  if(message.guild.roles.find("name", "Modérateur Discord")) 
-  let args = message.content.split(" ").slice(1);
-  let thingToEcho = args.join(" ")
-  var embed = new Discord.RichEmbed()
-    .setTitle("Sondage")
-    .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
-    .setColor("0xB40404")
-    .setTimestamp()
-message.channel.sendEmbed(embed)
-.then(function (message){
-  message.react("Oui")
-  message.react("Non")
- }).catch(function(){
-
- });
-}else{
-  return message.reply("Tu n'as pas la permission")
-}})
-
-
   client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
