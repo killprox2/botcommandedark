@@ -37,8 +37,11 @@ client.login(process.env.TOKEN)
         if(reason)
         message.delete()
         message.channel.send("Votre bug a été envoyée.")
-               
-        message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "<@"+ message.member.displayName + ">"+` rapport un bug le voici: ${reason}.`);
+        var sugest = args.slice(0).join(" ")
+        if(!rbug) return message.reply("Quelles est le bug ?")
+            client.guilds.get("Guild ID").channels.get("channel").send("a bug!\n Bug:"+ sugest + "\n bug reporter par  <@" + message.author.id + ">")
+              
+        message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.id +` rapport un bug le voici: ${reason}.`);
              
     } return })
 
