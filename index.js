@@ -46,7 +46,7 @@ client.on('message', message => {
     message.react("Non")
    })
   }})
-  /*client.on('message', message => {
+  client.on('message', message => {
     if (message.content === '-help2') {   
         message.delete()
         var embed = new Discord.RichEmbed()
@@ -67,7 +67,7 @@ client.on('message', message => {
         ],
     message.guild.channel.sendEmbed(embed)
     };
-})*/
+})
 
 client.on('message', message => {
     if (message.content === '-help') {   
