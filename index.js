@@ -25,6 +25,21 @@ client.on('message', message => {
   };
 })
 client.on('message', message => {
+  if (message.content === '-report') {   
+    message.delete()
+      var embed = new Discord.RichEmbed()
+      .setTitle("**HELP**")
+      .setColor(0x00AE86)
+      .setDescription("Permet de connaitre toutes les commandes")
+      .setColor("0xB40404") 
+      .addField("**-fm** :arrow_forward: ***object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm***", "Permet de passer une commande a un forgemage")
+      .addField("**-bug** :arrow_forward: ***decrire_le_bug***", "Permet de rapporter un bug sur le bot")
+      .addField("**-idee** :arrow_forward: ***votre_idee***", "Permet de donner vos idée pour le bot")
+      .setImage("https://i.imgur.com/A1wcXrl.png")
+  message.channel.sendEmbed(embed)
+  };
+})
+client.on('message', message => {
   if (message.content === '-info') {   
     message.delete()
       var embed = new Discord.RichEmbed()
