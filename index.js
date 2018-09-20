@@ -23,7 +23,6 @@ client.on('message', message => {
   };
 })
 
-client.on('message', message => {
 
   if(message.content.startWith(prefix + "clear")){
     if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission d'utiliser cette commande !");
