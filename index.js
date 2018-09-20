@@ -42,6 +42,22 @@ client.login(process.env.TOKEN)
              
     } return })
 
+    client.on('message', message => {
+      const args = message.content.slice(prefix.length).trim().split(/ +/g);
+      const command = args.shift().toLowerCase();
+      const member = message.mentions.users.first();
+      
+      if (command === "new") {
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas les droits pour ajoutés des nouvelles !");
+          
+          let news = args.slice(0).join(" ");
+          
+          message.delete()
+          message.channel.send("La nouvelle a était envoyé")      
+          message.author.send(`${news}.`);
+               
+      } return })
+
 
           client.on('message', message => {
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
