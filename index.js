@@ -71,11 +71,8 @@ client.on('message', message => {
           )
 
           client.on('message', message => {
-            const args = message.content.slice(prefix.length).trim().split(/ +/g);
-            const command = args.shift().toLowerCase();
-            const member = message.mentions.users.first();
             
-            if (command === "sondage"){
+            if (message.content === '-sondage'){
                 
               let msg = message.content.split(' ')
               msg.shift()
