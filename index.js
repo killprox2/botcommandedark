@@ -25,20 +25,21 @@ client.on('message', message => {
   };
 })
 client.on('message', message => {
-if (message.content === prefix + "info") {
-  var info_embed = new Discord.RichEmbed()
-  .setdescription("Information du Discord")
-  info_embed.addField("Nom du Discord", message.guild.name)
-  info_embed.addField("Crée le", message.guild.CreatedAt)
-  info_embed.addField("Tu as rejoin le", message.member.joinedAt)
-  info_embed.addField("Utilisateur sur le Discord", message.guild.MemberCount)
-  info_embed.setColor('#01FE23')
-message.channel.sendEmbed(embed)
-}
+  if (message.content === '-info') {   
+    message.delete()
+      var embed = new Discord.RichEmbed()
+      .addField("Nom du Discord", message.guild.name)
+      .addField("Crée le", message.guild.CreatedAt)
+      .addField("Tu as rejoin le", message.member.joinedAt)
+      .addField("Utilisateur sur le Discord", message.guild.MemberCount)
+      .setColor('#01FE23')
+      .setImage("https://i.imgur.com/A1wcXrl.png")
+  message.channel.sendEmbed(embed)
+  };
 })
-
-client.on('mesasage', message => {
+client.on('message', message => {
   if (message.content === '-sondage') {   
+    message.delete()
     let args = message.content.split(" ").slice(1);
     let thingToEcho = args.join(" ")
     var embed = new Discord.RichEmbed()
@@ -54,6 +55,7 @@ client.on('mesasage', message => {
     }else{
         message.reply("Tu n'a pas la permission")
   };
+}
 })
 
 client.on('message', message => {
