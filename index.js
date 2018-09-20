@@ -37,8 +37,9 @@ client.login(process.env.TOKEN)
         if(reason)
         message.delete()
         message.channel.send("Votre bug a été envoyée.")   
-        message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.id +` rapport un bug le voici: ${reason}.`);
-             
+      //  message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.id +` rapport un bug le voici: ${reason}.`);
+      message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
+
     } return })
 
     client.on('message', message => {
