@@ -36,10 +36,23 @@ client.on('message', message => {
       .setColor('#01FE23')
       .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
-  };
-  return})
+  };return})
 
   client.on('message', message => {
+    if (command == "report") {   
+      message.delete()
+        var embed = new Discord.RichEmbed()
+        .addField("Nom du Discord", message.guild.name)
+        .addField("Crée le", message.guild.createdAt)
+        .addField("Tu as rejoint le", message.member.joinedAt)
+        .addField("Utilisateur sur le Discord", message.guild.memberCount)
+        .addField("Nom du BOT", client.user.username)
+        .setColor('#01FE23')
+        .setImage("https://i.imgur.com/A1wcXrl.png")
+    message.channel.sendEmbed(embed)
+    };return})
+
+ /* client.on('message', message => {
     if(command == "report"){
       let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
       if(!rUser) return message.channel.send("Impossible de trouver l'utilisateur.");
@@ -52,16 +65,14 @@ client.on('message', message => {
      .addField("Report par", `${message.author} with ID: ${message.author.id}`)
      .addField("Channel", message.channel)
      .addField("Temps", message.createdAt)
-     .addField("Raison", rreason);
+     .addField("Raison", rreason)
   
      let reportschannel = message.guild.channels.find(`name`, "bugs");
      if(!reportschannel) return message.channel.send("Impossible de trouver le canal des reports.");
 
      message.delete();
      reportschannel.send(reportEmbed);
-    }
-
-  })
+    };return})*/
 
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
