@@ -11,7 +11,7 @@ client.login(process.env.TOKEN)
             
 
   client.on('message', message => {
-    if (message.content === '-help2') {   
+    if (message.content === '-help') {   
       message.delete()
         var embed = new Discord.RichEmbed()
         .setTitle("HELP")
