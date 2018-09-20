@@ -31,15 +31,17 @@ if (message.content === '-sondage'){
 }}})*/
 client.on('message', message => {            
   if (message.content === '-sondage'){ 
+    let args = message.content.split(" ").slice(1);
+    let thingToEcho = args.join(" ")
     var embed = new Discord.RichEmbed()
       .setTitle("Sondage")
-      .addField("Répondre avec :white_check_mark: ou :x: ")
+      .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
       .setColor("0xB40404")
       .setTimestamp()
   message.channel.sendEmbed(embed)
   .then(function (message){
-    message.react("Oui")
-    message.react("Non")
+    message.react(":white_check_mark:")
+    message.react(":x:")
    })
   }})
 
