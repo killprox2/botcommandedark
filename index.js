@@ -39,6 +39,32 @@ client.on('message', message => {
   };
   return})
 
+  client.on('message', message => {
+   if(message.content === `-report`){
+
+     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+     if(!rUser) return message.channel.send("Couldn't find user.");
+     let rreason = args.join(" ").slice(22);
+  
+     let reportEmbed = new Discord.RichEmbed()
+     .setDescription("Reports")
+     .setColor("#15f153")
+     .addField("Joueur report", `${rUser} with ID: ${rUser.id}`)
+     .addField("Report par", `${message.author} with ID: ${message.author.id}`)
+     .addField("Channel", message.channel)
+     .addField("Temps", message.createdAt)
+     .addField("Raison", rreason);
+  
+     let reportschannel = message.guild.channels.find(`name`, "reports");
+     if(!reportschannel) return message.channel.send("Impossible de trouver le canal des reports.");
+  
+  
+     message.delete().catch(O_o=>{});
+     reportschannel.send(reportEmbed);
+  
+     return;
+   }})
+
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
