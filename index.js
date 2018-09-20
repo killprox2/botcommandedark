@@ -24,6 +24,16 @@ client.on('message', message => {
   message.channel.sendEmbed(embed)
   };
 })
+if (message.content === prefix + "info") {
+  var info_embed = new Discord.RichEmbed()
+  .setdescription("Information du Discord")
+  info_embed.addField("Nom du Discord", message.guild.name)
+  info_embed.addField("Crée le", message.guild.CreatedAt)
+  info_embed.addField("Tu as rejoin le", message.member.joinedAt)
+  info_embed.addField("Utilisateur sur le Discord", message.guild.MemberCount)
+  info_embed.setColor('#01FE23')
+message.channel.sendEmbed(embed)
+}
 
 client.on('message', message => {
   if (message.content === '-sondage') {   
