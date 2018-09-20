@@ -70,7 +70,7 @@ client.login(process.env.TOKEN)
                 let hereRole = message.guild.roles.find("name", "Forgemages");
                 if(!object) object = "Aucun object indiqué";
                 if(!detail) detail = "Aucune information indiqué";
-                message.channel.send("Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
+                message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
                
                     message.delete()
                     message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
