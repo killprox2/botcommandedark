@@ -38,7 +38,7 @@ client.login(process.env.TOKEN)
         message.delete()
         message.channel.send("Votre bug a été envoyée.")
                
-        message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${reason}.`);
+        message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.id  + ` rapport un bug le voici: ${reason}.`);
              
     } return })
 
@@ -46,21 +46,15 @@ client.login(process.env.TOKEN)
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
       const member = message.mentions.users.first();
-
-      if (message.author.bot) return;
-      mention = message.mention.users.first();
-
+      
       if (command === "new") {
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas les droits pour ajoutés des nouvelles !");
           
-         // let news = args.slice(0).join(" ");
-
-          if (mention == null) { return;}
+          let news = args.slice(0).join(" ");
+          
           message.delete()
-          mentionMessage = message.content.slice (250);
-          mention.sendMessage (mentionMessage);
-          message.channel.send("La nouvelle a était envoyé")
-         // message.author.send(`${news}.`);
+          message.channel.send("La nouvelle a était envoyé")      
+          message.author.send(`${news}.`);
                
       } return })
 
