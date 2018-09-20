@@ -11,17 +11,26 @@ client.login(process.env.TOKEN)
             
 
   client.on('message', message => {
-    if (message.content === '-help') {   
-      message.delete()
-        var embed = new Discord.RichEmbed()
-        .setTitle("**```Markdown #HELP```**")
-        .setDescription("Permet de connaitre toutes les commandes")
-        .setColor("0xB40404") 
-        .addField("**-fm** oject_souhaite ***Informations_sur_ce_que_vous_voulez_faire_comme_fm***", "Permet de passer une commande a un forgemage")
-        .addField("**-bug** ***decrire_le_bug***", "Permet de rapporter un bug sur le bot")
-        .addField("**-idee** ***votre_idee***", "Permet de donner vos idée pour le bot")
-    message.channel.sendEmbed(embed)
-    };
+    if (message.content === '-clear') {   
+      if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: **Tu dois préciser le nombre de messages à supprimer .**");
+      if(!args[0]) return message.channel.send(":x: **Tu dois préciser le nombre de messages à supprimer .**");
+      message.channel.bulkDelete(args[0]).then(() => {
+      message.channel.send(`:pencil2: ${args[0]} messages on été supprimer.`).then(msg => msg.delete(2000));
+    });
+}
+
+client.on('message', message => {
+  if (message.content === '-help') {   
+    message.delete()
+      var embed = new Discord.RichEmbed()
+      .setTitle("**HELP**")
+      .setDescription("Permet de connaitre toutes les commandes")
+      .setColor("0xB40404") 
+      .addField("**-fm** ***object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm***", "Permet de passer une commande a un forgemage")
+      .addField("**-bug** ***decrire_le_bug***", "Permet de rapporter un bug sur le bot")
+      .addField("**-idee** ***votre_idee***", "Permet de donner vos idée pour le bot")
+  message.channel.sendEmbed(embed)
+  };
 })
 
   client.on('message', message => {
