@@ -20,6 +20,7 @@ client.on('message', message => {
       .addField("**-fm** :arrow_forward: ***object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm***", "Permet de passer une commande a un forgemage")
       .addField("**-bug** :arrow_forward: ***decrire_le_bug***", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_forward: ***votre_idee***", "Permet de donner vos idée pour le bot")
+      .addField("**-info**", "Permet de connaitre les infos du Discord")
       .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
   };
@@ -34,7 +35,6 @@ client.on('message', message => {
     .addField("Report par", `tes`)
     .addField("Channel", message.channel)
     .addField("Temps", message.createdAt)
-    .addField("Raison", rreason)
     message.guild.channels.find(`name`, "bugs").sendEmbed(embed);  
      message.delete();
   };
