@@ -36,7 +36,7 @@ client.login(process.env.TOKEN)
         if(!reason) reason = "Aucune raison";
         if(reason)
         message.delete()
-      //  message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.id +` rapport un bug le voici: ${reason}.`);
+        message.guild.channels.find("name", "bugs").send(hereRole +`**${message.author.username}**#${message.author.discriminator} (${message.author.id}) reported a bug:\n${bug}\nServer: **${message.guild.name}**\nID: **${message.guild.id}**` +` rapport un bug le voici: ${reason}.`);
       message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
     } return })
