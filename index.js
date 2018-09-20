@@ -23,7 +23,7 @@ client.on('message', message => {
   };
 })
 
-
+client.on('message', message => {
   if(message.content.startWith(prefix + "clear")){
     if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission d'utiliser cette commande !");
         
@@ -34,10 +34,10 @@ client.on('message', message => {
     if(!args[0]) return message.channel.send("Vous n'avez pas précisé le nombre de messages à supprimer.")
     message.channel.bulkDelete(args[0]).then(() => {
         message.channel.send(`${args[0]} messages ont été supprimés !`);
-    })
-}
+  });
+} return })
 
-  client.on('message', message => {
+client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     const member = message.mentions.users.first();
