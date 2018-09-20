@@ -42,9 +42,9 @@ client.on('message', message => {
   client.on('message', message => {
    if(message.content === `-report`){
 
-     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    /* let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
      if(!rUser) return message.channel.send("Impossible de trouver l'utilisateur.");
-     let rreason = args.join(" ").slice(22);
+     let rreason = args.join(" ").slice(22);*/
   
      let reportEmbed = new Discord.RichEmbed()
      .setDescription("Reports")
@@ -56,7 +56,7 @@ client.on('message', message => {
      .addField("Raison", rreason);
   
      let reportschannel = message.guild.channels.find(`name`, "bugs");
-     if(!reportschannel) return message.channel.send("Impossible de trouver le canal des reports.");
+     //if(!reportschannel) return message.channel.send("Impossible de trouver le canal des reports.");
   
   
      message.delete().catch(O_o=>{});
