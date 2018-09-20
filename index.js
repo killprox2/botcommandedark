@@ -52,19 +52,9 @@ client.on('message', message => {
         var embed = new Discord.RichEmbed()
         .setTitle("HELP")
         .setDescription("Permet de connaitre toute les commandes")
-        .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
         .setColor("0xB40404")
         .setTimestamp()
-        fields: [
-          {
-            name: '-fm object_souhaitais Information_du_fm',
-            value: 'Permet de passer une commande a un joueur'
-          },
-          {
-            name: '-bug decrire_le_bug',
-            value: `Permet de rapporter un bug sur le bot`
-          }
-        ],
+        
     message.guild.channel.sendEmbed(embed)
     };
 })
