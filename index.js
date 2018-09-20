@@ -29,24 +29,45 @@ if (message.content === '-sondage'){
   }else{
     return message.reply("Tu n'as pas la permission.")
 }}})*/
-/*client.on('message', message => {
+client.on('message', message => {
             
   if (message.content === '-sondage'){
       
     let args = message.content.split(" ").slice(1);
     let thingToEcho = args.join("")
     var embed = new Discord.RichEmbed()
-      .setDescription("Sondage")
+      .setTitle("Sondage")
       .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
       .setColor("0xB40404")
       .setTimestamp()
-  message.guild.channels.find("name", "sondage").sendEmbed(embed)
+  message.guild.channel.sendEmbed(embed)
   .then(function (message){
     message.react("Oui")
     message.react("Non")
    })
-  }})*/
-
+  }})
+  /*client.on('message', message => {
+    if (message.content === '-help2') {   
+        message.delete()
+        var embed = new Discord.RichEmbed()
+        .setTitle("HELP")
+        .setDescription("Permet de connaitre toute les commandes")
+        .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
+        .setColor("0xB40404")
+        .setTimestamp()
+        fields: [
+          {
+            name: '-fm object_souhaitais Information_du_fm',
+            value: 'Permet de passer une commande a un joueur'
+          },
+          {
+            name: '-bug decrire_le_bug',
+            value: `Permet de rapporter un bug sur le bot`
+          }
+        ],
+    message.guild.channel.sendEmbed(embed)
+    };
+})*/
 
 client.on('message', message => {
     if (message.content === '-help') {   
