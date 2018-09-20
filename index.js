@@ -26,9 +26,6 @@ client.on('message', message => {
 })
 client.on('message', message => {
   if (command == '-report') {   
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("Impossible de trouver l'utilisateur.");
-    let rreason = args.join(" ").slice(22);
 
     var embed = new Discord.RichEmbed()
     .setTitle("Reports")
