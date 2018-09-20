@@ -27,15 +27,14 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.content === '-report') {   
     message.delete()
-      var embed = new Discord.RichEmbed()
-      .setTitle("**HELP**")
-      .setColor(0x00AE86)
-      .setDescription("Permet de connaitre toutes les commandes")
-      .setColor("0xB40404") 
-      .addField("**-fm** :arrow_forward: ***object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm***", "Permet de passer une commande a un forgemage")
-      .addField("**-bug** :arrow_forward: ***decrire_le_bug***", "Permet de rapporter un bug sur le bot")
-      .addField("**-idee** :arrow_forward: ***votre_idee***", "Permet de donner vos idée pour le bot")
-      .setImage("https://i.imgur.com/A1wcXrl.png")
+    let reportEmbed = new Discord.RichEmbed()
+    .setDescription("Reports")
+    .setColor("#15f153")
+    .addField("Joueur report", `${rUser} with ID: ${rUser.id}`)
+    .addField("Report par", `${message.author} with ID: ${message.author.id}`)
+    .addField("Channel", message.channel)
+    .addField("Temps", message.createdAt)
+    .addField("Raison", rreason)
   message.channel.sendEmbed(embed)
   };
 })
