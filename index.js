@@ -40,22 +40,20 @@ client.on('message', message => {
       .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
       .setColor("0xB40404")
       .setTimestamp()
-  message.guild.channel.sendEmbed(embed)
+      message.channel.sendEmbed(embed)
   .then(function (message){
     message.react("Oui")
     message.react("Non")
    })
   }})
+  
   client.on('message', message => {
     if (message.content === '-help2') {   
-        message.delete()
         var embed = new Discord.RichEmbed()
         .setTitle("HELP")
         .setDescription("Permet de connaitre toute les commandes")
-        .setColor("0xB40404")
-        .setTimestamp()
-        
-    message.guild.channel.sendEmbed(embed)
+        .setColor("0xB40404") 
+    message.channel.sendEmbed(embed)
     };
 })
 
