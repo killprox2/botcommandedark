@@ -45,7 +45,7 @@ client.on('message', message => {
     message.react("Oui")
     message.react("Non")
    })
-
+  }})
 
 
 client.on('message', message => {
@@ -108,5 +108,3 @@ client.on('message', message => {
                    
             } return }
           )
-         
-          }})
