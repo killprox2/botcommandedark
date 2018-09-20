@@ -38,10 +38,6 @@ client.on('message', message => {
     })
 }
 
-module.exports.help = {
-  name: "clear"
-}
-
   client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
