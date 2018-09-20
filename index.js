@@ -55,7 +55,6 @@ client.on('message', message => {
     }else{
         message.reply("Tu n'a pas la permission")
   };
-}
 })
 
 client.on('message', message => {
