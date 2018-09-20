@@ -25,14 +25,17 @@ client.on('message', message => {
 
 client.on('message', message => {
 
-module.exports.run = async (bot, message, args) => {
-  if (command === "clear") {
-  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(":x: **Tu dois préciser le nombre de messages à supprimer .**");
-  if(!args[0]) return message.channel.send(":x: **Tu dois préciser le nombre de messages à supprimer .**");
-  message.channel.bulkDelete(args[0]).then(() => {
-  message.channel.send(`:pencil2: ${args[0]} messages on été supprimer.`).then(msg => msg.delete(2000));
-});
-  }
+  if(message.content.startWith(prefix + "clear")){
+    if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission d'utiliser cette commande !");
+        
+    let args = message.content.split(" ").slice(1);
+
+    if(args >= 100) return message.channel.send("Vous ne pouvez pas clear plus de 100 messages en une fois.")
+        
+    if(!args[0]) return message.channel.send("Vous n'avez pas précisé le nombre de messages à supprimer.")
+    message.channel.bulkDelete(args[0]).then(() => {
+        message.channel.send(`${args[0]} messages ont été supprimés !`);
+    })
 }
 
 module.exports.help = {
