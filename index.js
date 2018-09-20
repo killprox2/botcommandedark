@@ -28,26 +28,8 @@ if (message.content === '-sondage'){
     });
   }else{
     return message.reply("Tu n'as pas la permission.")
-}}})*/
-client.on('message', message => {            
-  if (message.content.startsWith(prefix + 'sondage')){ 
-    let args = message.content.split(" ").slice(1);
-    let thingToEcho = args.join(" ")
-    var embed = new Discord.RichEmbed()
-      .setTitle("Sondage")
-      .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
-      .setColor("0xB40404")
-      .setTimestamp()
-  message.channel.sendEmbed(embed)
-  .then(function (message){
-    message.react("Oui")
-    message.react("Non")
-   }).catch(function(){
+}}})*/            
 
-   });
-  }else{
-    return message.reply("Tu n'as pas la permission")
-  }})
 
   client.on('message', message => {
     if (message.content === '-help2') {   
@@ -80,6 +62,27 @@ client.on('message', message => {
       });
     };
 })
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'sondage')){
+  if(message.guild.roles.find("name", "Modérateur Discord")) 
+  let args = message.content.split(" ").slice(1);
+  let thingToEcho = args.join(" ")
+  var embed = new Discord.RichEmbed()
+    .setTitle("Sondage")
+    .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x: ")
+    .setColor("0xB40404")
+    .setTimestamp()
+message.channel.sendEmbed(embed)
+.then(function (message){
+  message.react("Oui")
+  message.react("Non")
+ }).catch(function(){
+
+ });
+}else{
+  return message.reply("Tu n'as pas la permission")
+}})
+
 
   client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
