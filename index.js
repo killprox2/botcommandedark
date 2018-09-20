@@ -19,6 +19,7 @@ client.login(process.env.TOKEN)
         .setColor("0xB40404") 
         .addField("**-fm** oject_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm", "Permet de passer une commande a un forgemage")
         .addField("**-bug** decrire_le_bug", "Permet de rapporter un bug sur le bot")
+        .addField("**-idee** votre_idee", "Permet de donner vos idée pour le bot")
     message.channel.sendEmbed(embed)
     };
 })
@@ -36,12 +37,29 @@ client.login(process.env.TOKEN)
         if(!reason) reason = "Aucune raison";
         if(reason)
         message.delete()
-        message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.tag +` rapport un bug le voici: ${reason}.`);
+        message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.username}** rapport un bug le voici: ${reason}.`);
       message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
     } return })
 
     client.on('message', message => {
+      const args = message.content.slice(prefix.length).trim().split(/ +/g);
+      const command = args.shift().toLowerCase();
+      const member = message.mentions.users.first();
+    if (command === "idee") {
+        
+      let reason = args.slice(0).join(" ");
+      let hereRole = message.guild.roles.find("name", "Modérateur Discord");
+            
+      if(!reason) reason = "Aucune idée";
+      if(reason)
+      message.delete()
+      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.username}** a une idée la voici: ${reason}.`);
+    message.channel.send(`:white_check_mark: **${message.author.username}**, Votre idée a était envoyé.`);
+
+  } return }
+
+   /* client.on('message', message => {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
       const member = message.mentions.users.first();
@@ -55,7 +73,7 @@ client.login(process.env.TOKEN)
           message.channel.send("La nouvelle a était envoyé")      
           message.author.send(`${news}.`);
                
-      } return })
+      } return })*/
 
 
           client.on('message', message => {
