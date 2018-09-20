@@ -23,6 +23,12 @@ client.on('message', message => {
   };
 })
 client.on('message', message => {
+  if (message.content === '-cf') {   
+    message.channel.send(`Resultat: **${Math.floor(Math.random() * 2) == 0 ? "CT" : "T"}**!`);
+  };
+})
+
+client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     const member = message.mentions.users.first();
