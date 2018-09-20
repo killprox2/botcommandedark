@@ -24,6 +24,38 @@ client.on('message', message => {
   message.channel.sendEmbed(embed)
   };
 })
+client.on('message', message => {
+  if (message.content === '-info') {   
+    message.delete()
+      var embed = new Discord.RichEmbed()
+      .addField("Nom du Discord", message.guild.name)
+      .addField("Crée le", message.guild.CreatedAt)
+      .addField("Tu as rejoin le", message.member.joinedAt)
+      .addField("Utilisateur sur le Discord", message.guild.MemberCount)
+      .setColor('#01FE23')
+      .setImage("https://i.imgur.com/A1wcXrl.png")
+  message.channel.sendEmbed(embed)
+  };
+  return})
+client.on('message', message => {
+  if (message.content === '-sondage') {   
+    message.delete()
+    let args = message.content.split(" ").slice(1);
+    let thingToEcho = args.join(" ")
+    var embed = new Discord.RichEmbed()
+        embed.setDescription("Sondage")
+        embed.addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
+        embed.setColor('#01A1FE')
+    message.guild.channels.find("name", "sondage").sendEmbed(embed)
+    .then(function (message){
+        message.react("✔")
+        message.react("✘")
+    }).catch(function() {
+    });
+    }else{
+        message.reply("Tu n'a pas la permission")
+  };
+  return})
 
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
