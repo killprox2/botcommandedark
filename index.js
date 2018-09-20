@@ -15,9 +15,9 @@ client.login(process.env.TOKEN)
       message.delete()
         var embed = new Discord.RichEmbed()
         .setTitle("HELP")
-        .setDescription("Permet de connaitre toute les commandes")
+        .setDescription("Permet de connaitre toutes les commandes")
         .setColor("0xB40404") 
-        .addField("-fm oject_souhaitais Information_du_fm", "Permet de passer une commande a un joueur")
+        .addField("-fm oject_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm", "Permet de passer une commande a un forgemage")
         .addField("-bug decrire_le_bug", "Permet de rapporter un bug sur le bot")
     message.channel.sendEmbed(embed)
     };
@@ -36,6 +36,8 @@ client.login(process.env.TOKEN)
         if(!reason) reason = "Aucune raison";
         if(reason)
         message.delete()
+        message.channel.send("Votre bug a été envoyée.")
+               
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + message.member.displayName + ` rapport un bug le voici: ${reason}.`);
              
     } return })
@@ -53,10 +55,10 @@ client.login(process.env.TOKEN)
                 let hereRole = message.guild.roles.find("name", "Forgemages");
                 if(!object) object = "Aucun object indiqué";
                 if(!detail) detail = "Aucune information indiqué";
-                message.channel.send('Votre commande a était envoyé')
+                message.channel.send("Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
                
                     message.delete()
-                    message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
+                    message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
                      // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
                    
             } return }
