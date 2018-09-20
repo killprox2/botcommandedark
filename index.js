@@ -17,8 +17,8 @@ client.login(process.env.TOKEN)
         .setTitle("HELP")
         .setDescription("Permet de connaitre toutes les commandes")
         .setColor("0xB40404") 
-        .addField("-fm oject_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm", "Permet de passer une commande a un forgemage")
-        .addField("-bug decrire_le_bug", "Permet de rapporter un bug sur le bot")
+        .addField("**-fm** oject_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm", "Permet de passer une commande a un forgemage")
+        .addField("**-bug** decrire_le_bug", "Permet de rapporter un bug sur le bot")
     message.channel.sendEmbed(embed)
     };
 })
@@ -36,7 +36,6 @@ client.login(process.env.TOKEN)
         if(!reason) reason = "Aucune raison";
         if(reason)
         message.delete()
-        message.channel.send("Votre bug a été envoyée.")   
       //  message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.id +` rapport un bug le voici: ${reason}.`);
       message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
