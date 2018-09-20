@@ -27,7 +27,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (message.content === '-report') {   
     message.delete()
-    let reportEmbed = new Discord.RichEmbed()
+    var embed = new Discord.RichEmbed()
     .setDescription("Reports")
     .setColor("#15f153")
     .addField("Joueur report", `${rUser} with ID: ${rUser.id}`)
