@@ -54,7 +54,7 @@ client.login(process.env.TOKEN)
           
           message.delete()
           message.channel.send("La nouvelle a était envoyé")      
-          message.client.send(`${news}.`);
+          message.author.send(`${news}.`);
                
       } return })
 
