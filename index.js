@@ -33,9 +33,7 @@ client.on('message', message => {
     .setColor("#15f153")
     .addField("Joueur report", `test`)
     .addField("Report par", `tes`)
-    .addField("Channel", message.channel)
-    .addField("Temps", message.createdAt)
-    message.guild.channels.find(`name`, "bugs").sendEmbed(embed);  
+    message.channel.sendEmbed(embed)
      message.delete();
   };
 })
