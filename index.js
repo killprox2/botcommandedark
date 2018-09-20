@@ -38,9 +38,7 @@ client.login(process.env.TOKEN)
         message.delete()
         message.channel.send("Votre bug a été envoyée.")
         var sugest = args.slice(0).join(" ")
-        if(!rbug) return message.reply("Quelles est le bug ?")
-            client.guilds.get("Guild ID").channels.get("channel").send("a bug!\n Bug:"+ sugest + "\n bug reporter par  <@" + message.author.id + ">")
-              
+        if(!rbug) return message.reply("Quelles est le bug ?")            
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ` + "@"+ message.author.id +` rapport un bug le voici: ${reason}.`);
              
     } return })
