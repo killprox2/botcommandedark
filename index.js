@@ -69,23 +69,27 @@ client.on('message', message => {
                    
             } return }
           )
-  client.on('message', message => {
+
+          client.on('message', message => {
+            const args = message.content.slice(prefix.length).trim().split(/ +/g);
+            const command = args.shift().toLowerCase();
+            const member = message.mentions.users.first();
+            
             if (command === "sondage"){
+                
               let msg = message.content.split(' ')
-            msg.shift()
-            let question = msg.join(' ')
-            var sondage = new Discord.RichEmbed()
-            .setTitle("SONDAGE")
-            .addField(thingToEcho, "Répondre avec ✅ ou ❌ ")
-            .setColor("0xB40404")
-            
-            message.channel.send(sondage)
-            .then(function(message){
-              message.react("✅")
-              message.react("❌")
-            
-            })
-            message.delete()
-          } return }
-            );
+              msg.shift()
+              let question = msg.join(' ')
+              var sondage = new Discord.RichEmbed()
+              .setTitle("SONDAGE")
+              .addField(thingToEcho, "Répondre avec ✅ ou ❌ ")
+              .setColor("0xB40404")
+              
+              message.channel.send(sondage)
+              .then(function(message){
+                message.react("✅")
+                message.react("❌")  
+              })    
+              message.delete()       
+            } return })
          
