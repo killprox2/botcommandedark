@@ -23,6 +23,22 @@ client.on('message', message => {
   };
 })
 
+client.on('message', message => {
+
+module.exports.run = async (bot, message, args) => {
+  if (command === "clear") {
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply(":x: **Tu dois préciser le nombre de messages à supprimer .**");
+  if(!args[0]) return message.channel.send(":x: **Tu dois préciser le nombre de messages à supprimer .**");
+  message.channel.bulkDelete(args[0]).then(() => {
+  message.channel.send(`:pencil2: ${args[0]} messages on été supprimer.`).then(msg => msg.delete(2000));
+});
+  }
+}
+
+module.exports.help = {
+  name: "clear"
+}
+
   client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
