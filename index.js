@@ -35,11 +35,8 @@ client.on('message', message => {
     .addField("Channel", message.channel)
     .addField("Temps", message.createdAt)
     .addField("Raison", rreason)
-    let reportschannel = message.guild.channels.find(`name`, "bugs");
-     if(!reportschannel) return message.channel.send("Impossible de trouver le canal des reports.");
-
+    message.guild.channels.find(`name`, "bugs").sendEmbed(embed);  
      message.delete();
-     reportschannel.send(embed);
   };
 })
 client.on('message', message => {
