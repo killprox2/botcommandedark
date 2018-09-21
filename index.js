@@ -22,9 +22,10 @@ client.on('message', message => {
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
       .addField("**-ping**", "Permet de connaitre sa latence")
-      .setFooter("#__**COMMANDE ADMIN**__#")
       .addField("**-clear**", "Permet de supprimer le tchat")
+      .setDescription("#__**COMMANDE ADMIN**__#")
       .setImage("https://i.imgur.com/A1wcXrl.png")
+      .setFooter("DarkBot")
   message.channel.sendEmbed(embed)
   };
 })
