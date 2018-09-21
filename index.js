@@ -64,10 +64,10 @@ client.on('message', message => {
   client.on('message', message => {
     if (message.content.startsWith(prefix + "sondage")) {
       if(message.member.hasPermission("MANAGE_MESSAGES")){
-      let age = args[0];
+        let question = args.slice(1).join(" ");
       var embed = new Discord.RichEmbed()
           embed.setDescription("Sondage")
-          embed.addField(age, "Répondre avec :white_check_mark: ou :x:")
+          embed.addField(question, "Répondre avec :white_check_mark: ou :x:")
           embed.setColor("#01A1FE")
           embed.setImage("https://i.imgur.com/A1wcXrl.png")
       message.guild.channels.find("name", "sondage").sendEmbed(embed)
