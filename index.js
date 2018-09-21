@@ -61,6 +61,28 @@ client.on('message', message => {
     }return
   })
 
+  client.on('message', message => {
+    if (message.content === '-sondage') {   
+      if(message.member.hasPermission("MANAGE_MESSAGES")){
+        let args = message.content.split(" ").slice(1);
+        let thingToEcho = args.join(" ")
+        var embed = new Discord.RichEmbed()
+      .setTitle("SONDAGE")
+      .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
+      .setColor('#01FE23')
+      .setImage("https://i.imgur.com/A1wcXrl.png")
+    message.guild.channels.find("name", "bugs").sendEmbed(embed)
+    .then(function (message){
+      message.react("Oui")
+      message.react("Non")
+    }).catch(function(){
+
+    });
+  }else{
+    return message.reply("Tu n'as pas la permission.")
+  }}
+  })
+
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
