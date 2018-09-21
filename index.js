@@ -49,7 +49,7 @@ client.on('message', message => {
         .then(function(list){
           message.channel.bulkDelete(list)
         }, function(err){message.channel.send("erreur")})}
-    }
+    }return
   })
 
   client.on('message', message => {
@@ -57,7 +57,7 @@ client.on('message', message => {
       message.delete()
       message.channel.sendMessage(`Temps de latence avec le serveur: **${message.createdTimestamp - Date.now()}** ms`);
 
-    }
+    }return
   })
 
 client.on('message', message => {
