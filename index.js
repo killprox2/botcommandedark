@@ -62,8 +62,8 @@ client.on('message', message => {
   })
 
   client.on('message', message => {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const thingToEcho = args.join(" ")
+    let args = message.content.split(" ").slice(1);
+    let thingToEcho = args.join(" ")
     if (message.content === '-sondage') {   
       if(message.member.hasPermission("MANAGE_MESSAGES")){
         var embed = new Discord.RichEmbed()
