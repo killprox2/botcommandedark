@@ -22,6 +22,7 @@ client.on('message', message => {
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
       .addField("**-clear**", "Permet de supprimer le tchat")
+      .addField("**-ping**", "Permet de connaitre sa latence")
       .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
   };
@@ -53,7 +54,7 @@ client.on('message', message => {
 
   client.on('message', message => {
     if (message.content === '-ping') {   
-
+      message.delete()
       message.channel.sendMessage(`Temps de latence avec le serveur: **${message.createdTimestamp - Date.now()}** ms`);
 
     }
