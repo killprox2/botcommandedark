@@ -22,7 +22,7 @@ client.on('message', message => {
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
       .addField("**-ping**", "Permet de connaitre sa latence")
-      .setTitle("#__**COMMANDE ADMIN**__#")
+      .setFooter("#__**COMMANDE ADMIN**__#")
       .addField("**-clear**", "Permet de supprimer le tchat")
       .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
