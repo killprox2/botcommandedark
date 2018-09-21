@@ -21,6 +21,7 @@ client.on('message', message => {
       .addField("**-bug** :arrow_right: *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
+      .addField("**-clear**", "Permet de supprimer le tchat")
       .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
   };
@@ -47,6 +48,14 @@ client.on('message', message => {
         .then(function(list){
           message.channel.bulkDelete(list)
         }, function(err){message.channel.send("erreur")})}
+    }
+  })
+
+  client.on('message', message => {
+    if (message.content === '-ping') {   
+
+      message.channel.sendMessage(`Temps de latence avec le serveur: **${message.createdTimestamp - Date.now()}** ms`);
+
     }
   })
 
