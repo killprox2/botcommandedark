@@ -64,7 +64,6 @@ client.on('message', message => {
   client.on('message', message => {
     if (message.content.startsWith(prefix + "sondage")) {
       if(message.member.hasPermission("MANAGE_MESSAGES")){
-        let question = args.slice(1).join(" ");
       var embed = new Discord.RichEmbed()
           embed.setDescription("Sondage")
           embed.addField(question, "Répondre avec :white_check_mark: ou :x:")
