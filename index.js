@@ -21,8 +21,9 @@ client.on('message', message => {
       .addField("**-bug** :arrow_right: *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
-      .addField("**-clear**", "Permet de supprimer le tchat")
       .addField("**-ping**", "Permet de connaitre sa latence")
+      .setTitle("#__**COMMANDE ADMIN**__#")
+      .addField("**-clear**", "Permet de supprimer le tchat")
       .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
   };
