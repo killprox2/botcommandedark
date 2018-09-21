@@ -62,10 +62,10 @@ client.on('message', message => {
   })
 
   client.on('message', message => {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const thingToEcho = args.join(" ")
     if (message.content === '-sondage') {   
       if(message.member.hasPermission("MANAGE_MESSAGES")){
-        let args = message.content.split(" ").slice(1);
-        let thingToEcho = args.join(" ")
         var embed = new Discord.RichEmbed()
       .setTitle("SONDAGE")
       .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
