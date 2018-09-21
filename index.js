@@ -39,17 +39,16 @@ client.on('message', message => {
       .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
   };return})
-
   client.on('message', message => {
-    if (message.content === '-clear') {   
+    if (message.content === '-info') {   
       if(message.member.hasPermission("MANAGE_MESSAGES")){
         message.channel.fetchMessages()
-        
+        message.channel.bulkDelete(list); 
       }
     }
 
   })
-
+  
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
