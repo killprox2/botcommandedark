@@ -40,6 +40,16 @@ client.on('message', message => {
   message.channel.sendEmbed(embed)
   };return})
 
+  client.on('message', message => {
+    if (message.content === '-clear') {   
+      if(message.member.hasPermission("MANAGE_MESSAGES")){
+        message.channel.fetchMessages()
+        
+      }
+    }
+
+  })
+
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
