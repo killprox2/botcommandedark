@@ -62,22 +62,21 @@ client.on('message', message => {
   })
 
   client.on('message', message => {
-    let args = message.content.split(" ").slice(1);
-    let thingToEcho = args.join(" ")
-    if (message.content === '-sondage') {   
+    if (message.content.startsWith(prefix + "sondage")) {
       if(message.member.hasPermission("MANAGE_MESSAGES")){
-        var embed = new Discord.RichEmbed()
-      .setTitle("SONDAGE")
-      .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
-      .setColor('#01FE23')
-      .setImage("https://i.imgur.com/A1wcXrl.png")
-    message.guild.channels.find("name", "bugs").sendEmbed(embed)
-    .then(function (message){
-      message.react("Oui")
-      message.react("Non")
-    }).catch(function(){
-
-    });
+      let args = message.content.split(" ").slice(1);
+      let thingToEcho = args.join(" ")
+      var embed = new Discord.RichEmbed()
+          embed.setDescription("Sondage")
+          embed.addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
+          embed.setColor('#01A1FE')
+          embed.setImage("https://i.imgur.com/A1wcXrl.png")
+      message.guild.channels.find("name", "sondage").sendEmbed(embed)
+      .then(function (message){
+          message.react("✔")
+          message.react("✘")
+      }).catch(function() {
+      });
   }else{
     return message.reply("Tu n'as pas la permission.")
   }}
