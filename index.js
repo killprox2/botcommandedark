@@ -64,12 +64,12 @@ client.on('message', message => {
   client.on('message', message => {
     if (message.content.startsWith(prefix + "sondage")) {
       if(message.member.hasPermission("MANAGE_MESSAGES")){
-      let args = message.content.split(" ").slice(1);
-      let thingToEcho = args.join(" ")
+      const args = message.content.slice(prefix.length).trim().split(/ +/g);
+      const thingToEcho = args.shift().toLowerCase();
       var embed = new Discord.RichEmbed()
           embed.setDescription("Sondage")
           embed.addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
-          embed.setColor('#01A1FE')
+          embed.setColor("#01A1FE")
           embed.setImage("https://i.imgur.com/A1wcXrl.png")
       message.guild.channels.find("name", "sondage").sendEmbed(embed)
       .then(function (message){
