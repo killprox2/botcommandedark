@@ -9,89 +9,6 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 
-let queue = {};
-
-const commands = {
-	'play': (msg) => {
-		if (queue[msg.guild.id] === undefined) return msg.channel.sendMessage(`Ajoutez d'abord des chansons à la file d'attente avec -add`);
-		if (!msg.guild.voiceConnection) return commands.join(msg).then(() => commands.play(msg));
-		if (queue[msg.guild.id].playing) return msg.channel.sendMessage('Déjà en cours de jouer');
-		let dispatcher;
-		queue[msg.guild.id].playing = true;
-
-		console.log(queue);
-		(function play(song) {
-			console.log(song);
-			if (song === undefined) return msg.channel.sendMessage("La file d'attente est vide").then(() => {
-				queue[msg.guild.id].playing = false;
-				msg.member.voiceChannel.leave();
-			});
-			msg.channel.sendMessage(`Joue: **${song.title}** demandé par: **${song.requester}**`);
-			dispatcher = msg.guild.voiceConnection.playStream(yt(song.url, { audioonly: true }), { passes : 1 });
-			let collector = msg.channel.createCollector(m => m);
-			collector.on('message', m => {
-				if (m.content.startsWith(prefix + 'pause')) {
-					msg.channel.sendMessage('Pause').then(() => {dispatcher.pause();});
-				} else if (m.content.startsWith(prefix + 'reprendre')){
-					msg.channel.sendMessage('Reprendre').then(() => {dispatcher.resume();});
-				} else if (m.content.startsWith(prefix + 'suivant')){
-					msg.channel.sendMessage('Suivant').then(() => {dispatcher.end();});
-				} else if (m.content.startsWith('volume+')){
-					if (Math.round(dispatcher.volume*50) >= 100) return msg.channel.sendMessage(`Volume: ${Math.round(dispatcher.volume*50)}%`);
-					dispatcher.setVolume(Math.min((dispatcher.volume*50 + (2*(m.content.split('+').length-1)))/50,2));
-					msg.channel.sendMessage(`Volume: ${Math.round(dispatcher.volume*50)}%`);
-				} else if (m.content.startsWith('volume-')){
-					if (Math.round(dispatcher.volume*50) <= 0) return msg.channel.sendMessage(`Volume: ${Math.round(dispatcher.volume*50)}%`);
-					dispatcher.setVolume(Math.max((dispatcher.volume*50 - (2*(m.content.split('-').length-1)))/50,0));
-					msg.channel.sendMessage(`Volume: ${Math.round(dispatcher.volume*50)}%`);
-				} else if (m.content.startsWith(prefix + 'temps')){
-					msg.channel.sendMessage(`temps: ${Math.floor(dispatcher.time / 60000)}:${Math.floor((dispatcher.time % 60000)/1000) <10 ? '0'+Math.floor((dispatcher.time % 60000)/1000) : Math.floor((dispatcher.time % 60000)/1000)}`);
-				}
-			});
-			dispatcher.on('end', () => {
-				collector.stop();
-				play(queue[msg.guild.id].songs.shift());
-			});
-			dispatcher.on('error', (err) => {
-				return msg.channel.sendMessage('error: ' + err).then(() => {
-					collector.stop();
-					play(queue[msg.guild.id].songs.shift());
-				});
-			});
-		})(queue[msg.guild.id].songs.shift());
-	},
-	'join': (msg) => {
-		return new Promise((resolve, reject) => {
-			const voiceChannel = msg.member.voiceChannel;
-			if (!voiceChannel || voiceChannel.type !== 'voice') return msg.reply('Impossible de ce connecté au chanel');
-			voiceChannel.join().then(connection => resolve(connection)).catch(err => reject(err));
-		});
-	},
-	'add': (msg) => {
-		let url = msg.content.split(' ')[1];
-		if (url == '' || url === undefined) return msg.channel.sendMessage(`Vous devez ajouter une URL de vidéo YouTube -add`);
-		yt.getInfo(url, (err, info) => {
-			if(err) return msg.channel.sendMessage('Lien YouTube invalide: ' + err);
-			if (!queue.hasOwnProperty(msg.guild.id)) queue[msg.guild.id] = {}, queue[msg.guild.id].playing = false, queue[msg.guild.id].songs = [];
-			queue[msg.guild.id].songs.push({url: url, title: info.title, requester: msg.author.username});
-			msg.channel.sendMessage(`Ajouter **${info.title}** a la queue`);
-		});
-	},
-	'queue': (msg) => {
-		if (queue[msg.guild.id] === undefined) return msg.channel.sendMessage(`Ajoutez d'abord des chansons à la file d'attente avec -add`);
-		let tosend = [];
-		queue[msg.guild.id].songs.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} - Requested by: ${song.requester}`);});
-		msg.channel.sendMessage(`__**${msg.guild.name}'s Music Queue:**__ Actuellement **${tosend.length}** chanson en file d'attente ${(tosend.length > 15 ? '*[15 suivante]*' : '')}\n\`\`\`${tosend.slice(0,15).join('\n')}\`\`\``);
-	},
-	'helpmusic': (msg) => {
-		let tosend = ['```xl', prefix + 'join : "Rejoindre le canal vocal"',	prefix + 'add : "Ajouter un lien YouTube"', prefix + 'queue : "Affiche la file dattente actuelle, jusquà 15 chansons affichées."', prefix + 'play : "Jouer la musique"', '', 'les commandes suivantes ne fonctionnent que lorsque la commande play est en cours dexécution:'.toUpperCase(), prefix + 'pause : "Pause"',	prefix + 'reprendre : "Reprendre la musique"', prefix + 'suivant : "changer de musique"', prefix + 'temps : "Affiche la durée de la chanson."',	'volume+(+++) : "Augmente le volume de 2%/+"',	'volume-(---) : "Reduit le volume de 2%/-"',	'```'];
-		msg.channel.sendMessage(tosend.join('\n'));
-/*	},
-	'reboot': (msg) => {
-		if (msg.author.id == tokens.adminID) process.exit(); //Requires a node module like Forever to work.*/
-	return}
-};
-
 
 client.on('message', msg => {
 	if (!msg.content.startsWith(prefix)) return;
@@ -106,7 +23,7 @@ client.on('message', message => {
       .setColor(0x00AE86)
       .setDescription("Permet de connaitre toutes les commandes")
       .setColor("0xB40404") 
-      .addField("**-fm** :arrow_right: '```xl'*object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*'```'", "Permet de passer une commande a un forgemage")
+      .addField("**-fm** :arrow_right: '[```xl'*object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*'```]'", "Permet de passer une commande a un forgemage")
       .addField("**-bug** :arrow_right: *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
