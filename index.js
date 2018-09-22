@@ -7,6 +7,7 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
+//client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
 client.login(process.env.TOKEN)
 
 client.on('message', message => {
@@ -292,28 +293,22 @@ client.on('message', message => {
 
           client.on('message', message => {
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
-            const command = args.shift().toLowerCase();
+						const command = args.shift().toLowerCase();
             const member = message.mentions.users.first();
             
-            if (command === "fm") {
+            if(message.content.substring(0, 7) == "-fm") {
                 
                 let object = args[0];
                 let detail = args.slice(1).join(" ");
-                let hereRole = message.guild.roles.find("name", "Forgemages");
-								if(typeof commande[1] === 'undefined')
-								{
-									
-										// Nom d'utilisateur pas entré = afficher l'aide
-										message.reply("**Aide pour la commande report :** \n\n Pour rapporter un ou plusieurs utilisateurs ayant un comportement inapproprié, mettre le nom ou les noms des utilisateurs après la commande report. \n\n Vous pouvez également rajouter une raison particulière avec l'attribut `!r:\"Votre raison\"`. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `-report @user` \n **Exemple 2 :** `-report @user1 @user2` \n **Exemple 3 :** `-report @user1 !r:\"Une raison\"`");
-									
-								}
-								else
-								{
-                    message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
-               
+								let hereRole = message.guild.roles.find("name", "Forgemages");
+
+										message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")    
                     message.delete()
-                    message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
-                     // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
+                    message.guild.channels.find("name", "liste-commande-fm").send(` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
+      
+									
+							
+                                  // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
 								}
-            } return }
+            } 
           )
