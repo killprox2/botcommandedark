@@ -221,23 +221,25 @@ client.on('message', message => {
         
         let reason = args.slice(0).join(" ");
         let hereRole = message.guild.roles.find("name", "Modérateur Discord");
+        message.delete()
         if(typeof commande[1] === 'undefined')
         {
           if(message.author.bot === false)
           {
-            // Nom d'utilisateur pas entré = afficher l'aide
             message.reply("**Aide pour la commande bug :** \n\n Pour rapporter un ou plusieurs bug.\n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple:** `-bug Il y a un soucis ici`\"`");
           }
         }
-   
-        message.delete()
+        else
+        {
 
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ${message.author.username} rapport un bug le voici: ${reason}.`);
        
         
       message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
-    } return })
+    } 
+  }
+  })
 
     client.on('message', message => {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
