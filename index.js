@@ -7,7 +7,6 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
-//client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
 client.login(process.env.TOKEN)
 
 client.on('message', message => {
@@ -54,7 +53,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 client.on("message", (message) => {
 	if (message.content.startsWith(prefix + 'loto')) {
 
-		var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55'];
+		var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '50'];
 		//var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
 		var maissuiterdm = Math.floor(Math.random()*maissuite.length);
       var embed = new Discord.RichEmbed()
@@ -293,22 +292,21 @@ client.on('message', message => {
 
           client.on('message', message => {
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
-						const command = args.shift().toLowerCase();
+            const command = args.shift().toLowerCase();
             const member = message.mentions.users.first();
             
-            if(message.content.substring(0, 7) == "-fm") {
+            if (command === "fm") {
                 
                 let object = args[0];
                 let detail = args.slice(1).join(" ");
-								let hereRole = message.guild.roles.find("name", "Forgemages");
-
-										message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")    
+                let hereRole = message.guild.roles.find("name", "Forgemages");
+                if(!object) object = "Aucun object indiqué";
+                if(!detail) detail = "Aucune information indiqué";
+                message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
+               
                     message.delete()
-                    message.guild.channels.find("name", "liste-commande-fm").send(` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
-      
-									
-							
-                                  // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
-								}
-            } 
+                    message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
+                     // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
+                   
+            } return }
           )
