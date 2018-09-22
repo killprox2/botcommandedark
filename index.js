@@ -9,22 +9,6 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 
-const swearWords = ['shit', 'fuck', 'bitch', 'nigger', 'nigga', 'cunt', 'whore', 'fag', 'faggot', 'dick', 'cock', 'pussy', 'slut', 'batard', 'connard', 'pd'];
-  if (config.discordinvite == false) {
-    console.log('DarkBot Detect is disabled.');
-    return;
-  } else {
-  if (swearWords.some(word => message.content.toLowerCase().includes(word))) {
-  message.delete().catch(O_o=>{});
-
-  let embed = new Discord.RichEmbed()
-    .setTitle('DarkBot Detect')
-    .setColor(0x00AE86)
-    .setDescription(`${message.author}, Insulte interdit`);
-    message.channel.send(embed).then(message => message.delete(3000));
-    return;
-  }};
-
 client.on('message', message => {
   if (message.content === '-help') {   
     message.delete()
