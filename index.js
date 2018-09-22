@@ -30,35 +30,76 @@ client.on('message', message => {
   };
 })
 client.on("message", (message) => {
-if (message.content.startsWith(prefix + 'euromillion')) {
-	var maissuite = ['1', '2', "3", '4', '5', '6', '7', '8', '9', '0'];
-	var maissuiterdm = Math.floor(Math.random()*maissuite.length);
-	var maissuite2 = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm2 = Math.floor(Math.random()*maissuite2.length);
-	var maissuite3 = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm3 = Math.floor(Math.random()*maissuite3.length);
-	var maissuite4 =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm4 = Math.floor(Math.random()*maissuite4.length);
-	var maissuite5 =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm5 = Math.floor(Math.random()*maissuite5.length);
-	var maissuite6 =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm6 = Math.floor(Math.random()*maissuite6.length);
-	var maissuite7 = ['1', '2', "3", '4', '5', '6', '7', '8', '9', '0'];
-	var maissuiterdm7 = Math.floor(Math.random()*maissuite7.length);
-	var maissuite8 = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm8 = Math.floor(Math.random()*maissuite8.length);
-	var maissuite9 = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm9 = Math.floor(Math.random()*maissuite9.length);
-	var maissuite10 =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm10 = Math.floor(Math.random()*maissuite10.length);
-	var maissuite11 =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm11 = Math.floor(Math.random()*maissuite11.length);
-	var maissuite12 =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	var maissuiterdm12 = Math.floor(Math.random()*maissuite12.length);
-	message.channel.sendMessage("Voici les numéro de l'euromillion")
-	message.channel.sendMessage("n°1 **"  + maissuite[maissuiterdm] + maissuite7[maissuiterdm7]+"** n°2 **" +  maissuite2[maissuiterdm2] + maissuite8[maissuiterdm8] +"** n°3 **" + maissuite3[maissuiterdm3] +maissuite9[maissuiterdm9]+ "** n°4 **" + maissuite4[maissuiterdm4]+ maissuite10[maissuiterdm10]  + "** n°5 **" + maissuite5[maissuiterdm5] + maissuite11[maissuiterdm11]+ "** n° complémentaire **" + maissuite6[maissuiterdm6] + maissuite12[maissuiterdm12] + "**")
+	function getRandomInt(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min)) + min;
+	}
+	if (msg.content.toLowerCase().startsWith("-test")) { //The 8ball Message
+			var msg1 = Array(5); 
+			msg1[1] = "Yes";
+				msg1[2] = "No";
+			msg1[3] = "3";
+			msg1[4] = "4";
+			msg1[5] = "5"
+			msg1[6] = "6" 
+					var x = getRandomInt(0, 20);
+			if (x < 5){ 
+					 if (x < 3){
+				msg.channel.sendMessage(msg1[1]);
+			}
+			else {
+								 msg.channel.sendMessage(msg1[3]);
+			}
+			}
+			else if (x<= 9) {
+				if (x >= 7){
+				msg.channel.sendMessage(msg1[2]); }
+					else{
+										 msg.channel.sendMessage(msg1[4]);
+					}
+			} 
+			else if (x <= 12 ) { 
+				msg.channel.sendMessage(msg1[5]);
+			}
+			else {
+				msg.channel.sendMessage(msg1[6])
+			}
+			}
+	
+				if (msg.content.toLowerCase().startsWith("*random")) {
+					msg.channel.sendMessage("The number is "+ getRandomInt(1, 1000));
+				}
+					if (msg.content.toLowerCase().startsWith("*coinflip")) { //The coinflip Message
+			var msg2 = Array(2);
+			msg2[1] = "Heads";
+				msg2[2] = "Tails";
+					var x = getRandomInt(0, 8);
+			if (x < 4){
+				msg.channel.sendMessage(msg2[1]);
+			}
+			else{
+				msg.channel.sendMessage(msg2[2]);
+			}
+		}
+			if (msg.content.toLowerCase().startsWith("*rps")) { //The rps Message
+			var msg1 = Array(3);
+			msg1[1] = "Rock :black_circle:";
+				msg1[2] = "Paper :page_facing_up:";
+			msg1[3] = "Scissors :scissors:"
+					var x = getRandomInt(0, 9);
+			if (x < 6){
+					 if (x < 3){
+				msg.channel.sendMessage(msg1[1]);
+			}
+			else{
+								 msg.channel.sendMessage(msg1[3]);
+			}
+			}
+			else{ 
+				msg.channel.sendMessage(msg1[2]);
+			}
 }
-})
 
 client.on("message", (message) => {
 	
