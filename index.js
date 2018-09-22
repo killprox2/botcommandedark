@@ -223,7 +223,13 @@ client.on('message', message => {
         let hereRole = message.guild.roles.find("name", "Modérateur Discord");
         if(typeof commande[1] === 'undefined')
         {
-       
+          if(message.author.bot === false)
+          {
+            // Nom d'utilisateur pas entré = afficher l'aide
+            message.reply("**Aide pour la commande bug :** \n\n Pour rapporter un ou plusieurs bug.\n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple:** `-bug Il y a un soucis ici`\"`");
+          }
+        }
+   
         message.delete()
 
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ${message.author.username} rapport un bug le voici: ${reason}.`);
@@ -231,7 +237,7 @@ client.on('message', message => {
         
       message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
-    } return }})
+    } return })
 
     client.on('message', message => {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -265,16 +271,16 @@ client.on('message', message => {
                 {
                   if(message.author.bot === false)
                   {
+
                     message.reply("**Aide pour la commande fm :** \n\n **Exemple:** `-fm Arc_Volkorne J'ai besoin de 2% exo machin terre`\"`");
                   }
                 }
-                else
-                {
+
                 message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
                
                     message.delete()
                     message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
                      // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
                    
-            } return }}
+            } return }
           )
