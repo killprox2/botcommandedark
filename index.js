@@ -29,6 +29,24 @@ client.on('message', message => {
   message.channel.sendEmbed(embed)
   };
 })
+client.on("message", (message) => {
+if (message.content.startsWith(prefix + 'test')) {
+	var maissuite = ['un zombie', 'le troll érudit', "l'un des gardiens", 'un rat mutant', 'l\'aubergiste', 'le bourreau ivre', 'un menestrel moche', 'un orque d\'élite', 'le sorcier stagiaire', 'un type suspect', 'le prisonnier barbu', 'l\'herboriste',  'le chien d\'un voisin', 'un garde de la ville', 'un colporteur', 'un aventurier', 'le plombier', 'l\'ingénieur gobelin', 'un vieux fou'];
+	var maissuiterdm = Math.floor(Math.random()*maissuite.length);
+	var maissuite2 = ['a glissé', 'a dérapé', 'a cassé un bidule', 'a brisé un truc', 'a vomi', 'a perdu ses clefs', 'a fait ses besoins', 'était bloqué', 's\'est perdu', 'est tombé', 's\'est endormi', 'a passé la nuit', 's\'est réveillé', "s'est tué", "s'est fait mal", "a trébuché", 'était coincé', "s'est battu", "a causé des ennuis", "a mis le feu"];
+	var maissuiterdm2 = Math.floor(Math.random()*maissuite2.length);
+	var maissuite3 = ['la cave', 'le souterrain nord', 'le grenier', 'mon bureau', 'la remise a ingrédient', 'les cuisines', 'la niche des chiens', 'la volière a corbeaux', 'la fosse a scorpions', 'votre bureau', 'l\'escalier du 2e niveau', 'le bac de limon glaireux', 'le couloir principal', 'le hangar de bricolage', 'l\'atelier de forge', 'la salle de fouettage', 'le dortoir des orques', 'l\'antre du Golbargh', 'le magasin', 'votre bibliotheque'];
+	var maissuiterdm3 = Math.floor(Math.random()*maissuite3.length);
+	var maissuite4 =['de cette bête', 'de cette stupide', 'd\'une grosse', 'd\'une infame', "d'une étrange", "d'une incroyable", "de l'improbable", "de la fameuse", "de cette imbécile de", "c'est ballot, de la", "de l'existence d'une", "de l'embûche causée par une", "de la présence de cette", "vous allez rire, d'une", "c'est bien dommage, de la", "de la position d'une", "de son penchant pour une", "d'une médiocre"];
+	var maissuiterdm4 = Math.floor(Math.random()*maissuite4.length);
+	var maissuite5 =["brouette rouillée", "manivelle tordu", "scie abimé", "bassine oubliée", "clé de douze", "corbeille de linge", "hallebarde tordue", "chouette empaillé" ,"terrine piégée", "flûte empoisonnée", "tête de goule", "faux venimeuse", "guitare disloquée", "bielle biscornue", "salière brisé", "peau de banane", "perruque décrépité", "chaussette rouge", "babouche verte", "pantoufle usée"];
+	var maissuiterdm5 = Math.floor(Math.random()*maissuite5.length);
+	var maissuite6 =["venait de ma grand-mère", "était justement la", "est apparue comme par magie", "venait de mon cousin", "avait été abandonnée", "était suspecte", "n'aurait pas du ce trouver la", "avait justement l'air fourbe", "était dans l'ombre", "n'avait l'air de rien", "a été laissé par un voisin", "était bel et bien dangeureuse", "était pourtant chère", "avait une odeur inquiétante", "avait changé de place", "aurait du être rangée", "vous appartient", "s'est révélée glissante", "était peut-etre a moi", "pose toujours des problèmes"];
+	var maissuiterdm6 = Math.floor(Math.random()*maissuite6.length);
+	message.channel.sendMessage("Alors, misérable ?! Tu as encore échoué ! Que s'est-il passé cette fois ?")
+	message.channel.sendMessage("Je suis désolé, maître... C'est parce que **"  + maissuite[maissuiterdm] + "** **" +  maissuite2[maissuiterdm2] + "** dans **" + maissuite3[maissuiterdm3] + "** et tout ça a cause **" + maissuite4[maissuiterdm4]  + "** **" + maissuite5[maissuiterdm5] + "** qui **" + maissuite6[maissuiterdm6] + "** donc c'est pas ma faute\n\nidée original de PoC (http://naheulbeuk.com/jdr-docs/Tableau-GenerateurExcuses-HIRES.jpg)")
+}
+})
 
 client.on("message", (message) => {
 	
