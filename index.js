@@ -223,14 +223,7 @@ client.on('message', message => {
         let hereRole = message.guild.roles.find("name", "Modérateur Discord");
         if(typeof commande[1] === 'undefined')
         {
-          if(message.author.bot === false)
-          {
-            // Nom d'utilisateur pas entré = afficher l'aide
-            message.reply("**Aide pour la commande bug :** \n\n Pour rapporter un ou plusieurs bug.\n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple:** `-bug Il y a un soucis ici`\"`");
-          }
-        }
-        else
-        {
+       
         message.delete()
 
         message.guild.channels.find("name", "bugs").send(hereRole +` Salut ${message.author.username} rapport un bug le voici: ${reason}.`);
