@@ -227,10 +227,10 @@ client.on('message', message => {
         message.delete()
         message.mentions.users.forEach(function(user)
         {
-          MP = MP + "@" + user.username + " ";
+          message.guild.channels.find("name", "bugs").send(hereRole +` Salut @${message.author.username} rapport un bug le voici: ${reason}.`);
         });
-        message.guild.channels.find("name", "bugs").send(hereRole +` Salut "@" + user.username + ' rapport un bug le voici: ${reason}.`);
-        message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
+        
+      message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
     } return })
 
