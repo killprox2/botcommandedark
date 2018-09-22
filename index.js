@@ -69,19 +69,19 @@ const commands = {
 	},
 	'add': (msg) => {
 		let url = msg.content.split(' ')[1];
-		if (url == '' || url === undefined) return msg.channel.sendMessage(`You must add a YouTube video url, or id after -add`);
+		if (url == '' || url === undefined) return msg.channel.sendMessage(`Vous devez ajouter une URL de vidéo YouTube -add`);
 		yt.getInfo(url, (err, info) => {
-			if(err) return msg.channel.sendMessage('Invalid YouTube Link: ' + err);
+			if(err) return msg.channel.sendMessage('Lien YouTube invalide: ' + err);
 			if (!queue.hasOwnProperty(msg.guild.id)) queue[msg.guild.id] = {}, queue[msg.guild.id].playing = false, queue[msg.guild.id].songs = [];
 			queue[msg.guild.id].songs.push({url: url, title: info.title, requester: msg.author.username});
-			msg.channel.sendMessage(`added **${info.title}** to the queue`);
+			msg.channel.sendMessage(`Ajouter **${info.title}** a la queue`);
 		});
 	},
 	'queue': (msg) => {
-		if (queue[msg.guild.id] === undefined) return msg.channel.sendMessage(`Add some songs to the queue first with -add`);
+		if (queue[msg.guild.id] === undefined) return msg.channel.sendMessage(`Ajoutez d'abord des chansons à la file d'attente avec -add`);
 		let tosend = [];
 		queue[msg.guild.id].songs.forEach((song, i) => { tosend.push(`${i+1}. ${song.title} - Requested by: ${song.requester}`);});
-		msg.channel.sendMessage(`__**${msg.guild.name}'s Music Queue:**__ Currently **${tosend.length}** songs queued ${(tosend.length > 15 ? '*[Only next 15 shown]*' : '')}\n\`\`\`${tosend.slice(0,15).join('\n')}\`\`\``);
+		msg.channel.sendMessage(`__**${msg.guild.name}'s Music Queue:**__ Actuellement **${tosend.length}** chanson en file d'attente ${(tosend.length > 15 ? '*[15 suivante]*' : '')}\n\`\`\`${tosend.slice(0,15).join('\n')}\`\`\``);
 	},
 	'helpmusic': (msg) => {
 		let tosend = ['```xl', prefix + 'join : "Rejoindre le canal vocal"',	prefix + 'add : "Ajouter un lien YouTube"', prefix + 'queue : "Affiche la file dattente actuelle, jusquà 15 chansons affichées."', prefix + 'play : "Jouer la musique"', '', 'les commandes suivantes ne fonctionnent que lorsque la commande play est en cours dexécution:'.toUpperCase(), prefix + 'pause : "Pause"',	prefix + 'reprendre : "Reprendre la musique"', prefix + 'suivant : "changer de musique"', prefix + 'temps : "Affiche la durée de la chanson."',	'volume+(+++) : "Augmente le volume de 2%/+"',	'volume-(---) : "Reduit le volume de 2%/-"',	'```'];
@@ -106,7 +106,7 @@ client.on('message', message => {
       .setColor(0x00AE86)
       .setDescription("Permet de connaitre toutes les commandes")
       .setColor("0xB40404") 
-      .addField("**-fm** :arrow_right: '```xl'*object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*", "Permet de passer une commande a un forgemage'```'")
+      .addField("**-fm** :arrow_right: '```xl'*object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*'```'", "Permet de passer une commande a un forgemage")
       .addField("**-bug** :arrow_right: *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
