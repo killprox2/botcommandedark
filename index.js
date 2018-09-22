@@ -272,7 +272,6 @@ client.on('message', message => {
                 {
                   if(message.author.bot === false)
                   {
-                    // Nom d'utilisateur pas entré = afficher l'aide
                     message.reply("**Aide pour la commande fm :** \n\n **Exemple:** `-fm Arc_Volkorne J'ai besoin de 2% exo machin terre`\"`");
                   }
                 }
@@ -284,5 +283,5 @@ client.on('message', message => {
                     message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
                      // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
                    
-            }} return }
+            } return }}
           )
