@@ -60,7 +60,7 @@ client.on("message", (message) => {
       .setTitle("#__**LOTO**__#")
       .setColor(0x00AE86)
 			.addField("Numéro: ", maissuite[maissuiterdm])
-			.addField(":white_check_mark:Félicitation à toi")
+			.addField(":white_check_mark:Félicitation à toi", "\ud83d\udc4d")
 			message.channel.sendEmbed(embed)
 			message.delete()
 	}
