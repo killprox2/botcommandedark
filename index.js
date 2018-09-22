@@ -85,7 +85,7 @@ client.on("message", (message) => {
 				if(commande[i].charAt(1) !== "@")
 				{
 					// On ne prend pas en compte l'option -r (raison)
-					if(commande[i].substring(0, 4) == "!r:\"")
+					if(commande[i].substring(0, 4) == "-r:\"")
 					{
 						raisonSignalement = commande[i].substring(3);
 						inOptionRaison = true;
