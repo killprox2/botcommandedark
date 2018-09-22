@@ -23,7 +23,7 @@ client.on('message', message => {
       .setColor(0x00AE86)
       .setDescription("Permet de connaitre toutes les commandes")
       .setColor("0xB40404") 
-      .addField("**-fm** :arrow_right: '[```xl'*object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*'```]'", "Permet de passer une commande a un forgemage")
+      .addField("**-fm** :arrow_right: '```'*object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*'```'", "Permet de passer une commande a un forgemage")
       .addField("**-bug** :arrow_right: *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
