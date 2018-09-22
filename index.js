@@ -30,76 +30,23 @@ client.on('message', message => {
   };
 })
 client.on("message", (message) => {
-	function getRandomInt(min, max) {
-		min = Math.ceil(min);
-		max = Math.floor(max);
-		return Math.floor(Math.random() * (max - min)) + min;
-	}
-	if (msg.content.toLowerCase().startsWith("-test")) { //The 8ball Message
-			var msg1 = Array(5); 
-			msg1[1] = "Yes";
-				msg1[2] = "No";
-			msg1[3] = "3";
-			msg1[4] = "4";
-			msg1[5] = "5"
-			msg1[6] = "6" 
-					var x = getRandomInt(0, 20);
-			if (x < 5){ 
-					 if (x < 3){
-				msg.channel.sendMessage(msg1[1]);
-			}
-			else {
-								 msg.channel.sendMessage(msg1[3]);
-			}
-			}
-			else if (x<= 9) {
-				if (x >= 7){
-				msg.channel.sendMessage(msg1[2]); }
-					else{
-										 msg.channel.sendMessage(msg1[4]);
-					}
-			} 
-			else if (x <= 12 ) { 
-				msg.channel.sendMessage(msg1[5]);
-			}
-			else {
-				msg.channel.sendMessage(msg1[6])
-			}
-			}
-	
-				if (msg.content.toLowerCase().startsWith("*random")) {
-					msg.channel.sendMessage("The number is "+ getRandomInt(1, 1000));
-				}
-					if (msg.content.toLowerCase().startsWith("*coinflip")) { //The coinflip Message
-			var msg2 = Array(2);
-			msg2[1] = "Heads";
-				msg2[2] = "Tails";
-					var x = getRandomInt(0, 8);
-			if (x < 4){
-				msg.channel.sendMessage(msg2[1]);
-			}
-			else{
-				msg.channel.sendMessage(msg2[2]);
-			}
-		}
-			if (msg.content.toLowerCase().startsWith("*rps")) { //The rps Message
-			var msg1 = Array(3);
-			msg1[1] = "Rock :black_circle:";
-				msg1[2] = "Paper :page_facing_up:";
-			msg1[3] = "Scissors :scissors:"
-					var x = getRandomInt(0, 9);
-			if (x < 6){
-					 if (x < 3){
-				msg.channel.sendMessage(msg1[1]);
-			}
-			else{
-								 msg.channel.sendMessage(msg1[3]);
-			}
-			}
-			else{ 
-				msg.channel.sendMessage(msg1[2]);
-			}
+if (message.content.startsWith(prefix + 'euromillion')) {
+	var maissuite = ['1', '2', "3", '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
+	var maissuiterdm = Math.floor(Math.random()*maissuite.length);
+	var maissuite2 = ['1', '2', "3", '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
+	var maissuiterdm2 = Math.floor(Math.random()*maissuite2.length);
+	var maissuite3 = ['1', '2', "3", '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
+	var maissuiterdm3 = Math.floor(Math.random()*maissuite3.length);
+	var maissuite4 =['1', '2', "3", '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
+	var maissuiterdm4 = Math.floor(Math.random()*maissuite4.length);
+	var maissuite5 =['1', '2', "3", '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
+	var maissuiterdm5 = Math.floor(Math.random()*maissuite5.length);
+	var maissuite6 =['1', '2', "3", '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
+	var maissuiterdm6 = Math.floor(Math.random()*maissuite6.length);
+	message.channel.sendMessage("Voici les numéro de l'euromillion")
+	message.channel.sendMessage("n°1 **"  + maissuite[maissuiterdm] +"** n°2 **" +  maissuite2[maissuiterdm2] + "** n°3 **" + maissuite3[maissuiterdm3] +"** n°4 **" + maissuite4[maissuiterdm4] + "** n°5 **" + maissuite5[maissuiterdm5] + "** n° complémentaire **" + maissuite6[maissuiterdm6] + "**")
 }
+})
 
 client.on("message", (message) => {
 	
