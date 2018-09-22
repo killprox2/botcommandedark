@@ -34,13 +34,13 @@ client.on("message", (message) => {
 	if(message.content.substring(0, 7) == "-report")
 	{
 		var commande = message.content.split(" ");
-		
+		message.delete()
 		if(typeof commande[1] === 'undefined')
 		{
 			if(message.author.bot === false)
 			{
 				// Nom d'utilisateur pas entré = afficher l'aide
-				message.reply("**Aide pour la commande report :** \n\n Pour rapporter un ou plusieurs utilisateurs ayant un comportement inapproprié, mettre le nom ou les noms des utilisateurs après la commande report. \n\n Vous pouvez également rajouter une raison particulière avec l'attribut `-r:\"Votre raison\"`. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `!report @user` \n **Exemple 2 :** `!report @user1 @user2` \n **Exemple 3 :** `!report @user1 -r:\"Une raison\"`");
+				message.reply("**Aide pour la commande report :** \n\n Pour rapporter un ou plusieurs utilisateurs ayant un comportement inapproprié, mettre le nom ou les noms des utilisateurs après la commande report. \n\n Vous pouvez également rajouter une raison particulière avec l'attribut `-r:\"Votre raison\"`. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `!-report @user` \n **Exemple 2 :** `-report @user1 @user2` \n **Exemple 3 :** `-report @user1 !r:\"Une raison\"`");
 			}
 		}
 		else
@@ -56,7 +56,7 @@ client.on("message", (message) => {
 				if(commande[i].charAt(1) !== "@")
 				{
 					// On ne prend pas en compte l'option -r (raison)
-					if(commande[i].substring(0, 4) == "-r:\"")
+					if(commande[i].substring(0, 4) == "!r:\"")
 					{
 						raisonSignalement = commande[i].substring(3);
 						inOptionRaison = true;
@@ -225,8 +225,12 @@ client.on('message', message => {
         if(!reason) reason = "Aucune raison";
         if(reason)
         message.delete()
-        message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.username}** rapport un bug le voici: ${reason}.`);
-      message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
+        message.mentions.users.forEach(function(user)
+        {
+          MP = MP + "@" + user.username + " ";
+        });
+        message.guild.channels.find("name", "bugs").send(hereRole +` Salut "@" + user.username + ' rapport un bug le voici: ${reason}.`);
+        message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
     } return })
 
