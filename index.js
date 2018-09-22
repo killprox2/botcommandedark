@@ -226,12 +226,17 @@ client.on('message', message => {
   };return})
 
   client.on('message', message => {
-    if (message.content.startsWith("-clear")) {   
-			message.delete(1000);
-			message.channel.send(message.content.slice(5, message.content.length));
-
-    }
-  })
+    if (message.content === '-clear') {   
+      if(message.member.hasPermission("MANAGE_MESSAGES")){
+				message.channel.fetchMessages()
+				
+        .then(function(list){
+					message.channel.bulkDelete(list)
+					message.delete(1000);
+        }, function(err){message.channel.send("erreur")})}
+    }return
+	})
+	
 
   client.on('message', message => {
     if (message.content === '-ping') {   
