@@ -9,12 +9,6 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 
-
-client.on('message', msg => {
-	if (!msg.content.startsWith(prefix)) return;
-	if (commands.hasOwnProperty(msg.content.toLowerCase().slice(prefix.length).split(' ')[0])) commands[msg.content.toLowerCase().slice(prefix.length).split(' ')[0]](msg);
-});
-
 client.on('message', message => {
   if (message.content === '-help') {   
     message.delete()
@@ -23,16 +17,17 @@ client.on('message', message => {
       .setColor(0x00AE86)
       .setDescription("Permet de connaitre toutes les commandes")
       .setColor("0xB40404") 
-      .addField("**-fm** :arrow_right: '```'*object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*'```'", "Permet de passer une commande a un forgemage")
+      .addField("**-fm** :arrow_right: *object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*", "Permet de passer une commande a un forgemage")
       .addField("**-bug** :arrow_right: *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
       .addField("**-info**", "Permet de connaitre les infos du Discord")
-      .addField("**-ping**", "Permet de connaitre sa latence")
+			.addField("**-ping**", "Permet de connaitre sa latence")
+      .addField("**-report**", "Permet de signalé un joueur")
       .addField("**-clear**", ":warning:*Commande Admin*:warning: Permet de supprimer le tchat")
       .setImage("https://i.imgur.com/A1wcXrl.png")
       .setFooter("#__**DarkBot**__#")
   message.channel.sendEmbed(embed)
-  return};
+  };
 })
 
 client.on("message", (message) => {
