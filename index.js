@@ -56,7 +56,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 	var maissuite12 =['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 	var maissuiterdm12 = Math.floor(Math.random()*maissuite12.length);
 	message.channel.sendMessage("Voici les numéro de l'euromillion")
-	message.channel.sendMessage("n°1 **"  + maissuite[maissuiterdm] + maissuite7[maissuiterdm7]+"** n°2**" +  maissuite2[maissuiterdm2] + maissuite8[maissuiterdm8] +"** n°3**" + maissuite3[maissuiterdm3] +maissuite9[maissuiterdm9]+ "** n°4 **" + maissuite4[maissuiterdm4]+ maissuite10[maissuiterdm10]  + "** n°5**" + maissuite5[maissuiterdm5] + maissuite11[maissuiterdm11]+ "** n° complémentaire **" + maissuite6[maissuiterdm6] + maissuite12[maissuiterdm12])
+	message.channel.sendMessage("n°1 **"  + maissuite[maissuiterdm] + maissuite7[maissuiterdm7]+"** n°2 **" +  maissuite2[maissuiterdm2] + maissuite8[maissuiterdm8] +"** n°3 **" + maissuite3[maissuiterdm3] +maissuite9[maissuiterdm9]+ "** n°4 **" + maissuite4[maissuiterdm4]+ maissuite10[maissuiterdm10]  + "** n°5 **" + maissuite5[maissuiterdm5] + maissuite11[maissuiterdm11]+ "** n° complémentaire **" + maissuite6[maissuiterdm6] + maissuite12[maissuiterdm12] + "**")
 }
 })
 
