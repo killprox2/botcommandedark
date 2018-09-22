@@ -19,7 +19,7 @@ const swearWords = ['shit', 'fuck', 'bitch', 'nigger', 'nigga', 'cunt', 'whore',
 
   let embed = new Discord.RichEmbed()
     .setTitle('DarkBot Detect')
-    .setColor(config.red)
+    .setColor(0x00AE86)
     .setDescription(`${message.author}, Insulte interdit`);
     message.channel.send(embed).then(message => message.delete(3000));
     return;
