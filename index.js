@@ -221,25 +221,26 @@ client.on('message', message => {
         
         let reason = args.slice(0).join(" ");
         let hereRole = message.guild.roles.find("name", "Modérateur Discord");
+              	if(typeof commande[1] === 'undefined')
+		{
+			if(message.author.bot === false)
+			{
+				// Nom d'utilisateur pas entré = afficher l'aide
+				message.reply("**Aide pour la commande report :** \n\n Pour rapporter un ou plusieurs utilisateurs ayant un comportement inapproprié, mettre le nom ou les noms des utilisateurs après la commande report. \n\n Vous pouvez également rajouter une raison particulière avec l'attribut `!r:\"Votre raison\"`. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `-report @user` \n **Exemple 2 :** `-report @user1 @user2` \n **Exemple 3 :** `-report @user1 !r:\"Une raison\"`");
+			}
+		}
+		else
+		{
+        if(!reason) reason = "Aucune raison";
+        if(reason)
         message.delete()
-        if(typeof commande[1] === 'undefined')
-        {
-          if(message.author.bot === false)
-          {
-            message.reply("**Aide pour la commande bug :** \n\n Pour rapporter un ou plusieurs bug.\n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple:** `-bug Il y a un soucis ici`\"`");
-          }
-        }
-        else
-        {
 
-        message.guild.channels.find("name", "bugs").send(hereRole +` Salut ${message.author.username} rapport un bug le voici: ${reason}.`);
+          message.guild.channels.find("name", "bugs").send(hereRole +` Salut ${message.author.username} rapport un bug le voici: ${reason}.`);
        
         
       message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
-    } 
-  }
-  })
+    } return })
 
     client.on('message', message => {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -268,16 +269,8 @@ client.on('message', message => {
                 let object = args[0];
                 let detail = args.slice(1).join(" ");
                 let hereRole = message.guild.roles.find("name", "Forgemages");
-
-                if(typeof commande[1] === 'undefined')
-                {
-                  if(message.author.bot === false)
-                  {
-
-                    message.reply("**Aide pour la commande fm :** \n\n **Exemple:** `-fm Arc_Volkorne J'ai besoin de 2% exo machin terre`\"`");
-                  }
-                }
-
+                if(!object) object = "Aucun object indiqué";
+                if(!detail) detail = "Aucune information indiqué";
                 message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
                
                     message.delete()
