@@ -59,7 +59,6 @@ client.on("message", (message) => {
       .setTitle("#__**LOTO**__#")
       .setColor(0x00AE86)
       .addField("Numéro: ", maissuite[maissuiterdm])
-      .setImage("https://i.imgur.com/A1wcXrl.png")
     	message.channel.sendEmbed(embed)
 	}
 	})
