@@ -284,7 +284,7 @@ client.on('message', message => {
               
 				message.delete()
 				if (!reason) {
-					message.channel.send("**Aide pour la commande BUG :** \n\n Pour utilisé la commande BUG, mettais votre bug remarqué \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `-bug Il y a un bug au niveau d'ici` \n");
+					message.channel.send("**Aide pour la commande BUG :** \n\n Pour utilisé la commande BUG, mettais votre bug remarqué \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-bug Il y a un bug au niveau d'ici` \n");
 				} else {
 					message.delete()
 					message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
@@ -305,7 +305,7 @@ client.on('message', message => {
             
 			message.delete()
 			if (!idee) {
-				message.channel.send("**Aide pour la commande IDEE :** \n\n Pour utilisé la commande IDEE, mettais votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `-idee Voici mon idée ajoute sa` \n");
+				message.channel.send("**Aide pour la commande IDEE :** \n\n Pour utilisé la commande IDEE, mettais votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-idee Voici mon idée ajoute sa` \n");
 			} else {
       message.delete()
       message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.username}** a une idée la voici: ${idee}.`);
@@ -327,7 +327,7 @@ client.on('message', message => {
 								message.delete()
 								if (!detail) {
 									
-									message.channel.send("**Aide pour la commande FM :** \n\n Pour utilisé la commande FM, mettre l'object souhaité + les informations du FM. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `-fm Arc_Volkorne 2% exo machin terre` \n");
+									message.channel.send("**Aide pour la commande FM :** \n\n Pour utilisé la commande FM, mettre l'object souhaité + les informations du FM. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-fm Arc_Volkorne 2% exo machin terre` \n");
 								} else {
 									message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
 									message.delete()
