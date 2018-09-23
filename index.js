@@ -263,14 +263,15 @@ client.on('message', message => {
         let reason = args.slice(0).join(" ");
         let hereRole = message.guild.roles.find("name", "Modérateur Discord");
               
-        if(!reason) reason = "Aucune raison";
-        if(reason)
-        message.delete()
-
+				message.delete()
+				if (!reason) {
+					message.channel.send("**Aide pour la commande BUG :** \n\n Pour utilisé la commande BUG, mettais votre bug remarqué \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `-bug Il y a un bug au niveau d'ici` \n");
+				} else {
+					message.delete()
+					message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
           message.guild.channels.find("name", "bugs").send(hereRole +` Salut ${message.author.username} rapport un bug le voici: ${reason}.`);
-       
+				}
         
-      message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
 
     } return })
 
@@ -283,11 +284,14 @@ client.on('message', message => {
       let idee = args.slice(0).join(" ");
       let hereRole = message.guild.roles.find("name", "Modérateur Discord");
             
-      if(!idee) idee = "Aucune idée";
-      if(idee)
+			message.delete()
+			if (!idee) {
+				message.channel.send("**Aide pour la commande IDEE :** \n\n Pour utilisé la commande IDEE, mettais votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple 1 :** `-idee Voici mon idée ajoute sa` \n");
+			} else {
       message.delete()
       message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.username}** a une idée la voici: ${idee}.`);
-    message.channel.send(`:white_check_mark: **${message.author.username}**, Votre idée a était envoyé.`);
+			message.channel.send(`:white_check_mark: **${message.author.username}**, Votre idée a était envoyé.`);
+			}
 
   } return })
 
