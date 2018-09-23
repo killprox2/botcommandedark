@@ -301,15 +301,19 @@ client.on('message', message => {
                 let detail = args.slice(1).join(" ");
                 let hereRole = message.guild.roles.find("name", "Forgemages");
 								if(typeof command[1] === 'undefined')
-								{
+								{if(message.author.bot === false)
+									{
 									message.channel.send(":white_check_mark: Impossible")
+									}
 								}
 								else(typeof args[1] === ' ')
 								{
+									if(message.author.bot === true)
+			{
 									message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
 									message.delete()
 									message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de : ${detail}`);
-
+			}
 								}
                 
                
