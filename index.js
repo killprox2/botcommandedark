@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
-
+let os = require('os')
 
 client.on('ready', function () {
   console.log("client connecté !")
@@ -20,7 +20,8 @@ client.on('message', message => {
       .addField("**-fm** :arrow_right: *object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*", "Permet de passer une commande a un forgemage")
       .addField("**-bug** :arrow_right: *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
       .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
-      .addField("**-info**", "Permet de connaitre les infos du Discord")
+			.addField("**-info**", "Permet de connaitre les infos du Discord")
+			.addField("**-bot**", "Permet de connaitre toute les infos du bot")
 			.addField("**-ping**", "Permet de connaitre sa latence")
       .addField("**-report**", "Permet de signalé un joueur")
       .addField("**-clear**", ":warning:*Commande Admin*:warning: Permet de supprimer le tchat")
@@ -221,23 +222,35 @@ client.on('message', message => {
   if (message.content === '-info') {   
     message.delete()
       var embed = new Discord.RichEmbed()
-			.setTitle("***BOT Stats***")
-			.addField("• Mem Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} / ${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`, true)
-			.addField("• Uptime ", `${duration}`, true)
-			.addField("• Users", `${bot.users.size.toLocaleString()}`, true)
-			.addField("• Servers", `${bot.guilds.size.toLocaleString()}`, true)
-			.addField("• Channels ", `${bot.channels.size.toLocaleString()}`, true)
-			.addField("• Discord.js", `v${version}`, true)
-			.addField("• Node", `${process.version}`, true)
-			.addField("• CPU", `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\``)
-			.addField("• CPU usage", `\`${percent.toFixed(2)}%\``, true)
-			.addField("• Arch", `\`${os.arch()}\``, true)
-			.addField("• Platform", `\`\`${os.platform()}\`\``, true)
-			.addField("API Latency", `${Math.round(bot.ping)}ms`)  
+      .addField("Nom du Discord", message.guild.name)
+      .addField("Crée le", message.guild.createdAt)
+      .addField("Tu as rejoint le", message.member.joinedAt)
+			.addField("Utilisateur sur le Discord", message.guild.memberCount)
+      .addField("Nom du BOT", client.user.username)
+      .setColor('#01FE23')
       .setImage("https://i.imgur.com/A1wcXrl.png")
   message.channel.sendEmbed(embed)
-  };return})
-
+	};return})
+	
+	client.on('message', message => {
+		if (message.content === '-bot') {   
+			message.delete()
+				var embed = new Discord.RichEmbed()
+				.setTitle("***BOT Stats***")
+				.setColor("RANDOM")
+				.addField("• Mem Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} / ${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`, true)
+				.addField("• Users", `${client.users.size.toLocaleString()}`, true)
+				.addField("• Servers", `${client.guilds.size.toLocaleString()}`, true)
+				.addField("• Channels ", `${client.channels.size.toLocaleString()}`, true)
+				.addField("• Node", `${process.version}`, true)
+				.addField("• CPU", `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\``)
+				.addField("• Arch", `\`${os.arch()}\``, true)
+				.addField("• Platform", `\`\`${os.platform()}\`\``, true)
+				.addField("API Latency", `${Math.round(client.ping)}ms`)  //
+				.setImage("https://i.imgur.com/A1wcXrl.png")
+		message.channel.sendEmbed(embed)
+		};return})
+	
   client.on('message', message => {
     if (message.content === '-clear') {   
       if(message.member.hasPermission("MANAGE_MESSAGES")){
