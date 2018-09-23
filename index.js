@@ -338,4 +338,23 @@ client.on('message', message => {
                                       // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
                    
             } return }
+					)
+					
+					client.on('message', message => {
+            const args = message.content.slice(prefix.length).trim().split(/ +/g);
+            const command = args.shift().toLowerCase();
+            const member = message.mentions.users.first();
+            
+            if (message.content === "fm") {
+                
+						  	let fmtext = message.content === "-fm";
+								message.delete()
+								if (!fmtext) {
+									
+									message.channel.send("**Utilisé la commande FM :** \n\n Pour utilisé la commande FM, mettre l'object souhaité + les informations du FM. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-fm Arc_Volkorne 2% exo machin terre` \n");
+								}
+               
+                                      // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
+                   
+            } return }
           )
