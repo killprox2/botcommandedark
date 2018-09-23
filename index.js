@@ -8,7 +8,6 @@ client.on('ready', function () {
 })
 
 client.login(process.env.TOKEN)
-//client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
 
 client.on('message', message => {
   if (message.content === '-help') {   
@@ -222,9 +221,7 @@ client.on('message', message => {
   if (message.content === '-info') {   
     message.delete()
       var embed = new Discord.RichEmbed()
-			.setAuthor(bot.user.username)
 			.setTitle("***BOT Stats***")
-			.setColor("RANDOM")
 			.addField("• Mem Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} / ${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`, true)
 			.addField("• Uptime ", `${duration}`, true)
 			.addField("• Users", `${bot.users.size.toLocaleString()}`, true)
