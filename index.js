@@ -313,6 +313,56 @@ client.on('message', message => {
 			}
 
   } return })
+  client.on('message', (message) => {
+    if(message.author.bot || message.channel.type == "dm") return;
+
+        const prefix = "-";
+        const args = message.content.slice(prefix.length).trim().split(/ +/g);
+        const command = args.shift().toLowerCase();
+
+    if(command === "clear2"){
+                if(!args[0]){
+                        var err_code = new Discord.RichEmbed()
+                        .setTitle('Error 400 - Bad Request')
+                        .setDescription('Tu n\'a pas précisé le nombre de message !')
+                        .setColor('#e74c3c')
+                        message.channel.send(err_code);
+                }else if(!message.member.hasPermission("MANAGE_MESSAGES")){
+                        var err_code = new Discord.RichEmbed()
+                        .setTitle('Error 403 - Unauthorized')
+                        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+                        .setColor('#e74c3c')
+                        message.channel.send(err_code);
+                }else if(isNaN(args[0])){
+                        var err_code = new Discord.RichEmbed()
+                        .setTitle('Error 400 - Bad Request')
+                        .setDescription('L\'argument donné n\'est pas un nombre !')
+                        .setColor('#e74c3c')
+                        message.channel.send(err_code);
+                }else if(parseInt(args[0]) > 99){
+                        var err_code = new Discord.RichEmbed()
+                        .setTitle('Error 400 - Bad Request')
+                        .setDescription('Tu ne peux effacer que 99 messages max. !')
+                        .setColor('#e74c3c')
+                        message.channel.send('err_code');
+                }else{
+                        message.channel.fetchMessages()
+                        .then(messages => {
+                                try {
+                                        message.channel.bulkDelete(parseInt(args[0]));
+																				var clear_code = new Discord.RichEmbed()
+                                .setTitle('Succès :')
+                                .setDescription(args[0]+' message(s) ont été supprimé !')
+                                .setColor('#8e44ad')
+                                message.channel.send(clear_code);
+                                } catch (err) {
+                                console.log(err);
+                                }
+                        })
+                }
+        }
+
+})
 
 
 
