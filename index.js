@@ -314,6 +314,31 @@ client.on('message', message => {
 
   } return })
 
+  client.on("message", async message => {
+	if(message.author.bot) return;
+	if(message.channel.type === "dm") return;
+
+	let messageArray = message.content.split(" ");
+	let command = messageArray[0];
+	args = messageArray.slice(1);
+
+	if(!message.content.startsWith(prefix)) return
+
+		if(command === `-userinfo`) {
+			let embed = new Discord.RichEmbed()
+				.setAuthor(message.author.username)
+				.setDescription("Test")
+				.setColor("#9B59B6")
+				.addField("Name", `${message.author.username}#${message.author.discriminator}`)
+				.addField("ID", message.author.id)
+				.addField("Crée par", message.author.createdAt)
+				message.channel.sendEmbed(embed)
+
+				return;
+		}
+})
+
+
           client.on('message', message => {
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
             const command = args.shift().toLowerCase();
