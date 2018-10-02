@@ -24,9 +24,10 @@ client.on('message', message => {
 			.addField("**-bot**", "Permet de connaitre toute les infos du bot")
 			.addField("**-ping**", "Permet de connaitre sa latence")
       .addField("**-report**", "Permet de signalé un joueur")
-      .addField("**-clear**", ":warning:*Commande Admin*:warning: Permet de supprimer le tchat")
+	  .addField("**-clear**", ":warning:*Commande Admin*:warning: Permet de supprimer le tchat")
+	  .addField("**-clear+**", ":warning:*Commande Admin*:warning: Permet de supprimer un nombre exacte de message")
       .setImage("https://i.imgur.com/A1wcXrl.png")
-      .setFooter("#__**DarkBot**__#")
+      .setFooter("#__**DarkBot**__# by darkvince37")
   message.channel.sendEmbed(embed)
   };
 })
@@ -320,7 +321,7 @@ client.on('message', message => {
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
 
-    if(command === "clear2"){
+    if(command === "clear+"){
                 if(!args[0]){
                         var err_code = new Discord.RichEmbed()
                         .setTitle('Error 400 - Bad Request')
@@ -344,7 +345,7 @@ client.on('message', message => {
                         .setTitle('Error 400 - Bad Request')
                         .setDescription('Tu ne peux effacer que 99 messages max. !')
                         .setColor('#e74c3c')
-                        message.channel.send('err_code');
+                        message.channel.send(err_code);
                 }else{
                         message.channel.fetchMessages()
                         .then(messages => {
