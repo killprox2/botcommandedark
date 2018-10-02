@@ -325,7 +325,7 @@ client.on('message', message => {
                 if(!args[0]){
                         var err_code = new Discord.RichEmbed()
                         .setTitle('Error 400 - Bad Request')
-                        .setDescription('Tu n\'a pas précisé le nombre de message max.99!')
+                        .setDescription('Tu n\'a pas précisé le nombre de message 99 max!')
                         .setColor('#e74c3c')
                         message.channel.send(err_code);
                 }else if(!message.member.hasPermission("MANAGE_MESSAGES")){
