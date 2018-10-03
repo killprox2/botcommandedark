@@ -375,8 +375,6 @@ client.on('message', message => {
             let object = args[0];
             let detail = args.slice(1).join(" ");
 			let hereRole = message.guild.roles.find("name", "Forgemages");
-			
-			message.delete()
 								if(command === "fm"){
 									if(!object){
 											var err_code = new Discord.RichEmbed()
