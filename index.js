@@ -374,19 +374,19 @@ client.on('message', message => {
             let object = args[0];
                 let detail = args.slice(1).join(" ");
 								let hereRole = message.guild.roles.find("name", "Forgemages");
-           
+                 message.delete()
 								if(command === "fm"){
 									if(!object){
 											var err_code = new Discord.RichEmbed()
 											.setTitle('Error 400 - Bad Request')
-											.setDescription("Tu n\'a pas précisé l'object!")
+											.setDescription("Tu n\'a pas précisé l'object! :warning: -fm Object + Information")
 											.setColor('#e74c3c')
 											message.channel.send(err_code);
 									
 									}else if(!detail){
 											var err_code = new Discord.RichEmbed()
 											.setTitle('Error 400 - Bad Request')
-											.setDescription("Tu n\'a pas précisé les imformations ")
+											.setDescription("Tu n\'a pas précisé les informations :warning: -fm Object + Information")
 											.setColor('#e74c3c')
 											message.channel.send(err_code);
 									
@@ -394,12 +394,11 @@ client.on('message', message => {
 											message.channel.fetchMessages()
 											.then(messages => {
 													try {
-					
-													var clear_code = new Discord.RichEmbed()
+													var code = new Discord.RichEmbed()
 													.setTitle('Succès :')
 													.setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
 													.setColor('#8e44ad')
-													message.channel.send(clear_code);
+													message.channel.send(code);
 													} catch (err) {
 													console.log(err);
 													}
