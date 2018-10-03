@@ -254,14 +254,8 @@ client.on('message', message => {
 	
   client.on('message', message => {
     if (message.content === '-clear') {  
-		if(message.member.hasPermission("MANAGE_MESSAGES")){
-		if(args[0]){
-			var err_code = new Discord.RichEmbed()
-			.setTitle('Error 400 - Bad Request')
-			.setDescription('Utilise la commande -clear+ pour supprimé plusieur message')
-			.setColor('#e74c3c')
-			message.channel.send(err_code);
-		}else{
+		 
+      if(message.member.hasPermission("MANAGE_MESSAGES")){
 				message.channel.fetchMessages()
 				
         .then(function(list){
@@ -269,7 +263,7 @@ client.on('message', message => {
 					message.delete(1000);
         }, function(err){message.channel.send("erreur")})}
     }return
-	}
+	})
 	
 
   client.on('message', message => {
