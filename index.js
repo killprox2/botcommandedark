@@ -367,13 +367,14 @@ client.on('message', message => {
 
 
 
-          /*client.on('message', message => {
+          client.on('message', message => {
+			if(message.author.bot || message.channel.type == "dm") return;
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
             const command = args.shift().toLowerCase();
             const member = message.mentions.users.first();
             let object = args[0];
-                let detail = args.slice(1).join(" ");
-								let hereRole = message.guild.roles.find("name", "Forgemages");
+            let detail = args.slice(1).join(" ");
+			let hereRole = message.guild.roles.find("name", "Forgemages");
                  message.delete()
 								if(command === "fm"){
 									if(!object){
@@ -406,6 +407,6 @@ client.on('message', message => {
 									}
 							}return
 					
-					})*/
+					})
 					
                
