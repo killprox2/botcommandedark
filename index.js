@@ -13,7 +13,7 @@ client.on('message', message => {
   if (message.content === '-help') {   
     message.delete()
       var embed = new Discord.RichEmbed()
-      .setTitle("#__**HELP**__#")
+      .setTitle("**~~-+-------------[-~~ __Dark Commands__ ~~-]------------+-~~**")
       .setColor(0x00AE86)
       .setDescription("Permet de connaitre toutes les commandes")
       .setColor("0xB40404") 
@@ -268,9 +268,23 @@ client.on('message', message => {
   client.on('message', message => {
     if (message.content === '-ping') {   
       message.delete()
-      message.channel.sendMessage(`Temps de latence avec le serveur: **${message.createdTimestamp - Date.now()}** ms`);
+      //message.channel.sendMessage(`Temps de latence avec le serveur: **${message.createdTimestamp - Date.now()}** ms`);
+	  let msgping1 = new Date();
 
-    }return
+	  let botping = new Date() - message.createdAt;
+  
+	  let msgping2 = new Date() - msgping1;
+  
+	  let pingembed = new Discord.RichEmbed()
+		  .setColor("RANDOM")
+		  .addField('API Ping : ', Math.floor(bot.ping) + 'ms')
+		  .addField('Bot Ping : ', Math.floor(botping) + 'ms')
+		  .addField('Message Ping : ', '~' + Math.round(msgping2) + 'ms')
+		  .setTimestamp(new Date())
+  
+		  
+	  return message.channel.send(pingembed);
+    }
   })
 
 client.on('message', message => {
