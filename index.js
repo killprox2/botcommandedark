@@ -253,8 +253,7 @@ client.on('message', message => {
 		};return})
 	
   client.on('message', message => {
-    if (message.content === '-clear') {  
-		 
+    if (message.content === '-clear') {   
       if(message.member.hasPermission("MANAGE_MESSAGES")){
 				message.channel.fetchMessages()
 				
@@ -375,7 +374,7 @@ client.on('message', message => {
             let object = args[0];
                 let detail = args.slice(1).join(" ");
 								let hereRole = message.guild.roles.find("name", "Forgemages");
-								message.delete()
+                 message.delete()
 								if(command === "fm"){
 									if(!object){
 											var err_code = new Discord.RichEmbed()
