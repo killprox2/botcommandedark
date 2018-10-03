@@ -379,14 +379,14 @@ client.on('message', message => {
 									if(!object){
 											var err_code = new Discord.RichEmbed()
 											.setTitle('Error 400 - Bad Request')
-											.setDescription("Tu n\'a pas précisé l'object! :warning: -fm Object + Imformation")
+											.setDescription("Tu n\'a pas précisé l'object! :warning: -fm Object + Information")
 											.setColor('#e74c3c')
 											message.channel.send(err_code);
 									
 									}else if(!detail){
 											var err_code = new Discord.RichEmbed()
 											.setTitle('Error 400 - Bad Request')
-											.setDescription("Tu n\'a pas précisé les imformations :warning: -fm Object + Imformation")
+											.setDescription("Tu n\'a pas précisé les informations :warning: -fm Object + Information")
 											.setColor('#e74c3c')
 											message.channel.send(err_code);
 									
