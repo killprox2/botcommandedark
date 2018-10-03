@@ -361,7 +361,7 @@ client.on('message', message => {
                                 }
                         })
                 }
-        }
+        }return
 
 })
 
@@ -395,7 +395,7 @@ client.on('message', message => {
 											.then(messages => {
 													try {
 					
-																									var clear_code = new Discord.RichEmbed()
+													var clear_code = new Discord.RichEmbed()
 													.setTitle('Succès :')
 													.setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
 													.setColor('#8e44ad')
@@ -405,7 +405,7 @@ client.on('message', message => {
 													}
 											})
 									}
-							}
+							}return
 					
 					})
 					
