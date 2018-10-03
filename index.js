@@ -375,7 +375,6 @@ client.on('message', message => {
             let object = args[0];
             let detail = args.slice(1).join(" ");
 			let hereRole = message.guild.roles.find("name", "Forgemages");
-                 message.delete()
 								if(command === "fm"){
 									if(!object){
 											var err_code = new Discord.RichEmbed()
@@ -392,8 +391,8 @@ client.on('message', message => {
 											message.channel.send(err_code);
 									
 										}else{
-											message.channel.fetchMessages()
-											.then(messages => {
+											
+											
 													try {
 													var code = new Discord.RichEmbed()
 													.setTitle('Succès :')
@@ -403,7 +402,7 @@ client.on('message', message => {
 													} catch (err) {
 													console.log(err);
 													}
-											})
+											
 									}
 							}return
 					
