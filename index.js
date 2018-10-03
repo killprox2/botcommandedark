@@ -314,7 +314,7 @@ client.on('message', message => {
 			}
 
   } return })
-  /*client.on('message', (message) => {
+  client.on('message', (message) => {
     if(message.author.bot || message.channel.type == "dm") return;
 
         const prefix = "-";
@@ -363,11 +363,11 @@ client.on('message', message => {
                 }
         }return
 
-})*/
+})
 
 
 
-          client.on('message', message => {
+          /*client.on('message', message => {
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
             const command = args.shift().toLowerCase();
             const member = message.mentions.users.first();
@@ -406,6 +406,6 @@ client.on('message', message => {
 									}
 							}return
 					
-					})
+					})*/
 					
                
