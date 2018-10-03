@@ -374,7 +374,6 @@ client.on('message', message => {
             let object = args[0];
                 let detail = args.slice(1).join(" ");
 								let hereRole = message.guild.roles.find("name", "Forgemages");
-								message.delete()
            
 								if(command === "fm"){
 									if(!object){
@@ -395,7 +394,7 @@ client.on('message', message => {
 											message.channel.fetchMessages()
 											.then(messages => {
 													try {
-															message.channel.bulkDelete(parseInt(args[0]));
+					
 																									var clear_code = new Discord.RichEmbed()
 													.setTitle('Succès :')
 													.setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
