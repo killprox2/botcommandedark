@@ -371,27 +371,48 @@ client.on('message', message => {
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
             const command = args.shift().toLowerCase();
             const member = message.mentions.users.first();
-            
-            if (command === "fm") {
-                
-                let object = args[0];
+            let object = args[0];
                 let detail = args.slice(1).join(" ");
 								let hereRole = message.guild.roles.find("name", "Forgemages");
 								message.delete()
-								if (!detail) {
+           
+								if(command === "fm"){
+									if(!object){
+											var err_code = new Discord.RichEmbed()
+											.setTitle('Error 400 - Bad Request')
+											.setDescription('Tu n\'a pas précisé le nombre de message 99 max!')
+											.setColor('#e74c3c')
+											message.channel.send(err_code);
 									
-									message.channel.send("**Aide pour la commande FM :** \n\n Pour utilisé la commande FM, mettre l'object souhaité + les informations du FM. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-fm Arc_Volkorne 2% exo machin terre` \n");
-								} else {
-									message.channel.send(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
-									message.delete()
-									message.guild.channels.find("name", "liste-commande-fm").send(hereRole + ` Salut le joueur **${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: ${object}. Informations supplémentaires sur la FM: J'ai besoin de :' ${detail}`);
-	
-								}
+									}else if(!detail){
+											var err_code = new Discord.RichEmbed()
+											.setTitle('Error 400 - Bad Request')
+											.setDescription('L\'argument donné n\'est pas un nombre !')
+											.setColor('#e74c3c')
+											message.channel.send(err_code);
+									
+										}else{
+											message.channel.fetchMessages()
+											.then(messages => {
+													try {
+															message.channel.bulkDelete(parseInt(args[0]));
+																									var clear_code = new Discord.RichEmbed()
+													.setTitle('Succès :')
+													.setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
+													.setColor('#8e44ad')
+													message.channel.send(clear_code);
+													} catch (err) {
+													console.log(err);
+													}
+											})
+									}
+							}
+					
+					})
+					
                
                                       // message.channel.send(hereRole + ` Salut `+ 'le joueur ' + message.member.displayName + ` souhaiterai: ${object}. Information supplémentaire sur le FM: ${detail}`);
-                   
-            } return }
-					)
+
 					
 					client.on('message', message => {
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
