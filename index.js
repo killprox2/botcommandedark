@@ -332,9 +332,7 @@ client.on('message', message => {
 
   } return })
 		client.on('message', (message) => {
-			var command = message.content
-			var authordiscrim = message.author.username + '#' + message.author.discriminator
-				var authorid = message.author.id
+			    const command = args.shift().toLowerCase();
 				let args6 = message.content.split(' ').slice(1);
 				let question = args6.slice(0).join(" ");
 			if (command === "-sondage1") {
@@ -347,7 +345,7 @@ client.on('message', message => {
 					
 				return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
 					
-					}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
+				}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
 					.addField('Réagissez avec: 👎 pour non et 👍 pour oui.', question)
 					.setColor('#FF653C')
@@ -355,7 +353,6 @@ client.on('message', message => {
 						message.react("👍")
 						message.react("👎")
 					})
-					console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
 				}return
 			}})
 
