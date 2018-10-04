@@ -354,6 +354,31 @@ client.on('message', message => {
 					})
 				}return
 			}})
+			client.on('message', (message) => {
+				let args6 = message.content.split(' ').slice(3);
+				let args1 = message.content.split(' ').slice(1);
+				let args2 = message.content.split(' ').slice(2);
+				let question = args6.slice(0).join(" ");
+			if (message.content.startsWith(prefix + 'sondage2')) {
+				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+					var pollEmbed = new Discord.RichEmbed()
+					.setDescription('Pas la permission "MANAGE_MESSAGES".')
+					.setColor(color)
+					message.channel.send(pollEmbed)
+				}else if (args6.length === 0){
+					
+				return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`') && message.reply('**Connaitre les valeurs:** `-sondage`')
+					
+				}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
+					var pollEmbed = new Discord.RichEmbed()
+					.addField('Réagissez avec: :one: pour '+ args1 +' et :two: pour ' + args2, question)
+					.setColor('#FF653C')
+					message.guild.channels.find("name", "bugs").send(pollEmbed).then(function (message) {
+						message.react(":one:")
+						message.react(":two:")
+					})
+				}return
+			}})
 
 			client.on('message', (message) => {
 				var command = message.content
