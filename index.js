@@ -344,7 +344,7 @@ client.on('message', message => {
 					.setDescription('Pas la permission "MANAGE_MESSAGES".')
 					.setColor(color)
 					message.channel.send(pollEmbed)
-				}if (command.startsWith(prefix + "sondage")){
+				}else if (message.content === '-sondage'){
 					return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
 				}else if (args6.length === 0){
 				return message.reply('**Format invalide:** `-sondage <Question>`')
