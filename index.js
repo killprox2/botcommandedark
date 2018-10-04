@@ -345,7 +345,9 @@ client.on('message', message => {
 					.setColor(color)
 					message.channel.send(pollEmbed)
 				}else if (args6.length === 0){
+					if (!command.startsWith(prefix + "sondage")){
 				return message.reply('**Format invalide:** `-sondage <Question>`')
+					}
 					}if(message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
 					.addField('Réagissez avec: 👎 pour non et 👍 pour oui.', question)
@@ -355,14 +357,14 @@ client.on('message', message => {
 						message.react("👎")
 					})
 					console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
-				}
+				}return
 			}})
 
 			client.on('message', (message) => {
 				var command = message.content
 				if (command.startsWith(prefix + "sondage")){
 					message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
-				}
+				}return
 				})
 
 /*	client.on('message', (message) => {
