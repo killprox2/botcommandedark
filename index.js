@@ -344,7 +344,7 @@ client.on('message', message => {
 			.setColor(color)
 			message.channel.send(pollEmbed)
 		}if (args6.length === 0){
-		return message.reply('**Format invalide:** `-sondage <Question>`')
+		return message.reply('**Format invalide:** `-sondage <Valeur> <Question>`')
 			}if(message.member.hasPermission("MANAGE_MESSAGES")) {
 			var pollEmbed = new Discord.RichEmbed()
 			.addField('Réagissez avec: 👎 pour non et 👍 pour oui.', question)
@@ -356,6 +356,40 @@ client.on('message', message => {
 			console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
 		}
 	}})
+	client.on('message', (message) => {
+		var command = message.content
+		var authordiscrim = message.author.username + '#' + message.author.discriminator
+			var authorid = message.author.id
+			let args6 = message.content.split(' ').slice(1);
+			let question = args6.slice(0).join(" ");
+			let args7 = message.content.split(' ').slice(2);
+			let question1 = args7.slice(1).join(" ");
+			let args8 = message.content.split(' ').slice(3);
+			let question2 = args8.slice(2).join(" ");
+			let args9 = message.content.split(' ').slice(4);
+			let question3 = args9.slice(3).join(" ");
+		if (command.startsWith(prefix + "sondage 1")) {
+			if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+				var pollEmbed = new Discord.RichEmbed()
+				.setDescription('Pas la permission "MANAGE_MESSAGES".')
+				.setColor(color)
+				message.channel.send(pollEmbed)
+			}if (args6.length === 0){
+			return message.reply('**Format invalide:** `-sondage <Valeur> <Question>`')
+				}if(message.member.hasPermission("MANAGE_MESSAGES")) {
+				var pollEmbed = new Discord.RichEmbed()
+				.addField('Réagissez avec: :one: :two: :three: :four:', question)
+				.addField(':one:', question1)
+				.addField(':two:', question2)
+				.addField(':three:', question3)
+				.setColor('#FF653C')
+				message.guild.channels.find("name", "bugs").send(pollEmbed).then(function (message) {
+					message.react("👍")
+					message.react("👎")
+				})
+				console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
+			}
+		}})
 
 /*	client.on('message', (message) => {
 		if (message.content.startsWith(prefix + 'poll')) {
