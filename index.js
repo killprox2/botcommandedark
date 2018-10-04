@@ -338,7 +338,7 @@ client.on('message', message => {
 				let args6 = message.content.split(' ').slice(1);
 				let args = message.content === '-sondage';
 				let question = args6.slice(0).join(" ");
-			if (command.startsWith(prefix + "sondage1")) {
+			if (command === "sondage1") {
 				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
 					.setDescription('Pas la permission "MANAGE_MESSAGES".')
