@@ -336,7 +336,6 @@ client.on('message', message => {
 			var authordiscrim = message.author.username + '#' + message.author.discriminator
 				var authorid = message.author.id
 				let args6 = message.content.split(' ').slice(1);
-				let args = message.content === '-sondage';
 				let question = args6.slice(0).join(" ");
 			if (command === "sondage1") {
 				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -346,7 +345,7 @@ client.on('message', message => {
 					message.channel.send(pollEmbed)
 				}else if (args6.length === 0){
 					
-				return message.reply('**Format invalide:** `-sondage <Question>`')
+				return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
 					
 					}if(message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
