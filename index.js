@@ -345,7 +345,7 @@ client.on('message', message => {
 					.setColor(color)
 					message.channel.send(pollEmbed)
 				}if (command.startsWith(prefix + "sondage")){
-					return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
+					message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
 				}else if (args6.length === 0){
 				return message.reply('**Format invalide:** `-sondage <Question>`')
 					}if(message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -359,6 +359,12 @@ client.on('message', message => {
 					console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
 				}
 			}})
+
+			client.on('message', (message) => {
+				if (command.startsWith(prefix + "sondage")){
+					message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
+				}
+				})
 
 /*	client.on('message', (message) => {
 		if (message.content.startsWith(prefix + 'poll')) {
