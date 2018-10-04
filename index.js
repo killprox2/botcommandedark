@@ -344,8 +344,6 @@ client.on('message', message => {
 					.setDescription('Pas la permission "MANAGE_MESSAGES".')
 					.setColor(color)
 					message.channel.send(pollEmbed)
-				}if (command.startsWith(prefix + "sondage")){
-					message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
 				}else if (args6.length === 0){
 				return message.reply('**Format invalide:** `-sondage <Question>`')
 					}if(message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -361,6 +359,7 @@ client.on('message', message => {
 			}})
 
 			client.on('message', (message) => {
+				var command = message.content
 				if (command.startsWith(prefix + "sondage")){
 					message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
 				}
