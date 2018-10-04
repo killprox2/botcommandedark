@@ -332,7 +332,7 @@ client.on('message', message => {
 
   } return })
 		client.on('message', (message) => {
-				const args6 = message.content.slice(prefix.length).trim().split(/ +/g);
+				let args6 = message.content.split(' ').slice(1);
 				const command = args6.shift().toLowerCase();
 				let question = args6.slice(0).join(" ");
 			if (command === "-sondage1") {
