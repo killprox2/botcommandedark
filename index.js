@@ -345,18 +345,34 @@ client.on('message', message => {
 				.setColor(color)
 				message.channel.send(pollEmbed)
 			}if (args6.length === 0){
-			return message.reply('**Format invalide:** `-sondage <Valeur> <Question>`')
-				}if(message.member.hasPermission("MANAGE_MESSAGES")) {
-				var pollEmbed = new Discord.RichEmbed()
-				.addField('Réagissez avec: 👎 pour non et 👍 pour oui.', question)
-				.setColor('#FF653C')
-				message.guild.channels.find("name", "bugs").send(pollEmbed).then(function (message) {
-					message.react("👍")
-					message.react("👎")
-				})
-				console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
-			}
+			return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
+				}
 		}})
+		client.on('message', (message) => {
+			var command = message.content
+			var authordiscrim = message.author.username + '#' + message.author.discriminator
+				var authorid = message.author.id
+				let args6 = message.content.split(' ').slice(1);
+				let question = args6.slice(0).join(" ");
+			if (command.startsWith(prefix + "sondage1")) {
+				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+					var pollEmbed = new Discord.RichEmbed()
+					.setDescription('Pas la permission "MANAGE_MESSAGES".')
+					.setColor(color)
+					message.channel.send(pollEmbed)
+				}if (args6.length === 0){
+				return message.reply('**Format invalide:** `-sondage <Question>`')
+					}if(message.member.hasPermission("MANAGE_MESSAGES")) {
+					var pollEmbed = new Discord.RichEmbed()
+					.addField('Réagissez avec: 👎 pour non et 👍 pour oui.', question)
+					.setColor('#FF653C')
+					message.guild.channels.find("name", "bugs").send(pollEmbed).then(function (message) {
+						message.react("👍")
+						message.react("👎")
+					})
+					console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
+				}
+			}})
 
 /*	client.on('message', (message) => {
 		if (message.content.startsWith(prefix + 'poll')) {
