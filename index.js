@@ -337,7 +337,7 @@ client.on('message', message => {
 				var authorid = message.author.id
 				let args6 = message.content.split(' ').slice(1);
 				let question = args6.slice(0).join(" ");
-			if (command === "sondage1") {
+			if (command === "-sondage1") {
 				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
 					.setDescription('Pas la permission "MANAGE_MESSAGES".')
@@ -362,7 +362,7 @@ client.on('message', message => {
 			client.on('message', (message) => {
 				var command = message.content
 				
-				if (command.startsWith(prefix + "sondage")) { 
+				if (command === "-sondage") { 
 						var pollEmbed = new Discord.RichEmbed()
 						.setTitle("**~~-+-------------[-~~ __Valeur Sondage__ ~~-]------------+-~~**")
 						.setColor(0x00AE86)
