@@ -356,8 +356,8 @@ client.on('message', message => {
 			}})
 			client.on('message', (message) => {
 				let args6 = message.content.split(' ').slice(3);
-				let args1 = message.content.split(' ').slice(1);
-				let args2 = message.content.split(' ').slice(2);
+				let arg2 = args[0];
+				let arg1 = args[1];
 				let question = args6.slice(0).join(" ");
 			if (message.content.startsWith(prefix + 'sondage2')) {
 				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -371,7 +371,7 @@ client.on('message', message => {
 					
 				}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
-					.addField('Réagissez avec: :one: pour '+ args1 +' et :two: pour ' + args2, question)
+					.addField('Réagissez avec: :one: pour '+ arg1 +' et :two: pour ' + arg2, question)
 					.setColor('#FF653C')
 					message.guild.channels.find("name", "bugs").send(pollEmbed).then(function (message) {
 						message.react(":one:")
