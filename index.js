@@ -332,8 +332,8 @@ client.on('message', message => {
 
   } return })
 		client.on('message', (message) => {
-			var command = args6.shift().toLowerCase();
-				let args6 = message.content.split(' ').slice(1);
+				const args6 = message.content.slice(prefix.length).trim().split(/ +/g);
+				const command = args6.shift().toLowerCase();
 				let question = args6.slice(0).join(" ");
 			if (command === "-sondage1") {
 				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
