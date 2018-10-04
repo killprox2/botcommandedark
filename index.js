@@ -345,10 +345,9 @@ client.on('message', message => {
 					.setColor(color)
 					message.channel.send(pollEmbed)
 				}else if (args6.length === 0){
-					if (!args){
-				return message.reply('**Format invalide:** `-sondage <Question>`')
-					}
-					}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
+					message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
+					
+					}if(message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
 					.addField('Réagissez avec: 👎 pour non et 👍 pour oui.', question)
 					.setColor('#FF653C')
