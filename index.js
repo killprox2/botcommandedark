@@ -330,24 +330,54 @@ client.on('message', message => {
 			}
 
   } return })
+
   client.on('message', (message) => {
-  if (message.content.startsWith(prefix + "sondage")) {
-    let args = message.content.split(" ").slice(1);
-    let thingToEcho = args.join(" ")
-    var embed = new Discord.RichEmbed()
-        embed.setDescription("Sondage")
-        embed.addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
-        embed.setColor('#01A1FE')
-    message.guild.channels.find("name", "sondage").sendEmbed(embed)
-    .then(function (message){
-        message.react("✔")
-        message.react("✘")
-    }).catch(function() {
-    });
-    }else{
-        message.reply("Tu n'a pas la permission")
-	}return
-})
+	var command = message.content
+	var authordiscrim = message.author.username + '#' + message.author.discriminator
+		var authorid = message.author.id
+		let args6 = message.content.split(' ').slice(1);
+		let question = args6.slice(0).join(" ");
+	if (command.startsWith(prefix + "sondage")) {
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+			var pollEmbed = new Discord.RichEmbed()
+			.setDescription('Pas la permission "MANAGE_MESSAGES".')
+			.setColor(color)
+			message.channel.send(pollEmbed)
+		}if (args6.length === 0){
+		return message.reply('**Format invalide:** `-sondage <Question>`')
+			}if(message.member.hasPermission("MANAGE_MESSAGES")) {
+			var pollEmbed = new Discord.RichEmbed()
+			.addField('Réagissez avec: 👎 pour non et 👍 pour oui.', question)
+			.setColor('#FF653C')
+			message.guild.channels.find("name", "bugs").send(pollEmbed).then(function (message) {
+				message.react("👍")
+				message.react("👎")
+			})
+			console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
+		}
+	}})
+
+/*	client.on('message', (message) => {
+		if (message.content.startsWith(prefix + 'poll')) {
+			message.delete();
+			let args = message.content.split(' ').slice(1);
+		let question = args.slice(0).join(" ");
+		
+		if (args.length === 0)
+		return message.reply('**Format invalide:** `-Poll <Question>`')
+		
+		const embed = new Discord.RichEmbed()
+		.setTitle("Un sondage a été lancé!")
+		.setColor("#5599ff")
+		.setDescription(`${question}`)
+		.setFooter(`Sondage lancé par: ${message.author.username}`, `${message.author.avatarURL}`)
+		
+		
+		message.guild.channels.find("name", "bugs").send(embed)
+		.then(() => message.channel.sendMessage('Réagissez avec: 👎 pour non et 👍 pour oui.')) 
+		.then(() => message.pin())
+		   }
+		})*/
 
   client.on('message', (message) => {
     if(message.author.bot || message.channel.type == "dm") return;
