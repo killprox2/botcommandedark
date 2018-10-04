@@ -337,6 +337,9 @@ client.on('message', message => {
 		var authordiscrim = message.author.username + '#' + message.author.discriminator
 			var authorid = message.author.id
 			let args6 = message.content.split(' ').slice(1);
+			let args1 = message.content === ('-sondage1');
+			let args2 = message.content === ('-sondage2');
+			let args3 = message.content === ('-sondage3');
 			let question = args6.slice(0).join(" ");
 		if (command.startsWith(prefix + "sondage")) {
 			if(!message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -347,6 +350,12 @@ client.on('message', message => {
 			}if (args6.length === 0){
 			return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
 				}
+			}if (args1){
+				return message.reply('**Format invalide:** `-sondage <Question>`')
+					}if (args2){
+						return message.reply('**Format invalide:** `-sondage <Question>`')
+							}
+				return
 		}})
 		client.on('message', (message) => {
 			var command = message.content
