@@ -356,7 +356,7 @@ client.on('message', message => {
 			console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
 		}
 	}})
-	client.on('message', (message) => {
+	/*client.on('message', (message) => {
 		var command = message.content
 		var authordiscrim = message.author.username + '#' + message.author.discriminator
 			var authorid = message.author.id
@@ -389,7 +389,7 @@ client.on('message', message => {
 				})
 				console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
 			}
-		}})
+		}})*/
 
 /*	client.on('message', (message) => {
 		if (message.content.startsWith(prefix + 'poll')) {
