@@ -346,7 +346,7 @@ client.on('message', message => {
 					message.channel.send(pollEmbed)
 				}if (args){
 					return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
-				}if (args6.length === 0){
+				}else if (args6.length === 0){
 				return message.reply('**Format invalide:** `-sondage <Question>`')
 					}if(message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
