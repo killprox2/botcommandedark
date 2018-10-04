@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
+const ms = require("ms");
 let os = require('os')
 
 client.on('ready', function () {
@@ -277,15 +278,17 @@ client.on('message', message => {
   
 	  let pingembed = new Discord.RichEmbed()
 		  .setColor("RANDOM")
-		  .addField('API Ping : ', Math.floor(bot.ping) + 'ms')
+		  .addField('API Ping : ', Math.floor(client.ping) + 'ms')
 		  .addField('Bot Ping : ', Math.floor(botping) + 'ms')
 		  .addField('Message Ping : ', '~' + Math.round(msgping2) + 'ms')
 		  .setTimestamp(new Date())
+		  .setFooter(`Demandé par ${message.author.tag}`);
   
 		  
-	  return message.channel.send(pingembed);
-    }
+	   message.channel.send(pingembed);
+    }return
   })
+  
 
 client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -423,4 +426,4 @@ client.on('message', message => {
 					
 					})
 					
-               
+            
