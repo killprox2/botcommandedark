@@ -346,7 +346,7 @@ client.on('message', message => {
 					message.channel.send(pollEmbed)
 				}else if (args6.length === 0){
 					if (!command.startsWith(prefix + "sondage")){
-						message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
+				return message.reply('**Format invalide:** `-sondage <Question>`')
 					}
 					}if(message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
@@ -359,7 +359,6 @@ client.on('message', message => {
 					console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
 				}return
 			}})
-
 /*	client.on('message', (message) => {
 		if (message.content.startsWith(prefix + 'poll')) {
 			message.delete();
