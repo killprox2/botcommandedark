@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
-const ms = require("ms");
 let os = require('os')
 
 client.on('ready', function () {
