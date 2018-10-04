@@ -359,6 +359,21 @@ client.on('message', message => {
 					console.log('Running poll command, asked by ' + authordiscrim + ' | ' + authorid + ' (With arg :' + question + ')')
 				}return
 			}})
+
+			client.on('message', (message) => {
+				var command = message.content
+				
+				if (command.startsWith(prefix + "sondage")) { 
+						var pollEmbed = new Discord.RichEmbed()
+						.setTitle("**~~-+-------------[-~~ __Valeur Sondage__ ~~-]------------+-~~**")
+						.setColor(0x00AE86)
+						.setDescription("Permet de connaitre toutes les valeurs")
+						.addField("**-sondage1**", "Reponse Oui ou Non")
+						.addField("**-sondage2**", "Reponse A ou B")
+						.addField("**-sondage3**", "Reponse A, B, C et D")
+						message.channel.send(pollEmbed)
+					}return
+				})
 /*	client.on('message', (message) => {
 		if (message.content.startsWith(prefix + 'poll')) {
 			message.delete();
