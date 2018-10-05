@@ -112,7 +112,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 		message.channel.sendEmbed(embed)
 		}return
 	  })
-	  client.on("message", (message) => {
+	/*  client.on("message", (message) => {
 		if (message.content.startsWith(prefix + 'tloto')) {
 			if(!message.member.hasPermission("MANAGE_MESSAGES")) {
 				var pollEmbed = new Discord.RichEmbed()
@@ -129,7 +129,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 				.addField("Félicitation à ", maissuite[maissuiterdm])
 				message.channel.sendEmbed(embed)
 		}return
-		})
+		})*/
 
 client.on("message", (message) => {
 	
