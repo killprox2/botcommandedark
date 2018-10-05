@@ -354,7 +354,7 @@ client.on('message', message => {
 					})
 				}return
 			}})
-			client.on('message', (message) => {
+			/*client.on('message', (message) => {
 				let args6 = message.content.split(' ').slice(3);
 				let arg2 = args[0];
 				let arg1 = args[1];
@@ -378,7 +378,7 @@ client.on('message', message => {
 						message.react(":two:")
 					})
 				}return
-			}})
+			}})/*
 
 			client.on('message', (message) => {
 				var command = message.content
