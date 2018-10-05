@@ -55,7 +55,12 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 
 client.on("message", (message) => {
 	if (message.content.startsWith(prefix + 'tloto')) {
-
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+			var pollEmbed = new Discord.RichEmbed()
+			.setDescription('Pas la permission "MANAGE_MESSAGES".')
+			.setColor(color)
+			message.channel.send(pollEmbed)
+		}}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
 		var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '50'];
 		//var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
 		var maissuiterdm = Math.floor(Math.random()*maissuite.length);
@@ -64,7 +69,6 @@ client.on("message", (message) => {
       .setColor(0x00AE86)
 			.addField("Félicitation à ", maissuite[maissuiterdm])
 			message.channel.sendEmbed(embed)
-			message.delete()
 	}
 	})
 	
@@ -77,8 +81,8 @@ client.on("message", (message) => {
 			.setDescription("Permet de connaitre toutes les commandes du loto")
 			.setColor("0xB40404") 
 			.addField("\n\n**-tloto**\n\n", "Permet d'effectué le tirage")
-			.addField("\n\n**-rltloto**\n\n", "Permet de connaitre les résultats")
-			.addField("\n\n**-rloto**\n\n", "Permet de connaitre les régles")
+			.addField("\n\n**-rloto**\n\n", "Permet de connaitre les résultats")
+			.addField("\n\n**-ioto**\n\n", "Permet de connaitre les informations")
 			.setImage("https://i.imgur.com/A1wcXrl.png")
 			.setFooter("#__**DarkBot**__# by darkvince37")
 		message.channel.sendEmbed(embed)
@@ -101,7 +105,7 @@ client.on("message", (message) => {
 		};
 	  })
 	  client.on('message', message => {
-		if (message.content === '-rloto') {   
+		if (message.content === '-iloto') {   
 		  message.delete()
 			var embed = new Discord.RichEmbed()
 			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
@@ -113,7 +117,7 @@ client.on("message", (message) => {
 		};
 	  })
 	  client.on('message', message => {
-		if (message.content === '-rltloto') {   
+		if (message.content === '-rloto') {   
 		  message.delete()
 			var embed = new Discord.RichEmbed()
 			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
