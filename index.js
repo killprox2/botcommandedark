@@ -96,6 +96,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 	  })
 	  client.on("message", (message) => {
 		if (message.content.startsWith(prefix + 'tloto')) {
+			message.delete()
 			if(!message.member.hasPermission("MANAGE_MESSAGES")) {
 				var pollEmbed = new Discord.RichEmbed()
 				.setDescription('Pas la permission "MANAGE_MESSAGES".')
