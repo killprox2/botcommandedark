@@ -69,7 +69,7 @@ client.on("message", (message) => {
       .setColor(0x00AE86)
 			.addField("Félicitation à ", maissuite[maissuiterdm])
 			message.channel.sendEmbed(embed)
-	}
+	}return
 	})
 	
 	client.on('message', message => {
@@ -86,7 +86,7 @@ client.on("message", (message) => {
 			.setImage("https://i.imgur.com/A1wcXrl.png")
 			.setFooter("#__**DarkBot**__# by darkvince37")
 		message.channel.sendEmbed(embed)
-		};
+		};return
 	  })
 	  client.on('message', message => {
 		if (message.content === '-rltloto') {   
@@ -102,7 +102,7 @@ client.on("message", (message) => {
 			.addField("**4.**", " ")
 			.addField("**5.**", " ")
 		message.channel.sendEmbed(embed)
-		};
+		};return
 	  })
 	  client.on('message', message => {
 		if (message.content === '-iloto') {   
@@ -114,7 +114,7 @@ client.on("message", (message) => {
 			.setColor("0xB40404") 
 			.addField("**1.**", "Il est possible que le même pseudo soit tiré au sort à plusieurs reprises. Le joueur peu gagné que le premier loto sur le quelle il est tombé ")
 		message.channel.sendEmbed(embed)
-		};
+		};return
 	  })
 	  client.on('message', message => {
 		if (message.content === '-rloto') {   
@@ -130,7 +130,7 @@ client.on("message", (message) => {
 			.addField("**4.**", " ")
 			.addField("**5.**", " ")
 		message.channel.sendEmbed(embed)
-		};
+		};return
 	  })
 
 client.on("message", (message) => {
