@@ -473,7 +473,7 @@ client.on('message', message => {
 			if(message.author.bot || message.channel.type == "dm") return;
             const args = message.content.slice(prefix.length).trim().split(/ +/g);
             const command = args.shift().toLowerCase();
-            const member = message.author.username.users;
+            const member = message.author.username.id;
             let object = args[0];
             let detail = args.slice(1).join(" ");
 			let hereRole = message.guild.roles.find("name", "Forgemages");
@@ -501,7 +501,7 @@ client.on('message', message => {
 													.setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
 													.setColor('#8e44ad')
 													message.channel.send(code);
-													message.guild.channels.find("name", "liste-commande-fm").send(hereRole +" Salut le joueur **@"+ member +"** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **"+ object +"** . Informations supplémentaires sur la FM: **" + detail + "**");
+													message.guild.channels.find("name", "liste-commande-fm").send(hereRole +" Salut le joueur **@"+ message.author.username.id +"** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **"+ object +"** . Informations supplémentaires sur la FM: **" + detail + "**");
 													} catch (err) {
 													console.log(err);
 													}
