@@ -1,7 +1,5 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const Fornite = require('fortnite')
-const stats = new Fornite('773fc2ed-54d9-4c97-befa-99f2cc3da8a8')
 const prefix = "-";
 let os = require('os')
 
@@ -9,7 +7,8 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
-client.login(process.env.TOKEN)
+//client.login(process.env.TOKEN)
+client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
 
 client.on("guildMemberAdd", member => {
 	
@@ -39,7 +38,7 @@ client.on('message', message => {
 		
 		for (var i = 0; i < args.length; i++) args[i] = args[i].trim()
 		
-	if(!args[0]) return message.channel.send("je ne peut pas creer de poll vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (5 choix max)")
+	if(!args[0]) return message.channel.send("je ne peut pas creer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (5 choix max)")
 		
 		var nbrpoll = +args[0]
 		
@@ -166,47 +165,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 		}return
 		})
 
-		client.on("message", (message) => {
-			if(command === "fortnite") {
-
-			const args = message.content.slice(prefix.length).trim().split(/ +/g);
-			const command = args.shift().toLowerCase();
 	
-			let platform;
-			let username;
-	
-			if (!['pc','xbl','psn'].includes(args[0])) return message.channel.send('Dit moi la platform "-fortnite [pc I xbl I psn ] <username>" ')
-			if (!args[1]) return message.channel.send('Dit moi l\'utilisateur! "-fortnite plateforme user" ')
-	
-			platform = args[0];
-			username = args[1]
-	
-	
-	
-			stats.getInfo(username, platform).then( data => {
-			
-			var embed = new Discord.RichEmbed()
-		.setTitle(`Stats pour ${data.username}`)
-		.setColor('#FF0000')
-		.setThumbnail('https://static-pepper.dealabs.com/threads/thread_large/default/1178780_1.jpg')
-		.addField('Score total', data.lifetimeStats[6].value, true)
-		.addField('Games jouées', data.lifetimeStats[7].value, true)
-		.addField('Victoires', data.lifetimeStats[8].value, true)
-		.addField('Pourcentage de win', data.lifetimeStats[9].value, true)
-		.addField('Kills', data.lifetimeStats[10].value, true)
-		.addField('K/D ratio', data.lifetimeStats[11].value, true)
-		.addField('Temps de jeu', data.lifetimeStats[13].value, true)
-		.addField('Temps moyen de survie', data.lifetimeStats[14].value, true);
-	
-	message.channel.send({embed});
-	
-			})
-			.catch(error => {
-				 message.channel.send('Deso, pas trouver ce joueur')
-			});
-	message.delete()
-		}
-			})
 		
 	  client.on('message', message => {
 		if (message.content === '-iloto') {   
