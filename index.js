@@ -19,6 +19,7 @@ client.on('message', message => {
       .setColor("0xB40404") 
 	  .addField("**-fm** :arrow_right: *object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*", "Permet de passer une commande a un forgemage")
 	  .addField("**-loto**", "Permet de connaitre les commandes du loto")
+	  .addField("**-id**", "Permet de connaitre ton ID")
 			.addField("**-info**", "Permet de connaitre les infos du Discord")
 			.addField("**-bot**", "Permet de connaitre toute les infos du bot")
 			.addField("**-ping**", "Permet de connaitre sa latence")
@@ -226,7 +227,7 @@ client.on('message', message => {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 				description: `${DMALL}
-				`+ ` Message de ` +` **${message.author.username}** `
+				`+ ` ***Message de ` +` **${message.author.username}*** `
 				
 				
 			  }});
