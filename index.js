@@ -220,7 +220,7 @@ client.on('message', message => {
 				message.channel.send("**Aide pour la commande IDEE :** \n\n Pour utilisé la commande IDEE, mettais votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-idee Voici mon idée ajoute sa` \n");
 			} else {
       message.delete()
-      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **@${member.displayName}** a une idée la voici: ${idee}.`);
+      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${member.displayName}** a une idée la voici: ${idee}.`);
 			message.channel.send(`:white_check_mark: **${message.author.username}**, Votre idée a était envoyé.`);
 			}
 
