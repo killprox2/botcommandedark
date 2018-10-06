@@ -172,6 +172,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 			.setColor("0xB40404") 
 			.addField("**1.**", "Il est possible que le même pseudo soit tiré au sort à plusieurs reprises. Le joueur peu gagné que le premier lot sur le quelle il est tombé ")
 			.addField("**2.**", "FIN des inscriptions 13/10/18")
+			.addField("**3.**", "Pour participer MP Scharky in Game")
 
 			message.channel.sendEmbed(embed)
 		}return
