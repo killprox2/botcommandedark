@@ -7,8 +7,8 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
-client.login(process.env.TOKEN)
-
+//client.login(process.env.TOKEN)
+client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
 client.on('message', message => {
   if (message.content === '-help') {   
     message.delete()
@@ -256,16 +256,15 @@ client.on('message', message => {
 		color: 0xC64540,
 		description: `${message.member} S'il vous plaît entrez un message à dm pour les joueurs du discord.`
 	  }});
-		message.guild.roles.get(id).map(member => {
-			message.guild.member(member).send({embed: {
+			message.guild.roles.get(id).send({embed: {
 			color: 0x00c1c1,
 			title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 			description: `${DMALL}
 
 			`+ ` ***Message de ` +` **${message.author.username}*** `
 			
-		  
-		  }});
+			
+		  }
 	  });
 	  message.channel.send({embed: {
 		color: 0xC64540,
