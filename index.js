@@ -256,7 +256,7 @@ client.on('message', message => {
 		description: `${message.member} S'il vous plaît entrez un message à dm pour les joueurs du discord.`
 	  }});
 	  message.guild.members.forEach((player) => {
-		message.guild.roles.find("name", "Modérateur Discord", "CO-MENEURS", "GARDIENS DE DARK").send({embed: {
+		message.guild.roles.find("name", "Modérateur Discord").send({embed: {
 			color: 0x00c1c1,
 			title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 			description: `${DMALL}
