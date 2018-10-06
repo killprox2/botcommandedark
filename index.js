@@ -225,7 +225,8 @@ client.on('message', message => {
 			  message.guild.member(player).send({embed: {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${DMALL}`
+				description: `${DMALL}`+ ` Message de ` +` ${message.author.tag} `
+				
 				
 			  }});
 		  });
