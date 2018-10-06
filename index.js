@@ -212,7 +212,7 @@ client.on('message', message => {
 
 		message.delete()
 
-			  message.channel.send(`${message.author.id}`);
+			  message.channel.send(`Voici ton ID : ${message.author.id}`);
 
 	} return })
 	if(command === "dmall") {
