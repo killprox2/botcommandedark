@@ -222,11 +222,9 @@ client.on('message', message => {
 		  }});
 	  
 		  message.guild.members.forEach((player) => {
-			  message.channel.send('Message de ' + message.author.tag)
 			  message.guild.member(player).send({embed: {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				footer: 'De ' + message.author.tag,
 				description: `${DMALL}`
 				
 			  }});
