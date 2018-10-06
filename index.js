@@ -215,7 +215,7 @@ client.on('message', message => {
 			  message.channel.send(`Voici ton ID : ${message.author.id}`);
 
 	} return })
-	client.on('message', message => {
+	/*client.on('message', message => {
 		
 	if(command === "dmall") {
 		let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
@@ -241,7 +241,7 @@ client.on('message', message => {
 		color: 0xC64540,
 		description: "Tous les joueurs de ce serveur discord ont reçu votre message."
 	}});
-  } return })
+  } return })*/
 
     client.on('message', message => {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
