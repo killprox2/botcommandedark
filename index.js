@@ -1,7 +1,5 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const Fornite = require('fortnite')
-const stats = new Fornite('773fc2ed-54d9-4c97-befa-99f2cc3da8a8')
 const prefix = "-";
 let os = require('os')
 
