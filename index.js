@@ -243,6 +243,7 @@ client.on('message', message => {
 client.on('message', message => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
+	const id = message.guild.roles.find('name', 'Modérateur Discord').id;
 	if(command === "dm+") {
 		let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
 		if(!message.member.hasPermission("ADMINISTRATOR"))
@@ -255,8 +256,8 @@ client.on('message', message => {
 		color: 0xC64540,
 		description: `${message.member} S'il vous plaît entrez un message à dm pour les joueurs du discord.`
 	  }});
-	  message.guild.members.forEach((player) => {
-		message.guild.roles.find("name", "Modérateur Discord").send({embed: {
+		message.guild.roles.get(id).map(member => {
+			message.guild.member(member).send({embed: {
 			color: 0x00c1c1,
 			title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 			description: `${DMALL}
