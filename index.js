@@ -206,7 +206,7 @@ client.on('message', message => {
 
 	} return })
 	
-	client.on('message', message => {
+	/*client.on('message', message => {
 		
 	  if (command === "id") {
 
@@ -214,7 +214,7 @@ client.on('message', message => {
 
 			  message.channel.send(`Voici ton ID : ${message.author.id}`);
 
-	} return })
+	} return })*/
 	/*client.on('message', message => {
 		
 	if(command === "dmall") {
