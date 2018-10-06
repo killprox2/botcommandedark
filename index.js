@@ -7,8 +7,7 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
-//client.login(process.env.TOKEN)
-client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
+client.login(process.env.TOKEN)
 client.on('message', message => {
   if (message.content === '-help') {   
     message.delete()
@@ -76,8 +75,10 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
 			.setColor(0x00AE86)
 			.setColor("0xB40404") 
-			.addField("**1.**", "Il est possible que le même pseudo soit tiré au sort à plusieurs reprises. Le joueur peu gagné que le premier loto sur le quelle il est tombé ")
-		message.channel.sendEmbed(embed)
+			.addField("**1.**", "Il est possible que le même pseudo soit tiré au sort à plusieurs reprises. Le joueur peu gagné que le premier lot sur le quelle il est tombé ")
+			.addField("**2.**", "FIN des inscriptions 13/10/18")
+
+			message.channel.sendEmbed(embed)
 		}return
 	  })
 	  client.on('message', message => {
