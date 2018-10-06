@@ -241,6 +241,39 @@ client.on('message', message => {
 })
 
 client.on('message', message => {
+	const args = message.content.slice(prefix.length).trim().split(/ +/g);
+	const command = args.shift().toLowerCase();
+	if(command === "dm+") {
+		let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+		if(!message.member.hasPermission("ADMINISTRATOR"))
+			return message.reply({embed: {
+			  color: 0xC64540,
+			  description: "Pas la permission."
+			}});
+		let DMALL = args.join(" ").slice(0);
+	  if (!DMALL) return message.channel.send({embed: {
+		color: 0xC64540,
+		description: `${message.member} S'il vous plaît entrez un message à dm pour les joueurs du discord.`
+	  }});
+	  message.guild.members.forEach((player) => {
+		message.guild.roles.find("name", "Modérateur Discord", "CO-MENEURS", "GARDIENS DE DARK").send({embed: {
+			color: 0x00c1c1,
+			title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
+			description: `${DMALL}
+
+			`+ ` ***Message de ` +` **${message.author.username}*** `
+			
+		  
+		  }});
+	  });
+	  message.channel.send({embed: {
+		color: 0xC64540,
+		description: ":white_check_mark: Tous les joueurs de ce serveur discord ont reçu votre message."
+	}});
+  }
+})
+
+client.on('message', message => {
 	if(message.content.startsWith(prefix + 'id')) {
 		message.channel.send(":white_check_mark: ID envoyé en MP")
 		message.author.createDM().then(channel => {
