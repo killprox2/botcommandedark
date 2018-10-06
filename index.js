@@ -225,7 +225,8 @@ client.on('message', message => {
 			  message.guild.member(player).send({embed: {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${DMALL}`+ ` Message de ` +` ${message.author.tag} `
+				description: `${DMALL}
+				`+ ` Message de ` +` **${message.author.username}** `
 				
 				
 			  }});
@@ -235,6 +236,12 @@ client.on('message', message => {
 			description: ":white_check_mark: Tous les joueurs de ce serveur discord ont reçu votre message."
 		}});
 	  }
+})
+
+client.on('message', message => {
+	if(message.content.startsWith(prefix + 'id')) {
+		message.channel.send(`:white_check_mark: Voici ton ID: **${message.author.id}**`);
+  }
 })
 
 	
