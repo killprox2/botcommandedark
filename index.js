@@ -241,8 +241,11 @@ client.on('message', message => {
 
 client.on('message', message => {
 	if(message.content.startsWith(prefix + 'id')) {
-		message.channel.send(`:white_check_mark: Voici ton ID: **${message.author.id}**`);
-  }
+		message.channel.send(":white_check_mark: ID envoyé en MP")
+		message.author.createDM().then(channel => {
+			channel.send(`:white_check_mark: Voici ton ID: **${message.author.id}**`);
+  });
+}
 })
 
 	
