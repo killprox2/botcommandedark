@@ -225,12 +225,14 @@ client.on('message', message => {
 			  message.guild.member(player).send({embed: {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
+				field: 'De ' + message.author.tag,
 				description: `${DMALL}`
+				
 			  }});
 		  });
 		  message.channel.send({embed: {
 			color: 0xC64540,
-			description: ":white_check_mark:Tous les joueurs de ce serveur discord ont reçu votre message."
+			description: ":white_check_mark: Tous les joueurs de ce serveur discord ont reçu votre message."
 		}});
 	  }
 })
