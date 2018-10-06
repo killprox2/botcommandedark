@@ -213,18 +213,18 @@ client.on('message', message => {
 			if(!message.member.hasPermission("ADMINISTRATOR"))
 				return message.reply({embed: {
 				  color: 0xC64540,
-				  description: "No permission."
+				  description: "Pas la permission."
 				}});
 			let DMALL = args.join(" ").slice(0);
 		  if (!DMALL) return message.channel.send({embed: {
 			color: 0xC64540,
-			description: `${message.member} S'il vous plaît entrez un message à dm tous les joueurs dans le serveur discord.`
+			description: `${message.member} S'il vous plaît entrez un message à dm pour les joueurs du discord.`
 		  }});
 	  
 		  message.guild.members.forEach((player) => {
 			  message.guild.member(player).send({embed: {
 				color: 0x00c1c1,
-				title: `${message.guild.name}`,
+				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 				description: `${DMALL}`
 			  }});
 		  });
