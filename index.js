@@ -204,7 +204,42 @@ client.on('message', message => {
 				}
         
 
-    } return })
+	} return })
+	
+	client.on('message', message => {
+		
+	  if (command === "id") {
+
+		message.delete()
+
+			  message.channel.send(`${message.author.id}`);
+
+	} return })
+	if(command === "dmall") {
+		let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+		if(!message.member.hasPermission("ADMINISTRATOR"))
+			return message.reply({embed: {
+			  color: 0xC64540,
+			  description: "Pas la permission."
+			}});
+		let DMALL = args.join(" ").slice(0);
+	  if (!DMALL) return message.channel.send({embed: {
+		color: 0xC64540,
+		description: `${message.member} S'il vous plaît entrez un message à dm tous les joueurs dans le serveur discord.`
+	  }});
+  
+	  message.guild.members.forEach((player) => {
+		  message.guild.member(player).send({embed: {
+			color: 0x00c1c1,
+			title: `${message.guild.name}`,
+			description: `${DMALL}`
+		  }});
+	  });
+	  message.channel.send({embed: {
+		color: 0xC64540,
+		description: "Tous les joueurs de ce serveur discord ont reçu votre message."
+	}});
+  }
 
     client.on('message', message => {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
