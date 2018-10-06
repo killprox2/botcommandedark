@@ -8,6 +8,54 @@ client.on('ready', function () {
 })
 
 client.login(process.env.TOKEN)
+
+client.on("guildMemberAdd", member => {
+	const bvn = member.guild.channels.find(m => m.name === "bienvenue-bye");
+	if (!bvn) return;
+	const embed = new Discord.RichEmbed()
+		.setColor('#009114')
+		.setAuthor(member.user.tag, member.user.avatarURL)
+		.setTitle("Arrivée d'un nouvel utilisateur")
+		.addField("Un nouvel utilisateur vient d'arriver", `Il s'agit de [${member.user.tag}](https://discordapp.com/)`, true)
+		.setDescription("J'espère que tu t'y plairas")
+		.addField("Ma commande est `-help`", "Si tu souhaites savoir mon fonctionnement")
+		.addField(`Nombre de membres après l'arrivée de __${member.user.tag}__`, member.guild.memberCount)
+		.setFooter(`ID : ${member.user.id} | DARKBOT`)
+		.setTimestamp()
+bvn.send({embed})
+});
+client.on('message', message => {
+
+	if (message.content === prefix + "ntf on") {
+					var role = message.guild.roles.find('name', 'Notification');
+							message.member.addRole(role)
+							var embedon = new Discord.RichEmbed()
+									.setDescription("Notification")
+									.addField("Succès ! Vous avez bien activé vos notifications.", "Vous pouvez à tout instant désactiver les notifications avec la commande [!notification off](https://discord.gg/DRuyt7Q )")
+									.setColor("0xD7DF01")
+							message.channel.sendEmbed(embedon)
+							var embednotiff = new Discord.RichEmbed()
+									.setDescription(`${message.author.tag} vient d'activer ses notifications`)
+									.setTimestamp()
+									.setColor("0xFFFF00")
+							message.guild.channels.find("name", "infopzh").sendEmbed(embednotiff)
+					if (!role) return message.reply("Une erreur est survenue ! Rôle non trouvé. Réssayer plus tard.")
+	}
+	if (message.content === prefix + "ntf off") {
+			var roledel = message.guild.roles.find('name', 'Notification');
+							message.member.removeRole(roledel)
+							var embedoff = new Discord.RichEmbed()
+									.setDescription("Notification")
+									.addField("Succès ! Vous avez bien désactivé vos notifications.", "Vous pouvez à tout instant réactiver les notifications avec la commande [!notification on](https://discord.gg/DRuyt7Q )")
+									.setColor("0xD7DF01")
+							message.channel.sendEmbed(embedoff)
+							var embednotif = new Discord.RichEmbed()
+									.setDescription(`${message.author.tag} vient de désactiver ses notifications`)
+									.setTimestamp()
+									.setColor("0xFFFF00")
+							message.guild.channels.find("name", "infopzh").sendEmbed(embednotif)
+							if (role) return message.reply("Une erreur est survenue ! Réssayer plus tard.")
+	}})
 client.on('message', message => {
   if (message.content === '-help') {   
     message.delete()
@@ -265,7 +313,7 @@ client.on('message', message => {
 				message.channel.send("**Aide pour la commande IDEE :** \n\n Pour utilisé la commande IDEE, mettais votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-idee Voici mon idée ajoute sa` \n");
 			} else {
       message.delete()
-      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.id}** a une idée la voici: ${idee}.`);
+      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.id} ${member.user.tag}** a une idée la voici: ${idee}.`);
 			message.channel.send(`:white_check_mark: **${message.author.username}**, Votre idée a était envoyé.`);
 			}
 
