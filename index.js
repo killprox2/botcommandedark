@@ -26,7 +26,7 @@ bvn.send({embed})
 });
 client.on('message', message => {
 
-	if (message.content === prefix + "ntf on") {
+	if (message.content === prefix + "ntf_on") {
 					var role = message.guild.roles.find('name', 'Notification');
 							message.member.addRole(role)
 							var embedon = new Discord.RichEmbed()
@@ -41,7 +41,7 @@ client.on('message', message => {
 							message.guild.channels.find("name", "infopzh").sendEmbed(embednotiff)
 					if (!role) return message.reply("Une erreur est survenue ! Rôle non trouvé. Réssayer plus tard.")
 	}
-	if (message.content === prefix + "ntf off") {
+	if (message.content === prefix + "ntf_off") {
 			var roledel = message.guild.roles.find('name', 'Notification');
 							message.member.removeRole(roledel)
 							var embedoff = new Discord.RichEmbed()
