@@ -10,6 +10,7 @@ client.on('ready', function () {
 client.login(process.env.TOKEN)
 
 client.on("guildMemberAdd", member => {
+	
 	const bvn = member.guild.channels.find(m => m.name === "bienvenue-bye");
 	if (!bvn) return;
 	const embed = new Discord.RichEmbed()
@@ -24,6 +25,61 @@ client.on("guildMemberAdd", member => {
 		.setTimestamp()
 bvn.send({embed})
 });
+
+client.on('message', message => {
+  const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args1.shift().toLowerCase();
+	if (command === 'sondage+') { 
+
+		let split = ';';
+
+		args = args1.join(' ').split(split);
+		
+		for (var i = 0; i < args.length; i++) args[i] = args[i].trim()
+		
+	if(!args[0]) return message.channel.send("je ne peut pas creer de poll vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (5 choix max)")
+		
+		var nbrpoll = +args[0]
+		
+		 if (!isNumeric(nbrpoll)) {
+			return message.reply(`Desolé mais tu peut pas mettre` + nbrpoll + ` choix! C'est pas un chiffre quoi`);
+		}
+		
+		 if (nbrpoll < 2 || nbrpoll > 5) return message.reply('Tu peut mettre seulement entre 2 et 5 choix');
+		
+		if(!args[1]) return message.reply("Tu doit mettre une question!")
+			if(!args[2]) return message.reply("Tu doit mettre des choix!")
+				if(!args[3]) return message.reply("Tu doit mettre 2 choix minimum!")
+		
+		
+		var choix
+		
+	if(nbrpoll == "2") choix = `:one: ${args[2]}\n:two: ${args[3]}`
+	if(nbrpoll == "3") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}`
+	if(nbrpoll == "4") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}`
+	if(nbrpoll == "5") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}`
+		
+		var member = message.guild.members.get(message.author.id)
+	
+		const embed = new Discord.RichEmbed()
+				.setColor(member.displayHexColor)
+				.setTitle(args[1])
+				.setDescription(choix)
+				.setFooter("Sondage de " + message.author.tag)
+				.setTimestamp()
+	
+				message.channel.send(embed).then(function (message) {
+					message.react("\u0031\u20E3");
+					message.react("\u0032\u20E3");
+		if(nbrpoll >= "3")  message.react("\u0033\u20E3"); 
+		if(nbrpoll >= "4")  message.react("\u0034\u20E3");
+		if(nbrpoll >= "5")  message.react("\u0035\u20E3");
+				})
+		function isNumeric(val) {
+  return Number(parseFloat(val)) === val;
+}
+	}})
+
 client.on('message', message => {
 
 	if (message.content === prefix + "ntf_on") {
@@ -31,14 +87,9 @@ client.on('message', message => {
 							message.member.addRole(role)
 							var embedon = new Discord.RichEmbed()
 									.setDescription("Notification")
-									.addField("Succès ! Vous avez bien activé vos notifications.", "Vous pouvez à tout instant désactiver les notifications avec la commande [!notification off](https://discord.gg/DRuyt7Q )")
+									.addField("Succès ! Vous avez bien activé vos notifications.", "Vous pouvez à tout instant désactiver les notifications avec la commande -ntf_off )")
 									.setColor("0xD7DF01")
 							message.channel.sendEmbed(embedon)
-							var embednotiff = new Discord.RichEmbed()
-									.setDescription(`${message.author.tag} vient d'activer ses notifications`)
-									.setTimestamp()
-									.setColor("0xFFFF00")
-							message.guild.channels.find("name", "infopzh").sendEmbed(embednotiff)
 					if (!role) return message.reply("Une erreur est survenue ! Rôle non trouvé. Réssayer plus tard.")
 	}
 	if (message.content === prefix + "ntf_off") {
@@ -46,16 +97,12 @@ client.on('message', message => {
 							message.member.removeRole(roledel)
 							var embedoff = new Discord.RichEmbed()
 									.setDescription("Notification")
-									.addField("Succès ! Vous avez bien désactivé vos notifications.", "Vous pouvez à tout instant réactiver les notifications avec la commande [!notification on](https://discord.gg/DRuyt7Q )")
+									.addField("Succès ! Vous avez bien désactivé vos notifications.", "Vous pouvez à tout instant réactiver les notifications avec la commande -ntf_on")
 									.setColor("0xD7DF01")
 							message.channel.sendEmbed(embedoff)
-							var embednotif = new Discord.RichEmbed()
-									.setDescription(`${message.author.tag} vient de désactiver ses notifications`)
-									.setTimestamp()
-									.setColor("0xFFFF00")
-							message.guild.channels.find("name", "infopzh").sendEmbed(embednotif)
 							if (role) return message.reply("Une erreur est survenue ! Réssayer plus tard.")
 	}})
+	
 client.on('message', message => {
   if (message.content === '-help') {   
     message.delete()
@@ -313,7 +360,7 @@ client.on('message', message => {
 				message.channel.send("**Aide pour la commande IDEE :** \n\n Pour utilisé la commande IDEE, mettais votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-idee Voici mon idée ajoute sa` \n");
 			} else {
       message.delete()
-      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${message.author.id} ${member.user.tag}** a une idée la voici: ${idee}.`);
+      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${member.user.tag}** a une idée la voici: ${idee}.`);
 			message.channel.send(`:white_check_mark: **${message.author.username}**, Votre idée a était envoyé.`);
 			}
 
