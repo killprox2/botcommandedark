@@ -17,17 +17,17 @@ client.on('message', message => {
       .setColor(0x00AE86)
       .setDescription("Permet de connaitre toutes les commandes")
       .setColor("0xB40404") 
-	  .addField("**-fm** :arrow_right: *object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*", "Permet de passer une commande a un forgemage")
+	  .addField("**-fm** *object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*", "Permet de passer une commande a un forgemage")
 	  .addField("**-loto**", "Permet de connaitre les commandes du loto")
 	  .addField("**-id**", "Permet de connaitre ton ID")
 			.addField("**-info**", "Permet de connaitre les infos du Discord")
 			.addField("**-bot**", "Permet de connaitre toute les infos du bot")
 			.addField("**-ping**", "Permet de connaitre sa latence")
 	  //.addField("**-report**", "Permet de signalé un joueur")
-	  .addField("**-bug** :arrow_right: *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
-      .addField("**-idee** :arrow_right: *votre_idee*", "Permet de donner vos idée pour le bot")
-	  .addField("**-clear**", ":warning:*Commande Admin*:warning: Permet de supprimer le tchat")
-	  .addField("**-clear+**", ":warning:*Commande Admin*:warning: Permet de supprimer un nombre exacte de message")
+	  .addField("**-bug** *decrire_le_bug*", "Permet de rapporter un bug sur le bot")
+      .addField("**-idee** *votre_idee*", "Permet de donner vos idée pour le bot")
+	  .addField("**-clear**", "*Commande Admin*:warning: Permet de supprimer le tchat")
+	  .addField("**-clear+**", "*Commande Admin*:warning: Permet de supprimer un nombre exacte de message")
       .setImage("https://i.imgur.com/A1wcXrl.png")
       .setFooter("#__**DarkBot**__# by darkvince37")
   message.channel.sendEmbed(embed)
@@ -227,6 +227,7 @@ client.on('message', message => {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 				description: `${DMALL}
+
 				`+ ` ***Message de ` +` **${message.author.username}*** `
 				
 				
