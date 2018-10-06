@@ -1,5 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
+const Fornite = require('fortnite')
+const stats = new Fornite('773fc2ed-54d9-4c97-befa-99f2cc3da8a8')
 const prefix = "-";
 let os = require('os')
 
@@ -7,8 +9,7 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
-//client.login(process.env.TOKEN)
-client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
+client.login(process.env.TOKEN)
 
 client.on("guildMemberAdd", member => {
 	
