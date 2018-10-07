@@ -83,7 +83,7 @@ client.on('message', message => {
 		if(nbrpoll >= "7")  message.react("\u0037\u20E3");
 		if(nbrpoll >= "8")  message.react("\u0038\u20E3");
 		if(nbrpoll >= "9")  message.react("\u0039\u20E3");
-		if(nbrpoll >= "10")  message.react("\u0031\u0030\u20E3");
+		if(nbrpoll >= "10")  message.react("\u0010\u20E3");
 				})
 		function isNumeric(val) {
   return Number(parseFloat(val)) === val;
