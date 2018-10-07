@@ -62,7 +62,7 @@ client.on('message', message => {
 	if(nbrpoll == "7") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}`
 	if(nbrpoll == "8") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}`
 	if(nbrpoll == "9") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}\n:nine: ${args[10]}`
-	if(nbrpoll == "10") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}\n:nine: ${args[10]}\n:ten: ${args[11]}`
+	if(nbrpoll == "10") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}\n:nine: ${args[10]}\n:one: :zero: ${args[11]}`
 		
 		var member = message.guild.members.get(message.author.id)
 	
@@ -83,7 +83,7 @@ client.on('message', message => {
 		if(nbrpoll >= "7")  message.react("\u0037\u20E3");
 		if(nbrpoll >= "8")  message.react("\u0038\u20E3");
 		if(nbrpoll >= "9")  message.react("\u0039\u20E3");
-		if(nbrpoll >= "10")  message.react("\u0040\u20E3");
+		if(nbrpoll >= "10")  message.react("\u0031\u0030\u20E3");
 				})
 		function isNumeric(val) {
   return Number(parseFloat(val)) === val;
