@@ -11,7 +11,7 @@ client.login(process.env.TOKEN)
 
 client.on("guildMemberAdd", member => {
 	
-	const bvn = member.guild.channels.find(m => m.name === "bienvenue-bye");
+	const bvn = member.guild.channels.find(m => m.name === "message-de-bienvenue-i");
 	if (!bvn) return;
 	const embed = new Discord.RichEmbed()
 		.setColor('#009114')
@@ -175,7 +175,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 			.setColor("0xB40404") 
 			.addField("**1.**", "Pour participer MP Scharky in Game")
 			.addField("**2.**", "FIN des inscriptions 13/10/18")
-			.addField("**3.**", "Il est possible que le même pseudo soit tiré au sort à plusieurs reprises. Le joueur peut ne peut gagner que le premier lot sur lequel il est tombé ")
+			.addField("**3.**", "Il est possible que le même pseudo soit tiré au sort à plusieurs reprises. Le joueur ne peut gagner que le premier lot sur lequel il est tombé ")
 
 
 			message.channel.sendEmbed(embed)
