@@ -375,7 +375,7 @@ client.on('message', message => {
 				message.channel.send("**Aide pour la commande IDEE :** \n\n Pour utilisé la commande IDEE, mettais votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-idee Voici mon idée ajoute sa` \n");
 			} else {
       message.delete()
-      message.guild.channels.find("name", "bugs").send(hereRole +` Salut **${member.user.tag}** a une idée la voici: ${idee}.`);
+      message.guild.channels.find("name", "bugs").send(hereRole +` Salut <@${member.user.id}> a une idée la voici: ${idee}.`);
 			message.channel.send(`:white_check_mark: **${message.author.username}**, Votre idée a était envoyé.`);
 			}
 
@@ -550,7 +550,7 @@ client.on('message', message => {
 													.setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
 													.setColor('#8e44ad')
 													message.channel.send(code);
-													message.guild.channels.find("name", "liste-commande-fm").send(hereRole +" Salut le joueur **@"+ message.author.username +"** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **"+ object +"** . Informations supplémentaires sur la FM: **" + detail + "**");
+													message.guild.channels.find("name", "liste-commande-fm").send(hereRole +" Salut le joueur @"+ message.author.username +" souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **"+ object +"** . Informations supplémentaires sur la FM: **" + detail + "**");
 													} catch (err) {
 													console.log(err);
 													}
