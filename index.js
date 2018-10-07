@@ -37,7 +37,7 @@ client.on('message', message => {
 		
 		for (var i = 0; i < args.length; i++) args[i] = args[i].trim()
 		
-	if(!args[0]) return message.channel.send("je ne peut pas creer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (5 choix max)")
+	if(!args[0]) return message.channel.send("je ne peut pas creer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (10 choix max)")
 		
 		var nbrpoll = +args[0]
 		
@@ -45,7 +45,7 @@ client.on('message', message => {
 			return message.reply(`Desolé mais tu peut pas mettre` + nbrpoll + ` choix! C'est pas un chiffre quoi`);
 		}
 		
-		 if (nbrpoll < 2 || nbrpoll > 5) return message.reply('Tu peut mettre seulement entre 2 et 5 choix');
+		 if (nbrpoll < 2 || nbrpoll > 10) return message.reply('Tu peut mettre seulement entre 2 et 10 choix');
 		
 		if(!args[1]) return message.reply("Tu doit mettre une question!")
 			if(!args[2]) return message.reply("Tu doit mettre des choix!")
@@ -58,6 +58,11 @@ client.on('message', message => {
 	if(nbrpoll == "3") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}`
 	if(nbrpoll == "4") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}`
 	if(nbrpoll == "5") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}`
+	if(nbrpoll == "6") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}`
+	if(nbrpoll == "7") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}`
+	if(nbrpoll == "8") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}`
+	if(nbrpoll == "9") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}\n:nine: ${args[10]}`
+	if(nbrpoll == "10") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}\n:nine: ${args[10]}\n:ten: ${args[11]}`
 		
 		var member = message.guild.members.get(message.author.id)
 	
@@ -74,6 +79,11 @@ client.on('message', message => {
 		if(nbrpoll >= "3")  message.react("\u0033\u20E3"); 
 		if(nbrpoll >= "4")  message.react("\u0034\u20E3");
 		if(nbrpoll >= "5")  message.react("\u0035\u20E3");
+		if(nbrpoll >= "6")  message.react("\u0036\u20E3");
+		if(nbrpoll >= "7")  message.react("\u0037\u20E3");
+		if(nbrpoll >= "8")  message.react("\u0038\u20E3");
+		if(nbrpoll >= "9")  message.react("\u0039\u20E3");
+		if(nbrpoll >= "10")  message.react("\u0040\u20E3");
 				})
 		function isNumeric(val) {
   return Number(parseFloat(val)) === val;
