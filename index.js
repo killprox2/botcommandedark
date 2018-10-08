@@ -27,6 +27,56 @@ client.on("guildMemberAdd", member => {
 bvn.send({embed})
 });
 
+client.on("message", (message) => {
+	const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args1.shift().toLowerCase();
+	if (command === 'absent') {
+
+		let split = ';';
+
+		args = args1.join(' ').split(split);
+		
+		for (var i = 0; i < args.length; i++) args[i] = args[i].trim()
+		
+	if(!args[0]) return message.channel.send("Je ne peut pas enregistré ton absence : `-absent nbrperso ; temps ; nomperso1 ; nomperso2 ; nomperso3 etc")
+		
+		var nbrpoll = +args[0]
+		
+		 if (!isNumeric(nbrpoll)) {
+			return message.reply(`Desolé mais tu peut pas mettre` + nbrpoll + ` choix! Il faut un nombre`);
+		}
+		if (nbrpoll < 1 || nbrpoll > 9) return message.reply('Tu peut mettre seulement entre 1 et 9 choix');
+		
+		if(!args[1]) return message.reply("Tu doit mettre une date!")
+			if(!args[2]) return message.reply("Tu doit mettre un nom de perso!")
+				if(!args[3]) return message.reply("Tu doit mettre 1 perso minimum!")
+
+				var choix
+		
+				if(nbrpoll == "1") choix = `perso: ${args[2]}`
+				if(nbrpoll == "2") choix = `perso: ${args[2]}\nperso: ${args[3]}`
+				if(nbrpoll == "3") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}`
+				if(nbrpoll == "4") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}`
+				if(nbrpoll == "5") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}`
+				if(nbrpoll == "6") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}`
+				if(nbrpoll == "7") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}`
+				if(nbrpoll == "8") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}\nperso: ${args[9]}`
+				if(nbrpoll == "9") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}\nperso: ${args[9]}\nperso: ${args[10]}`
+				
+					var member = message.guild.members.get(message.author.id)
+
+					const embed = new Discord.RichEmbed()
+					.setColor(member.displayHexColor)
+					.setTitle(args[1])
+					.setDescription(choix)
+					.setFooter("Joueur en question " + message.author.tag)
+					.setTimestamp()
+	
+					message.channel.send(embed)
+	
+	}return
+	})
+
 client.on('message', message => {
   const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args1.shift().toLowerCase();
@@ -167,6 +217,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 			.setDescription("Permet de connaitre toutes les commandes du loto")
 			.setColor("0xB40404") 
 			.addField("\n**-tloto**\n", "Permet d'effectué le tirage")
+			.addField("\n**-nloto**\n", "Permet d'effectué le tirage d'un numéro")
 			.addField("\n**-rloto**\n", "Permet de connaitre les résultats")
 			.addField("\n**-iloto**\n", "Permet de connaitre les informations")
 			.addField("\n**-mloto**\n", "Permet de connaitre la liste des membres inscrits")
