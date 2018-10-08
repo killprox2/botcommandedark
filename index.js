@@ -88,114 +88,6 @@ client.on('message', message => {
 }
 	}})
 
-/*	client.on('message', message => {
-		const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
-		const command = args1.shift().toLowerCase();
-		if (command === 'dmall+') { 
-			let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-			if(!message.member.hasPermission("ADMINISTRATOR"))
-				return message.reply({embed: {
-				  color: 0xC64540,
-				  description: "Pas la permission."
-				}});
-	
-			let split = ';';
-	
-			args = args1.join(' ').split(split);
-			
-			for (var i = 0; i < args.length; i++) args[i] = args[i].trim()
-			
-		if(!args[0]) return message.channel.send("je ne peut pas envoyé de mp vide : `-dmall+ nbrchoix ; message ; choix1 ; choix2 ..... choixX` (5 choix max)")
-			
-			var nbrpoll = +args[0]
-			
-			 if (!isNumeric(nbrpoll)) {
-				return message.reply(`Desolé mais tu peut pas mettre` + nbrpoll + ` choix! C'est pas un chiffre quoi`);
-			}
-			
-			 if (nbrpoll < 1 || nbrpoll > 5) return message.reply('Tu peut mettre seulement entre 1 et 5 choix');
-			
-			if(!args[1]) return message.reply("Tu doit mettre un message!")
-				if(!args[2]) return message.reply("Tu doit mettre des grade!")
-					if(!args[3]) return message.reply("Tu doit mettre 1 grade minimum!")
-			
-			
-			var choix
-			
-		if(nbrpoll == "1") choix = message.guild.roles.find("name", "Forgemages");
-		if(nbrpoll == "2") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}`
-		if(nbrpoll == "3") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}`
-		if(nbrpoll == "4") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}`
-		if(nbrpoll == "5") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}`
-				
-			var member = message.guild.members.get(message.author.id)
-			if(nbrpoll >= "1")	
-			message.guild.members.forEach((player) => {
-			  message.guild.member(player).send({embed: {
-				color: 0x00c1c1,
-				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${args[1]}
-
-				`+ ` ***Message de ` +` **${message.author.username}*** `
-				
-				
-			  }});
-			});
-			if(nbrpoll >= "2")	
-			message.guild.members.forEach((player) => {
-			  message.guild.member(player).send({embed: {
-				color: 0x00c1c1,
-				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${args[1]}
-
-				`+ ` ***Message de ` +` **${message.author.username}*** `
-				
-				
-			  }});
-			});
-			if(nbrpoll >= "3")	
-			message.guild.members.forEach((player) => {
-			  message.guild.member(player).send({embed: {
-				color: 0x00c1c1,
-				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${args[1]}
-
-				`+ ` ***Message de ` +` **${message.author.username}*** `
-				
-				
-			  }});
-			});
-			if(nbrpoll >= "4")	
-			message.guild.members.forEach((player) => {
-			  message.guild.member(player).send({embed: {
-				color: 0x00c1c1,
-				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${args[1]}
-
-				`+ ` ***Message de ` +` **${message.author.username}*** `
-				
-				
-			  }});
-			});
-			if(nbrpoll >= "5")	
-			message.guild.members.forEach((player) => {
-			  message.guild.member(player).send({embed: {
-				color: 0x00c1c1,
-				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${args[1]}
-
-				`+ ` ***Message de ` +` **${message.author.username}*** `
-				
-				
-			  }});
-			});
-		
-
-			function isNumeric(val) {
-		return Number(parseFloat(val)) === val;
-	}
-		}})*/
-
 client.on('message', message => {
 
 	if (message.content === prefix + "ntf_on") {
@@ -229,7 +121,9 @@ client.on('message', message => {
       .setColor("0xB40404") 
 	  .addField("**-fm** *object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*", "Permet de passer une commande a un forgemage")
 	  .addField("**-loto**", "Permet de connaitre les commandes du loto")
-	  .addField("**-id**", "Permet de connaitre ton ID")
+		.addField("**-id**", "Permet de connaitre ton ID")
+		.addField("**-sondage+**", "Permet de créer des sondages ")
+		.addField("**-dmall**", "Permet de DM tous les joueurs")
 			.addField("**-info**", "Permet de connaitre les infos du Discord")
 			.addField("**-bot**", "Permet de connaitre toute les infos du bot")
 			.addField("**-ping**", "Permet de connaitre sa latence")
@@ -274,6 +168,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 			.addField("\n**-tloto**\n", "Permet d'effectué le tirage")
 			.addField("\n**-rloto**\n", "Permet de connaitre les résultats")
 			.addField("\n**-iloto**\n", "Permet de connaitre les informations")
+			.addField("\n**-mloto**\n", "Permet de connaitre la liste des membres inscrits")
 			.setImage("https://i.imgur.com/A1wcXrl.png")
 			.setFooter("#__**DarkBot**__# by darkvince37")
 		message.channel.sendEmbed(embed)
@@ -498,30 +393,6 @@ client.on('message', message => {
 			}
 
   } return })
-		client.on('message', (message) => {
-				let args6 = message.content.split(' ').slice(1);
-				let question = args6.slice(0).join(" ");
-			if (message.content.startsWith(prefix + 'sondage')) {
-				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
-					var pollEmbed = new Discord.RichEmbed()
-					.setDescription('Pas la permission "MANAGE_MESSAGES".')
-					.setColor(color)
-					message.channel.send(pollEmbed)
-				}else if (args6.length === 0){
-					
-				return message.reply('**Format invalide:** `-sondage <Question>`')
-					
-				}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
-					var pollEmbed = new Discord.RichEmbed()
-					.addField('Réagissez avec: 👎 pour non et 👍 pour oui.', question)
-					.setColor('#FF653C')
-					message.guild.channels.find("name", "bugs").send(pollEmbed).then(function (message) {
-						message.react("👍")
-						message.react("👎")
-					})
-				}return
-			}})
-
   client.on('message', (message) => {
     if(message.author.bot || message.channel.type == "dm") return;
 
