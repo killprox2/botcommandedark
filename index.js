@@ -205,7 +205,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 			.addField("**5.**", "undefined")
 		message.channel.sendEmbed(embed)
 		}return
-	  })
+		})
 	  client.on("message", (message) => {
 		if (message.content.startsWith(prefix + 'tloto')) {
 			message.delete()
@@ -225,6 +225,60 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 				message.channel.sendEmbed(embed)}
 		}return
 		})
+
+		client.on("message", (message) => {
+			if (message.content.startsWith(prefix + 'nloto')) {
+				message.delete()
+				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+					var pollEmbed = new Discord.RichEmbed()
+					.setDescription('Pas la permission "MANAGE_MESSAGES".')
+					.setColor(color)
+					message.channel.send(pollEmbed)
+				}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
+					const randomnum = require("unique-random");
+					var nbrpoll = +args[0]
+
+			 if(nbrpoll == "25") rand = randomnum(1, 25);
+			 if(nbrpoll == "26") rand = randomnum(1, 26);
+			 if(nbrpoll == "27") rand = randomnum(1, 27);
+			 if(nbrpoll == "28") rand = randomnum(1, 28);
+			 if(nbrpoll == "29") rand = randomnum(1, 29);
+			 if(nbrpoll == "30") rand = randomnum(1, 30);
+			 if(nbrpoll == "31") rand = randomnum(1, 31);
+			 if(nbrpoll == "32") rand = randomnum(1, 32);
+			 if(nbrpoll == "33") rand = randomnum(1, 33);
+			 if(nbrpoll == "34") rand = randomnum(1, 34);
+			 if(nbrpoll == "35") rand = randomnum(1, 35);
+			 if(nbrpoll == "36") rand = randomnum(1, 36);
+			 if(nbrpoll == "37") rand = randomnum(1, 37);
+			 if(nbrpoll == "38") rand = randomnum(1, 38);
+			 if(nbrpoll == "39") rand = randomnum(1, 39);
+			 if(nbrpoll == "40") rand = randomnum(1, 40);
+			 if(nbrpoll == "41") rand = randomnum(1, 41);
+			 if(nbrpoll == "42") rand = randomnum(1, 42);
+			 if(nbrpoll == "43") rand = randomnum(1, 43);
+			 if(nbrpoll == "44") rand = randomnum(1, 44);
+			 if(nbrpoll == "45") rand = randomnum(1, 45);
+			 if(nbrpoll == "46") rand = randomnum(1, 46);
+			 if(nbrpoll == "47") rand = randomnum(1, 47);
+			 if(nbrpoll == "48") rand = randomnum(1, 48);
+			 if(nbrpoll == "49") rand = randomnum(1, 49);
+			 if(nbrpoll == "50") rand = randomnum(1, 50);
+			 if(nbrpoll == "51") rand = randomnum(1, 51);
+			 if(nbrpoll == "52") rand = randomnum(1, 52);
+			 if(nbrpoll == "53") rand = randomnum(1, 53);
+			 if(nbrpoll == "54") rand = randomnum(1, 54);
+			 if(nbrpoll == "55") rand = randomnum(1, 55);
+
+				 var member = message.guild.members.get(message.author.id)
+		 
+				var embed = new Discord.RichEmbed()
+				.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
+				.setColor(0x00AE86)
+					.addField("Félicitation au numéro ", randomnum)
+					message.channel.sendEmbed(embed)}
+			}return
+			})
 		client.on("message", (message) => {
 			if (message.content.startsWith(prefix + 'mloto')) {
 				message.delete()	
