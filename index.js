@@ -90,7 +90,7 @@ client.on('message', message => {
 }
 	}})
 
-	client.on('message', message => {
+/*	client.on('message', message => {
 		const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
 		const command = args1.shift().toLowerCase();
 		if (command === 'dmall+') { 
@@ -196,7 +196,7 @@ client.on('message', message => {
 			function isNumeric(val) {
 		return Number(parseFloat(val)) === val;
 	}
-		}})
+		}})*/
 
 client.on('message', message => {
 
