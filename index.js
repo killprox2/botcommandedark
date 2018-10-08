@@ -37,7 +37,7 @@ client.on('message', message => {
 		
 		for (var i = 0; i < args.length; i++) args[i] = args[i].trim()
 		
-	if(!args[0]) return message.channel.send("je ne peut pas creer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (10 choix max)")
+	if(!args[0]) return message.channel.send("je ne peut pas creer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (9 choix max)")
 		
 		var nbrpoll = +args[0]
 		
@@ -45,7 +45,7 @@ client.on('message', message => {
 			return message.reply(`Desolé mais tu peut pas mettre` + nbrpoll + ` choix! C'est pas un chiffre quoi`);
 		}
 		
-		 if (nbrpoll < 2 || nbrpoll > 10) return message.reply('Tu peut mettre seulement entre 2 et 10 choix');
+		 if (nbrpoll < 2 || nbrpoll > 9) return message.reply('Tu peut mettre seulement entre 2 et 9 choix');
 		
 		if(!args[1]) return message.reply("Tu doit mettre une question!")
 			if(!args[2]) return message.reply("Tu doit mettre des choix!")
@@ -62,7 +62,6 @@ client.on('message', message => {
 	if(nbrpoll == "7") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}`
 	if(nbrpoll == "8") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}`
 	if(nbrpoll == "9") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}\n:nine: ${args[10]}`
-	if(nbrpoll == "10") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}\n:five: ${args[6]}\n:six: ${args[7]}\n:seven: ${args[8]}\n:eight: ${args[9]}\n:nine: ${args[10]}\n:one: :zero: ${args[11]}`
 		
 		var member = message.guild.members.get(message.author.id)
 	
@@ -83,7 +82,6 @@ client.on('message', message => {
 		if(nbrpoll >= "7")  message.react("\u0037\u20E3");
 		if(nbrpoll >= "8")  message.react("\u0038\u20E3");
 		if(nbrpoll >= "9")  message.react("\u0039\u20E3");
-		if(nbrpoll >= "10")  message.react("\u0010\u20E3");
 				})
 		function isNumeric(val) {
   return Number(parseFloat(val)) === val;
@@ -332,6 +330,18 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 				message.channel.sendEmbed(embed)}
 		}return
 		})
+		client.on("message", (message) => {
+			if (message.content.startsWith(prefix + 'mloto')) {
+				message.delete()	
+				var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Watoo', 'Leloverdark'];
+				//var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
+				var maissuiterdm = Math.floor(Math.random()*maissuite.length);
+				var embed = new Discord.RichEmbed()
+				.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
+				.setColor(0x00AE86)
+				.addField("Liste joueur inscrit ", maissuite)
+					message.channel.sendEmbed(embed)}
+			})
 
 client.on('message', message => {
   if (message.content === '-info') {   
@@ -491,7 +501,7 @@ client.on('message', message => {
 		client.on('message', (message) => {
 				let args6 = message.content.split(' ').slice(1);
 				let question = args6.slice(0).join(" ");
-			if (message.content.startsWith(prefix + 'sondage1')) {
+			if (message.content.startsWith(prefix + 'sondage')) {
 				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
 					.setDescription('Pas la permission "MANAGE_MESSAGES".')
@@ -499,7 +509,7 @@ client.on('message', message => {
 					message.channel.send(pollEmbed)
 				}else if (args6.length === 0){
 					
-				return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`')
+				return message.reply('**Format invalide:** `-sondage <Question>`')
 					
 				}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
 					var pollEmbed = new Discord.RichEmbed()
@@ -511,67 +521,6 @@ client.on('message', message => {
 					})
 				}return
 			}})
-			/*client.on('message', (message) => {
-				let args6 = message.content.split(' ').slice(3);
-				let arg2 = args[0];
-				let arg1 = args[1];
-				let question = args6.slice(0).join(" ");
-			if (message.content.startsWith(prefix + 'sondage2')) {
-				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
-					var pollEmbed = new Discord.RichEmbed()
-					.setDescription('Pas la permission "MANAGE_MESSAGES".')
-					.setColor(color)
-					message.channel.send(pollEmbed)
-				}else if (args6.length === 0){
-					
-				return message.reply('**Format invalide:** `-sondage<Valeur> <Question>`') && message.reply('**Connaitre les valeurs:** `-sondage`')
-					
-				}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
-					var pollEmbed = new Discord.RichEmbed()
-					.addField('Réagissez avec: :one: pour '+ arg1 +' et :two: pour ' + arg2, question)
-					.setColor('#FF653C')
-					message.guild.channels.find("name", "bugs").send(pollEmbed).then(function (message) {
-						message.react(":one:")
-						message.react(":two:")
-					})
-				}return
-			}})/*
-
-			client.on('message', (message) => {
-				var command = message.content
-				
-				if (command === "-sondage") { 
-						var pollEmbed = new Discord.RichEmbed()
-						.setTitle("**~~-+-------------[-~~ __Valeur Sondage__ ~~-]------------+-~~**")
-						.setColor(0x00AE86)
-						.setDescription("Permet de connaitre toutes les valeurs")
-						.addField("**-sondage1**", "Reponse Oui ou Non")
-						.addField("**-sondage2**", "Reponse A ou B")
-						.addField("**-sondage3**", "Reponse A, B, C et D")
-						message.channel.send(pollEmbed)
-					}return
-				})
-/*	client.on('message', (message) => {
-		if (message.content.startsWith(prefix + 'poll')) {
-			message.delete();
-			let args = message.content.split(' ').slice(1);
-		let question = args.slice(0).join(" ");
-		
-		if (args.length === 0)
-		return message.reply('**Format invalide:** `-Poll <Question>`')
-		
-		const embed = new Discord.RichEmbed()
-		.setTitle("Un sondage a été lancé!")
-		.setColor("#5599ff")
-		.setDescription(`${question}`)
-		.setFooter(`Sondage lancé par: ${message.author.username}`, `${message.author.avatarURL}`)
-		
-		
-		message.guild.channels.find("name", "bugs").send(embed)
-		.then(() => message.channel.sendMessage('Réagissez avec: 👎 pour non et 👍 pour oui.')) 
-		.then(() => message.pin())
-		   }
-		})*/
 
   client.on('message', (message) => {
     if(message.author.bot || message.channel.type == "dm") return;
