@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
+
 let os = require('os')
 
 client.on('ready', function () {
@@ -227,58 +228,46 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 		})
 
 		client.on("message", (message) => {
-			if (message.content.startsWith(prefix + 'nloto')) {
-				message.delete()
-				if(!message.member.hasPermission("MANAGE_MESSAGES")) {
-					var pollEmbed = new Discord.RichEmbed()
-					.setDescription('Pas la permission "MANAGE_MESSAGES".')
-					.setColor(color)
-					message.channel.send(pollEmbed)
-				}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
-					const randomnum = require("unique-random");
-					var nbrpoll = +args[0]
+			const args = message.content.slice(prefix.length).trim().split(/ +/g);
+			const command = args.shift().toLowerCase();
+			if (command ==='nloto') {
+				if(!args[0]){
+					var err_code = new Discord.RichEmbed()
+					.setTitle('Error 400 - Bad Request')
+					.setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
+					.setColor('#e74c3c')
+					message.channel.send(err_code);
+	}else if(!message.member.hasPermission("MANAGE_MESSAGES")){
+					var err_code = new Discord.RichEmbed()
+					.setTitle('Error 403 - Unauthorized')
+					.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+					.setColor('#e74c3c')
+					message.channel.send(err_code);
+	}else if(isNaN(args[0])){
+					var err_code = new Discord.RichEmbed()
+					.setTitle('Error 400 - Bad Request')
+					.setDescription('L\'argument donné n\'est pas un nombre !')
+					.setColor('#e74c3c')
+					message.channel.send(err_code);
+	}else if(parseInt(args[0]) > 99){
+					var err_code = new Discord.RichEmbed()
+					.setTitle('Error 400 - Bad Request')
+					.setDescription('Tu ne peux pas mettre plus que 99 max. !')
+					.setColor('#e74c3c')
+					message.channel.send(err_code);
+	}else{
 
-			 if(nbrpoll == "25") rand = randomnum(1, 25);
-			 if(nbrpoll == "26") rand = randomnum(1, 26);
-			 if(nbrpoll == "27") rand = randomnum(1, 27);
-			 if(nbrpoll == "28") rand = randomnum(1, 28);
-			 if(nbrpoll == "29") rand = randomnum(1, 29);
-			 if(nbrpoll == "30") rand = randomnum(1, 30);
-			 if(nbrpoll == "31") rand = randomnum(1, 31);
-			 if(nbrpoll == "32") rand = randomnum(1, 32);
-			 if(nbrpoll == "33") rand = randomnum(1, 33);
-			 if(nbrpoll == "34") rand = randomnum(1, 34);
-			 if(nbrpoll == "35") rand = randomnum(1, 35);
-			 if(nbrpoll == "36") rand = randomnum(1, 36);
-			 if(nbrpoll == "37") rand = randomnum(1, 37);
-			 if(nbrpoll == "38") rand = randomnum(1, 38);
-			 if(nbrpoll == "39") rand = randomnum(1, 39);
-			 if(nbrpoll == "40") rand = randomnum(1, 40);
-			 if(nbrpoll == "41") rand = randomnum(1, 41);
-			 if(nbrpoll == "42") rand = randomnum(1, 42);
-			 if(nbrpoll == "43") rand = randomnum(1, 43);
-			 if(nbrpoll == "44") rand = randomnum(1, 44);
-			 if(nbrpoll == "45") rand = randomnum(1, 45);
-			 if(nbrpoll == "46") rand = randomnum(1, 46);
-			 if(nbrpoll == "47") rand = randomnum(1, 47);
-			 if(nbrpoll == "48") rand = randomnum(1, 48);
-			 if(nbrpoll == "49") rand = randomnum(1, 49);
-			 if(nbrpoll == "50") rand = randomnum(1, 50);
-			 if(nbrpoll == "51") rand = randomnum(1, 51);
-			 if(nbrpoll == "52") rand = randomnum(1, 52);
-			 if(nbrpoll == "53") rand = randomnum(1, 53);
-			 if(nbrpoll == "54") rand = randomnum(1, 54);
-			 if(nbrpoll == "55") rand = randomnum(1, 55);
-
-				 var member = message.guild.members.get(message.author.id)
-		 
-				var embed = new Discord.RichEmbed()
+					 //rand = randomnum(1, args[0]);
+					 let rand = Math.floor((Math.random(1) * args[0]));
+					var embed = new Discord.RichEmbed()
 				.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
 				.setColor(0x00AE86)
-					.addField("Félicitation au numéro ", randomnum)
-					message.channel.sendEmbed(embed)}
-			}return
-			})
+				.addField("Le numéro ", rand)
+				message.channel.sendEmbed(embed)}
+
+				
+
+			}})
 		client.on("message", (message) => {
 			if (message.content.startsWith(prefix + 'mloto')) {
 				message.delete()	
