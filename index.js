@@ -28,7 +28,7 @@ client.on("guildMemberAdd", member => {
 bvn.send({embed})
 });
 
-client.on("message", (message) => {
+/*client.on("message", (message) => {
 	const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args1.shift().toLowerCase();
 	if (command === 'absent') {
@@ -102,7 +102,7 @@ client.on("message", (message) => {
 			.then(user => {user.send(`**${message.author.username}** n'est plus absent`);
 
 		})}return
-		})
+		})*/
 
 client.on('message', message => {
   const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
