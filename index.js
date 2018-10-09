@@ -2,13 +2,15 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
 
+
 let os = require('os')
 
 client.on('ready', function () {
   console.log("client connecté !")
 })
 
-client.login(process.env.TOKEN)
+//client.login(process.env.TOKEN)
+client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
 
 client.on("guildMemberAdd", member => {
 	
@@ -33,49 +35,75 @@ client.on("message", (message) => {
 	if (command === 'absent') {
 
 		let split = ';';
-
 		args = args1.join(' ').split(split);
 		
 		for (var i = 0; i < args.length; i++) args[i] = args[i].trim()
 		
-	if(!args[0]) return message.channel.send("Je ne peut pas enregistré ton absence : `-absent nbrperso ; temps ; nomperso1 ; nomperso2 ; nomperso3 etc")
+	if(!args[0]) return message.channel.send("Je ne peut pas enregistré ton absence : `-absent nbrperso ; pseudodiscord ; temps ; nomperso1 ; nomperso2 ; nomperso3 etc")
 		
 		var nbrpoll = +args[0]
 		
-		 if (!isNumeric(nbrpoll)) {
-			return message.reply(`Desolé mais tu peut pas mettre` + nbrpoll + ` choix! Il faut un nombre`);
-		}
 		if (nbrpoll < 1 || nbrpoll > 9) return message.reply('Tu peut mettre seulement entre 1 et 9 choix');
-		
+		let Timer = args[1];
 		if(!args[1]) return message.reply("Tu doit mettre une date!")
 			if(!args[2]) return message.reply("Tu doit mettre un nom de perso!")
-				if(!args[3]) return message.reply("Tu doit mettre 1 perso minimum!")
 
 				var choix
 		
-				if(nbrpoll == "1") choix = `perso: ${args[2]}`
-				if(nbrpoll == "2") choix = `perso: ${args[2]}\nperso: ${args[3]}`
-				if(nbrpoll == "3") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}`
-				if(nbrpoll == "4") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}`
-				if(nbrpoll == "5") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}`
-				if(nbrpoll == "6") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}`
-				if(nbrpoll == "7") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}`
-				if(nbrpoll == "8") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}\nperso: ${args[9]}`
-				if(nbrpoll == "9") choix = `perso: ${args[2]}\nperso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}\nperso: ${args[9]}\nperso: ${args[10]}`
+				if(nbrpoll == "1") choix = `perso: ${args[3]}`
+				if(nbrpoll == "2") choix = `perso: ${args[3]}\nperso: ${args[4]}`
+				if(nbrpoll == "3") choix = `perso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}`
+				if(nbrpoll == "4") choix = `perso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}`
+				if(nbrpoll == "5") choix = `perso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}`
+				if(nbrpoll == "6") choix = `perso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}`
+				if(nbrpoll == "7") choix = `perso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}\nperso: ${args[9]}`
+				if(nbrpoll == "8") choix = `perso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}\nperso: ${args[9]}\nperso: ${args[10]}`
+				if(nbrpoll == "9") choix = `perso: ${args[3]}\nperso: ${args[4]}\nperso: ${args[5]}\nperso: ${args[6]}\nperso: ${args[7]}\nperso: ${args[8]}\nperso: ${args[9]}\nperso: ${args[10]}\nperso: ${args[11]}`
 				
 					var member = message.guild.members.get(message.author.id)
 
 					const embed = new Discord.RichEmbed()
 					.setColor(member.displayHexColor)
-					.setTitle(args[1])
+					.setTitle('Retour le ' + args[2])
 					.setDescription(choix)
-					.setFooter("Joueur en question " + message.author.tag)
+					.setFooter("Joueur en question " + message.author.username)
 					.setTimestamp()
 	
 					message.channel.send(embed)
+					let role = 'absent';
+					let gRole = message.guild.roles.find(`name`, role);
+					let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[1]);
+							(rMember.addRole(gRole.id));
+							message.channel.send(`:white_check_mark: Tu est bien noté absent a ton retour n'oublie pas de faire la commande -absentstop`)
+							let str = "<@351809725513465867>";
+							let id = str.replace(/[<@!>]/g, '');
+							client.fetchUser(id)
+							.then(user => {user.send(embed);
+
+	})}
 	
-	}return
+	return
 	})
+
+	client.on("message", (message) => {
+		const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
+		const command = args1.shift().toLowerCase();
+		if (command === 'absentstop') {
+			let split = ';';
+			args = args1.join(' ').split(split);
+			if(!args[0]) return message.channel.send("Je ne peut pas enlever ton absence : `-absentstop tonpseudodiscord")
+			let role = 'absent';
+			let gRole = message.guild.roles.find(`name`, role);
+			let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+			(rMember.removeRole(gRole.id));
+			message.channel.send(`:white_check_mark:Tu n'est plus absent`)
+			let str = "<@351809725513465867>";
+      let id = str.replace(/[<@!>]/g, '');
+			client.fetchUser(id)
+			.then(user => {user.send(`**${message.author.username}** n'est plus absent`);
+
+		})}return
+		})
 
 client.on('message', message => {
   const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
