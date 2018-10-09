@@ -9,8 +9,7 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
-//client.login(process.env.TOKEN)
-client.login("NDkxNzQ3MjI4NjA0Njk0NTQw.DoMmfg.0-qE44twKl3sitLDR01R-6R9uag")
+client.login(process.env.TOKEN)
 
 client.on("guildMemberAdd", member => {
 	
