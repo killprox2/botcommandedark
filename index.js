@@ -107,7 +107,7 @@ bvn.send({embed})
 client.on('message', message => {
   const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args1.shift().toLowerCase();
-	if (command === 'sondage+') { 
+	if (command === 'sondage+') {
 
 		let split = ';';
 
