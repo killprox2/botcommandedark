@@ -294,7 +294,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 				.setColor(color)
 				message.channel.send(pollEmbed)
 			}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
-			var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Watoo', 'Leloverdark', 'Wensly', 'Ultrawguri', 'Preskapwal', 'Dak-man', 'Hilduren', 'Natrakh', 'Kroonembourg', 'Reyanni', 'Asianax', 'Nanitendayo'];
+			var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Leloverdark', 'Ultrawguri', 'Preskapwal', 'Dak-man', 'Hilduren', 'Natrakh', 'Kroonembourg', 'Reyanni', 'Asianax', 'Nanitendayo', 'Soo-vetage'];
 			//var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
 			var maissuiterdm = Math.floor(Math.random()*maissuite.length);
 		  var embed = new Discord.RichEmbed()
@@ -350,14 +350,14 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 		client.on("message", (message) => {
 			if (message.content.startsWith(prefix + 'mloto')) {
 				message.delete()	
-				var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Watoo', 'Leloverdark', 'Wensly', 'Ultrawguri', 'Preskapwal', 'Dak-man', 'Hilduren', 'Natrakh', 'Kroonembourg', 'Reyanni', 'Asianax', 'Nanitendayo'];
+				var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Leloverdark', 'Ultrawguri', 'Preskapwal', 'Dak-man', 'Hilduren', 'Natrakh', 'Kroonembourg', 'Reyanni', 'Asianax', 'Nanitendayo', 'Soo-vetage'];
 				//var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
 				var maissuiterdm = Math.floor(Math.random()*maissuite.length);
 				var embed = new Discord.RichEmbed()
 				.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
 				.setColor(0x00AE86)
 				.addField("Liste joueur inscrit ", maissuite)
-				.setFooter(`Liste actualisé le 13/10/18 à 6h20 ${message.author.username}`);
+				.setFooter(`Liste actualisé le 13/10/18 à 13h45 ${message.author.username}`);
 					message.channel.sendEmbed(embed)}
 			})
 
