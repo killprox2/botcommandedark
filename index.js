@@ -356,7 +356,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 				.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
 				.setColor(0x00AE86)
 				.addField("Liste joueur inscrit ", maissuite)
-				.setFooter(`Liste actualisé le 13/10/18 à 13h45 ${message.author.username}`);
+				.setFooter(`Liste actualisé le 13/10/18 à 21h ${message.author.username}`);
 					message.channel.sendEmbed(embed)}
 			})
 
