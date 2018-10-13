@@ -301,6 +301,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 		  .setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
 		  .setColor(0x00AE86)
 				.addField("Félicitation à ", maissuite[maissuiterdm])
+
 				message.channel.sendEmbed(embed)}
 		}return
 		})
@@ -356,6 +357,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 				.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
 				.setColor(0x00AE86)
 				.addField("Liste joueur inscrit ", maissuite)
+				.setFooter(`Liste actualisé le 13/10/18 à 6h20 ${message.author.username}`);
 					message.channel.sendEmbed(embed)}
 			})
 
