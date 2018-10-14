@@ -282,7 +282,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 			.addField("**3.**", "Aprix")
 			.addField("**4.**", "Wytexx")
 			.addField("**5.**", "Hook")
-			.addField("**6.**", "Preskapwal")
+			.addField("**Bonus.**", "Preskapwal")
 		message.channel.sendEmbed(embed)
 		}return
 		})
