@@ -103,52 +103,7 @@ bvn.send({embed})
 
 		})}return
 		})*/
-		client.on('message', message => {
-			const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
-			const command = args1.shift().toLowerCase();
-			let hereRole = message.guild.roles.find("name", "Forgemages");
-			  if (command === 'dj') { 
-		  
-				  let split = ';';
-		  
-				  args = args1.join(' ').split(split);
-				  
-				  for (var i = 0; i < args.length; i++) args[i] = args[i].trim()
-				  
-			  if(!args[0]) return message.channel.send("je ne peut pas creer votre demande se donjon! syntaxe : `-dj nbrchoix ; Nom du donjon ; succés1 ; succés2 ..... choixX` (4 succés Max)")
-				  
-				  var nbrpoll = +args[0]
-				  
-				   if (!isNumeric(nbrpoll)) {
-					  return message.reply(`Desolé mais tu peut pas mettre` + nbrpoll + ` succés! C'est pas un chiffre quoi`);
-				  }
-				  
-				   if (nbrpoll < 2 || nbrpoll > 4) return message.reply('Tu peut mettre seulement entre 2 et 4 succés');
-				  
-				  if(!args[1]) return message.reply("Tu doit mettre une question!")
-					  if(!args[2]) return message.reply("Tu doit mettre des succés!")
-						  if(!args[3]) return message.reply("Tu doit mettre 2 succés minimum!")
-				  
-				  
-				  var choix
-				  
-			  if(nbrpoll == "2") choix = `:one: ${args[2]}\n:two: ${args[3]}`
-			  if(nbrpoll == "3") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}`
-			  if(nbrpoll == "4") choix = `:one: ${args[2]}\n:two: ${args[3]}\n:three: ${args[4]}\n:four: ${args[5]}`
-			  				  var member = message.guild.members.get(message.author.id)
-								try {
-									var code = new Discord.RichEmbed()
-									.setTitle('Succès :')
-									.setDescription(":white_check_mark: Votre demande a été envoyée, un passeur de donjon va prendre contact avec vous dès qu'il sera disponible")
-									.setColor('#8e44ad')
-									message.channel.send(code);
-									message.guild.channels.find("name", "liste_commandes_dj").send(hereRole +" Salut le joueur @"+ member +" souhaiterait passer un donjon. Prenez contact avec lui dès que vous êtes disponible pour cette demande directement dans le jeu ou en MP Discord ! Voici sa demande: **"+ choix+"**");
-									} catch (err) {
-									console.log(err);
-									}
 
-			  }})
-			  
 client.on('message', message => {
   const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args1.shift().toLowerCase();
@@ -653,5 +608,47 @@ client.on('message', message => {
 							}return
 					
 					})
+
+					client.on('message', message => {
+						if(message.author.bot || message.channel.type == "dm") return;
+						const args = message.content.slice(prefix.length).trim().split(/ +/g);
+						const command = args.shift().toLowerCase();
+						const member = message.author.username.id;
+						let object = args[0];
+						let detail = args.slice(1).join(" ");
+						let hereRole = message.guild.roles.find("name", "Passeurs DJ");
+											if(command === "dj"){
+												if(!object){
+														var err_code = new Discord.RichEmbed()
+														.setTitle('Error 400 - Bad Request')
+														.setDescription("Tu n\'a pas précisé le donjon! :warning: -dj Nom_du_donjon + Information")
+														.setColor('#e74c3c')
+														message.channel.send(err_code);
+												
+												}else if(!detail){
+														var err_code = new Discord.RichEmbed()
+														.setTitle('Error 400 - Bad Request')
+														.setDescription("Tu n\'a pas précisé les informations :warning: -dj Nom_du_donjon + Information")
+														.setColor('#e74c3c')
+														message.channel.send(err_code);
+												
+													}else{
+														
+														
+																try {
+																var code = new Discord.RichEmbed()
+																.setTitle('Succès :')
+																.setDescription(":white_check_mark: Votre commande a été envoyée, un Passeurs DJ va prendre contact avec vous dès qu'il sera disponible")
+																.setColor('#8e44ad')
+																message.channel.send(code);
+																message.guild.channels.find("name", "liste_commandes_dj").send(hereRole +" Salut le joueur @"+ message.author.username +" souhaiterait passer un donjon. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici le donjon en question: **"+ object +"** . Informations supplémentaires sur le passage du donjon: **" + detail + "**");
+																} catch (err) {
+																console.log(err);
+																}
+														
+												}
+										}return
+								
+								})
 					
             
