@@ -565,7 +565,88 @@ client.on('message', message => {
 
 })
 
+client.on('message', message => {
+	if(message.author.bot || message.channel.type == "dm") return;
+				const args = message.content.slice(prefix.length).trim().split(/ +/g);
+				const command = args.shift().toLowerCase();
+				const member = message.author.username.id;
+				let object = args[0];
+				let pseudo = args[1];
+				let detail = args.slice(1).join(" ");
+						if(command === "fmyes"){
+							if(!object){
+									var err_code = new Discord.RichEmbed()
+									.setTitle('Error 400 - Bad Request')
+									.setDescription("Tu n\'a pas précisé le pseudo! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
+									.setColor('#e74c3c')
+									message.channel.send(err_code);
+							}else if(!pseudo){
+										var err_code = new Discord.RichEmbed()
+										.setTitle('Error 400 - Bad Request')
+										.setDescription("Tu n\'a pas précisé le pseudo du joueur refusé! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
+										.setColor('#e74c3c')
+										message.channel.send(err_code);
+								
+								
+							}else{
+									
+									
+											try {
+											var code = new Discord.RichEmbed()
+											.setTitle('Succès :')
+											.setDescription(":white_check_mark: Votre réponse a bien était envoyé")
+											.setColor('#8e44ad')
+											message.channel.send(code);
+											message.guild.channels.find("name", "✅commandes_fm_dj").send(" Salut, "+pseudo+" le joueur @"+ message.author.username +" est OK pour traiter ta commande de fm, n'hésite pas à le MP en jeu lorsque tu le vois connecté ^^");
+											} catch (err) {
+											console.log(err);
+											}
+									
+							}
+					}return
+			
+			})
 
+			client.on('message', message => {
+				if(message.author.bot || message.channel.type == "dm") return;
+							const args = message.content.slice(prefix.length).trim().split(/ +/g);
+							const command = args.shift().toLowerCase();
+							const member = message.author.username.id;
+							let pseudo = args[0];
+							let detail = args.slice(1).join(" ");
+									if(command === "fmno"){
+									if(!pseudo){
+											var err_code = new Discord.RichEmbed()
+											.setTitle('Error 400 - Bad Request')
+											.setDescription("Tu n\'a pas précisé le pseudo du joueur refusé! :warning: -fmno personne_refusé + Information sur le refus")
+											.setColor('#e74c3c')
+											message.channel.send(err_code);
+									
+									}else if(!detail){
+												var err_code = new Discord.RichEmbed()
+												.setTitle('Error 400 - Bad Request')
+												.setDescription("Tu n\'a pas précisé les informations :warning: -fmno personne_refusé + Information sur le refus")
+												.setColor('#e74c3c')
+												message.channel.send(err_code);
+										
+											}else{
+												
+												
+														try {
+														var code = new Discord.RichEmbed()
+														.setTitle('Succès :')
+														.setDescription(":white_check_mark: Votre réponse a bien était envoyé")
+														.setColor('#8e44ad')
+														message.channel.send(code);
+														message.guild.channels.find("name", "✅commandes_fm_dj").send(" Salut, "+ pseudo+" malheureusement les Forgemages pensent que ta commande est trop compliquée à réaliser, voici leurs raisons :" + detail + ". le DarkBot te recommande de te tourner soit vers l'HDV, soit d'aller voir dans le Livre des Artisans In-Game si personne ne peut t'aider si tu tiens vraiment à fm l'item toi même. Désolé, et bon jeu !");
+														} catch (err) {
+														console.log(err);
+														}
+												
+										}
+								}return
+						
+						})
 
           client.on('message', message => {
 			if(message.author.bot || message.channel.type == "dm") return;
@@ -610,6 +691,47 @@ client.on('message', message => {
 					})
 
 					client.on('message', message => {
+						if(message.author.bot || message.channel.type == "dm") return;
+						const args = message.content.slice(prefix.length).trim().split(/ +/g);
+						const command = args.shift().toLowerCase();
+						const member = message.author.username.id;
+						let object = args[0];
+						let detail = args.slice(1).join(" ");
+						let hereRole = message.guild.roles.find("name", "Passeurs DJ");
+											if(command === "dj"){
+												if(!object){
+														var err_code = new Discord.RichEmbed()
+														.setTitle('Error 400 - Bad Request')
+														.setDescription("Tu n\'a pas précisé le donjon! :warning: -dj Nom_du_donjon + Information")
+														.setColor('#e74c3c')
+														message.channel.send(err_code);
+												
+												}else if(!detail){
+														var err_code = new Discord.RichEmbed()
+														.setTitle('Error 400 - Bad Request')
+														.setDescription("Tu n\'a pas précisé les informations :warning: -dj Nom_du_donjon + Information")
+														.setColor('#e74c3c')
+														message.channel.send(err_code);
+												
+													}else{
+														
+														
+																try {
+																var code = new Discord.RichEmbed()
+																.setTitle('Succès :')
+																.setDescription(":white_check_mark: Votre commande a été envoyée, un Passeurs DJ va prendre contact avec vous dès qu'il sera disponible")
+																.setColor('#8e44ad')
+																message.channel.send(code);
+																message.guild.channels.find("name", "⛔liste_commandes_dj").send(hereRole +" Salut le joueur @"+ message.author.username +" souhaiterait passer un donjon. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici le donjon en question: **"+ object +"** . Informations supplémentaires sur le passage du donjon: **" + detail + "**");
+																} catch (err) {
+																console.log(err);
+																}
+														
+												}
+										}return
+								
+								})
+								client.on('message', message => {
 						if(message.author.bot || message.channel.type == "dm") return;
 						const args = message.content.slice(prefix.length).trim().split(/ +/g);
 						const command = args.shift().toLowerCase();
