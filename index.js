@@ -597,7 +597,7 @@ client.on('message', message => {
 											.setDescription(":white_check_mark: Votre réponse a bien était envoyé")
 											.setColor('#8e44ad')
 											message.channel.send(code);
-											message.guild.channels.find("name", "✅commandes_fm_dj").send(" Salut, "+pseudo+" le joueur @"+ message.author.username +" est OK pour traiter ta commande de fm, n'hésite pas à le MP en jeu lorsque tu le vois connecté ^^");
+											message.guild.channels.find("name", "✅commandes_fm_dj").send(" Salut, **"+pseudo+"** le joueur **@"+ message.author.username +"** est OK pour traiter ta commande de fm, n'hésite pas à le MP en jeu lorsque tu le vois connecté ^^");
 											} catch (err) {
 											console.log(err);
 											}
@@ -638,7 +638,7 @@ client.on('message', message => {
 														.setDescription(":white_check_mark: Votre réponse a bien était envoyé")
 														.setColor('#8e44ad')
 														message.channel.send(code);
-														message.guild.channels.find("name", "✅commandes_fm_dj").send(" Salut, "+ pseudo+" malheureusement les Forgemages pensent que ta commande est trop compliquée à réaliser, voici leurs raisons :" + detail + ". le DarkBot te recommande de te tourner soit vers l'HDV, soit d'aller voir dans le Livre des Artisans In-Game si personne ne peut t'aider si tu tiens vraiment à fm l'item toi même. Désolé, et bon jeu !");
+														message.guild.channels.find("name", "✅commandes_fm_dj").send(" Salut, **"+ pseudo+"** malheureusement les Forgemages pensent que ta commande est trop compliquée à réaliser, voici leurs raisons : **" + detail + " **. le DarkBot te recommande de te tourner soit vers l'HDV, soit d'aller voir dans le Livre des Artisans In-Game si personne ne peut t'aider si tu tiens vraiment à fm l'item toi même. Désolé, et bon jeu !");
 														} catch (err) {
 														console.log(err);
 														}
