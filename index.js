@@ -1,8 +1,14 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
-const Command = require("../../modules/Command.js");
+const low = require("lowdb")
+const FileSync = require("lowdb/adapters/FileSync")
 
+const adapter = new FileSync('database.json');
+const db = low(adapter);
+
+db.defaults({ histoires: []})
+ .write()
 
 let os = require('os')
 
@@ -12,22 +18,22 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 	
-client.on("guildMemberAdd", member => {
-	
-	const bvn = member.guild.channels.find(m => m.name === "message-de-bienvenue-i");
-	if (!bvn) return;
-	const embed = new Discord.RichEmbed()
-		.setColor('#009114')
-		.setAuthor(member.user.tag, member.user.avatarURL)
-		.setTitle("Arrivée d'un nouvel utilisateur")
-		.addField("Un nouvel utilisateur vient d'arriver", `Il s'agit de [${member.user.tag}](https://discordapp.com/)`, true)
-		.setDescription("J'espère que tu t'y plairas")
-		.addField("Ma commande est `-help`", "Si tu souhaites savoir mon fonctionnement")
-		.addField(`Nombre de membres après l'arrivée de __${member.user.tag}__`, member.guild.memberCount)
-		.setFooter(`ID : ${member.user.id} | DARKBOT`)
-		.setTimestamp()
-bvn.send({embed})
-});
+if (!message.content.startsWith(prefix)) return;
+var args = message.content.substring(prefix.length).splt(" ");
+
+switch (args[0].toLowerCase()){
+	case "newstory":
+	var value = message.content.substr(10);
+var author = message.author.id;
+	console.log(value)
+message.reply("Ajout de l'historique a la base de données")
+db.get('histoires')
+	.push({ id: number + 1, story_value, stroty_author: author})
+	.write();
+
+
+	break;
+}
 
 /*client.on("message", (message) => {
 	const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -83,27 +89,8 @@ bvn.send({embed})
 	})}
 	
 	return
-	})
+	})*/
 
-	client.on("message", (message) => {
-		const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
-		const command = args1.shift().toLowerCase();
-		if (command === 'absentstop') {
-			let split = ';';
-			args = args1.join(' ').split(split);
-			if(!args[0]) return message.channel.send("Je ne peut pas enlever ton absence : `-absentstop tonpseudodiscord")
-			let role = 'absent';
-			let gRole = message.guild.roles.find(`name`, role);
-			let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-			(rMember.removeRole(gRole.id));
-			message.channel.send(`:white_check_mark:Tu n'est plus absent`)
-			let str = "<@351809725513465867>";
-      let id = str.replace(/[<@!>]/g, '');
-			client.fetchUser(id)
-			.then(user => {user.send(`**${message.author.username}** n'est plus absent`);
-
-		})}return
-		})*/
 
 client.on('message', message => {
   const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
