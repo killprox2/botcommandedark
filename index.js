@@ -1,14 +1,14 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
-/*const low = require("lowdb")
-const FileSync = require("lowdb/adapters/FileSync")
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
 
 const adapter = new FileSync('database.json');
 const db = low(adapter);
 
 db.defaults({ histoires: []})
- .write()*/
+ .write()
 
 let os = require('os')
 
@@ -18,7 +18,7 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 	
-/*if (!message.content.startsWith(prefix)) return;
+if (!message.content.startsWith(prefix)) return;
 var args = message.content.substring(prefix.length).splt(" ");
 
 switch (args[0].toLowerCase()){
@@ -28,12 +28,12 @@ var author = message.author.id;
 	console.log(value)
 message.reply("Ajout de l'historique a la base de données")
 db.get('histoires')
-	.push({ id: number + 1, story_value, stroty_author: author})
+	.push({ id: number + 1, story_value: value, story_author: author})
 	.write();
 
 
 	break;
-}*/
+}
 
 /*client.on("message", (message) => {
 	const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
