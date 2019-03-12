@@ -31,6 +31,10 @@ function generateXp() {
 return Math.floor(Math.random() * (max - min + 1)) + min;
 
 }
+client.on("message", async message => {
+if(message.author.bot) return;
+if(message.channel.type === "dm") return;
+
 con.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, rows) => {
 	if(err) throw err;
 
@@ -45,6 +49,7 @@ con.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, rows) => {
 	}
 
 });
+
 client.on('message', message => {
   const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args1.shift().toLowerCase();
