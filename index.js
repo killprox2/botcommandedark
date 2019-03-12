@@ -18,7 +18,7 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 	
-if (!message.content.startsWith(prefix)) return;
+client.on("message", message => {
 var args = message.content.substring(prefix.length).splt(" ");
 
 switch (args[0].toLowerCase()){
