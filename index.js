@@ -1,14 +1,14 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
-const low = require("lowdb")
+/*const low = require("lowdb")
 const FileSync = require("lowdb/adapters/FileSync")
 
 const adapter = new FileSync('database.json');
 const db = low(adapter);
 
 db.defaults({ histoires: []})
- .write()
+ .write()*/
 
 let os = require('os')
 
@@ -18,7 +18,7 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 	
-if (!message.content.startsWith(prefix)) return;
+/*if (!message.content.startsWith(prefix)) return;
 var args = message.content.substring(prefix.length).splt(" ");
 
 switch (args[0].toLowerCase()){
@@ -33,7 +33,7 @@ db.get('histoires')
 
 
 	break;
-}
+}*/
 
 /*client.on("message", (message) => {
 	const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
