@@ -3,14 +3,14 @@ const config = {
     prefix: "_",
     modLogChannel: "silent-logs",
     modRole: "Duelist",
-    adminRole: "Master",
+    adminRole: "~ le Staff ~ ",
     systemNotice: true
   },
   permLevels: [
     { level: 0, name: "Utilisateur", check: () => true },
     {
       level: 1,
-      name: "Duelist",
+      name: "~ le Staff ~ ",
       check: message => {
         try {
           const modRole = message.guild.roles.find(
@@ -24,7 +24,7 @@ const config = {
     },
     {
       level: 2,
-      name: "Master",
+      name: "~ le Staff ~ ",
       check: message => {
         try {
           const adminRole = message.guild.roles.find(
@@ -39,7 +39,7 @@ const config = {
     },
     {
       level: 3,
-      name: "Flareon",
+      name: "~ le Staff ~ ",
       check: message => message.client.appInfo.owner.id === message.author.id
     }
   ]
