@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
+const Command = require("../../modules/Command.js");
 
 
 let os = require('os')
@@ -11,6 +12,16 @@ client.on('ready', function () {
 
 client.login(process.env.TOKEN)
 
+class index extends Command {
+  constructor(client) {
+    super(client, {
+      name: "help",
+      description: "Afficher toutes les commandes disponibles.",
+      usage: "help [commande]",
+      aliases: ["h"]
+    });
+	
+	
 client.on("guildMemberAdd", member => {
 	
 	const bvn = member.guild.channels.find(m => m.name === "message-de-bienvenue-i");
