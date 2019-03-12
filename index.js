@@ -11,16 +11,6 @@ client.on('ready', function () {
 })
 
 client.login(process.env.TOKEN)
-
-class index extends Command {
-  constructor(client) {
-    super(client, {
-      name: "help",
-      description: "Afficher toutes les commandes disponibles.",
-      usage: "help [commande]",
-      aliases: ["h"]
-    });
-	
 	
 client.on("guildMemberAdd", member => {
 	
