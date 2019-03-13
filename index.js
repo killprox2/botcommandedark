@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const prefix = "-";
-const mysql = require("mysql");
 
 let os = require('os')
 
@@ -58,19 +57,27 @@ client.on('message', message => {
 }
 })
 
+var mysql = require('mysql');
+
 var con = mysql.createConnection({
 	host: "81.185.161.208",
 	user: "darkpandore3",
 	password: "alizee",
 	database: "darkpandore3"
 });
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
 client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
 							let object = args[0];
 							let detail = args.slice(1).join(" ");
-											if(command === "absent"){
+											if(command === "sabs"){
 													if(!object){
 																	var err_code = new Discord.RichEmbed()
 																	.setTitle('Error 400 - Bad Request')
@@ -95,9 +102,13 @@ client.on('message', message => {
 																					.setColor('#8e44ad')
 																					message.channel.send(code);
 																					con.query(`SELECT * FROM absence`)
-																					sql = `INSERT INTO absence (pseudo,temps,detail) VALUES ('${message.author.id}, ${object}, ${detail}')`
+																					var sql = `INSERT INTO absence (name, address) VALUES ('${message.author.id}, ${object}, ${detail}')`;
 																					message.guild.channels.find("name", "test_admin").send(" Salut le joueur @"+ message.author.username +" est absent jusqu'au **"+ object +"** . Informations supplémentaires : **" + detail + "**");
-																					} catch (err) {
+																					con.query(sql, function (err, result) {
+																						if (err) throw err;
+																						console.log("1 record inserted, ID: " + result.insertId);
+																					});
+																				} catch (err) {
 																					console.log(err);
 																					}
 																					con.end();
