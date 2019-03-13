@@ -57,16 +57,54 @@ client.on('message', message => {
 }
 })
 
-var mysql = require('mysql');
-
+/*const mysql = require("mysql");
 var con = mysql.createConnection({
-	host: "sql3.cluster1.easy-hebergement.net",
+  host: "mysql.cluster1.easy-hebergement.net",
   user: "darkpandore3",
   password: "alizee",
   database: "darkpandore3"
 });
+var mySqlClient = mysql.createConnection({
+  host: "mysql.cluster1.easy-hebergement.net",
+  user: "darkpandore3",
+  password: "alizee",
+  database: "darkpandore3"
+});
+var selectQuery = 'SELECT * FROM absence';
 
-client.on('message', message => {
+mySqlClient.query(
+  selectQuery,
+  function select(error, results, fields) {
+    if (error) {
+      console.log(error);
+      mySqlClient.end();
+      return;
+    }
+      
+    if ( results.length > 0 )  { 
+      var firstResult = results[ 0 ];
+      console.log('id: ' + firstResult['id']);
+      console.log('label: ' + firstResult['label']);
+      console.log('valeur: ' + firstResult['valeur']);
+    } else {
+      console.log("Pas de données");
+    }
+    mySqlClient.end();
+  }
+);
+con.connect(function(err) {
+  console.log("Connected!");
+});
+con.connect(function(err) {
+
+	var sql = "INSERT INTO absence (pseudo, temps, detail) VALUES ('test', 'test2', 'test3')";
+  con.query(sql, function (err, result) {
+		
+    console.log("1 record inserted, ID: " + result + con);
+  });
+});
+/*
+client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
@@ -90,26 +128,22 @@ client.on('message', message => {
 															}else{
 																	 
 																	 
-																					try {
+																				
 																					var code = new Discord.RichEmbed()
 																					.setTitle('Succès :')
 																					.setDescription(":white_check_mark: Votre Absence a été envoyé")
 																					.setColor('#8e44ad')
-																					message.channel.send(code);
-																					con.query(`SELECT * FROM absence`)
-																					var sql = `INSERT INTO absence (name, address) VALUES ('${message.author.id}, ${object}, ${detail}')`;
+																					
+																						var sql = "INSERT INTO absence (pseudo, temps, detail) VALUES ('"+ message.author +"', '" + object + "', '" + detail + "')"
+																						con.query(sql, function (err, result) {
+																							
+																							console.log(result);
+																							message.channel.send(code);
+																		
 																					message.guild.channels.find("name", "test_admin").send(" Salut le joueur @"+ message.author.username +" est absent jusqu'au **"+ object +"** . Informations supplémentaires : **" + detail + "**");
-																					con.query(sql, function (result) {
-																						console.log("1 record inserted, Object: " + result + object + detail);
-																					});
-																				} catch (err) {
-																					console.log(err);
-																					}
-																					con.end();
-													}
-									}return
-							 
-					})
+																						})
+																					}}
+																						});*/
 
 
 client.on('message', message => {
