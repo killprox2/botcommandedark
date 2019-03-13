@@ -10,45 +10,54 @@ client.on('ready', function () {
 })
 
 client.login(process.env.TOKEN)
-	
 var con = mysql.createConnection({
-
-	host: "sql3.cluster1.easy-hebergement.net",
-	user: "darkpandore6",
-	password: "exgfgar",
-	database: "darkpandore6"
-
+	host: "81.185.161.208",
+	user: "darkpandore3",
+	password: "alizee",
+	database: "darkpandore3"
 });
+client.on('message', message => {
+	if(message.author.bot || message.channel.type == "dm") return;
+							const args = message.content.slice(prefix.length).trim().split(/ +/g);
+							const command = args.shift().toLowerCase();
+							let object = args[0];
+							let detail = args.slice(1).join(" ");
+											if(command === "absent"){
+													if(!object){
+																	var err_code = new Discord.RichEmbed()
+																	.setTitle('Error 400 - Bad Request')
+																	.setDescription("Tu n\'a pas précisé le temps de ton absence! :warning: -absent Temps + Information")
+																	.setColor('#e74c3c')
+																	message.channel.send(err_code);
+													 
+													}else if(!detail){
+																	var err_code = new Discord.RichEmbed()
+																	.setTitle('Error 400 - Bad Request')
+																	.setDescription("Tu n\'a pas précisé les informations :warning: -absent Temps + Information")
+																	.setColor('#e74c3c')
+																	message.channel.send(err_code);
+													 
+															}else{
+																	 
+																	 
+																					try {
+																					var code = new Discord.RichEmbed()
+																					.setTitle('Succès :')
+																					.setDescription(":white_check_mark: Votre Absence a été envoyé")
+																					.setColor('#8e44ad')
+																					message.channel.send(code);
+																					con.query(`SELECT * FROM absence`)
+																					sql = `INSERT INTO absence (pseudo,temps,detail) VALUES ('${message.author.id}, ${object}, ${detail}')`
+																					message.guild.channels.find("name", "test_admin").send(" Salut le joueur @"+ message.author.username +" est absent jusqu'au **"+ object +"** . Informations supplémentaires : **" + detail + "**");
+																					} catch (err) {
+																					console.log(err);
+																					}
+																					con.end();
+													}
+									}return
+							 
+					})
 
-con.connect(err => {
-	if(err) throw err;
-	console.log("Connecté a la base de donnée");
-});
-
-function generateXp() {
-	let min = 20;
-	let max = 30;
-return Math.floor(Math.random() * (max - min + 1)) + min;
-
-}
-client.on("message", async message => {
-if(message.author.bot) return;
-if(message.channel.type === "dm") return;
-
-con.query(`SELECT * FROM xp WHERE id = '${message.author.id}'`, (err, rows) => {
-	if(err) throw err;
-
-	let sql;
-
-	if(rows.length < 1) {
-			sql = `INSERT INTO xp (id, xp) VALUES ('${message.author.id}', ${generateXp()})`
-	}else{
-		let xp = rows[0].xp;
-
-		sql = `UPDATE xp SET xp = ${xp + generateXp()} WHERE id = '${message.guild.id}'`;
-	}
-
-});
 
 client.on('message', message => {
   const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
