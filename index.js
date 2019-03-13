@@ -28,11 +28,10 @@ client.on('message', message => {
   };
 })
 client.on('message', message => {
-	if(message.author.bot || message.channel.type == "dm") return;
-							const args = message.content.slice(prefix.length).trim().split(/ +/g);
-											if(command === "vabs"){
-																message.channel.send(`http://www.darkpandore.com/listabsence.php`);
-		}
+  if (message.content === '-vabs') {   
+    message.delete()
+		message.channel.send(`http://www.darkpandore.com/listabsence.php`);
+  };
 })
 client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
