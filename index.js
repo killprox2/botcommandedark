@@ -60,15 +60,10 @@ client.on('message', message => {
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-	host: "81.185.161.208",
-	user: "darkpandore3",
-	password: "alizee",
-	database: "darkpandore3"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
+	host: "sql3.cluster1.easy-hebergement.net",
+  user: "darkpandore3",
+  password: "alizee",
+  database: "darkpandore3"
 });
 
 client.on('message', message => {
@@ -104,9 +99,8 @@ client.on('message', message => {
 																					con.query(`SELECT * FROM absence`)
 																					var sql = `INSERT INTO absence (name, address) VALUES ('${message.author.id}, ${object}, ${detail}')`;
 																					message.guild.channels.find("name", "test_admin").send(" Salut le joueur @"+ message.author.username +" est absent jusqu'au **"+ object +"** . Informations supplémentaires : **" + detail + "**");
-																					con.query(sql, function (err, result) {
-																						if (err) throw err;
-																						console.log("1 record inserted, ID: " + result.insertId);
+																					con.query(sql, function (result) {
+																						console.log("1 record inserted, Object: " + result + object + detail);
 																					});
 																				} catch (err) {
 																					console.log(err);
