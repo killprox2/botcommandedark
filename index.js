@@ -9,6 +9,8 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
+client.login(process.env.TOKEN)
+
 client.on('message', message => {
   if (message.content === '-abs') {   
     message.delete()
@@ -25,8 +27,31 @@ client.on('message', message => {
   message.channel.sendEmbed(embed)
   };
 })
+client.on('message', message => {
+	if(message.author.bot || message.channel.type == "dm") return;
+							const args = message.content.slice(prefix.length).trim().split(/ +/g);
+							const command = args.shift().toLowerCase();
+							let object = args[0];
+							if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+								var pollEmbed = new Discord.RichEmbed()
+								.setDescription('Pas la permission "MANAGE_MESSAGES".')
+								.setColor(color)
+								message.channel.send(pollEmbed)
+							}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
+											if(command === "gabs"){
+													if(!object){
+																	var err_code = new Discord.RichEmbed()
+																	.setTitle('Error 400 - Bad Request')
+																	.setDescription("Tu n\'a pas précisé ton ID site! :warning: -gabs ID")
+																	.setColor('#e74c3c')
+																	message.channel.send(err_code);											 
+															}else{
+																message.channel.send(`http://www.darkpandore.com/listabsence.php?id=` + object);
+		}
+	}
+}
+})
 
-client.login(process.env.TOKEN)
 var con = mysql.createConnection({
 	host: "81.185.161.208",
 	user: "darkpandore3",
