@@ -30,6 +30,13 @@ client.on('message', message => {
 client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
+											if(command === "vabs"){
+																message.channel.send(`http://www.darkpandore.com/listabsence.php`);
+		}
+})
+client.on('message', message => {
+	if(message.author.bot || message.channel.type == "dm") return;
+							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
 							let object = args[0];
 							if(!message.member.hasPermission("MANAGE_MESSAGES")) {
