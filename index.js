@@ -9,6 +9,23 @@ client.on('ready', function () {
   console.log("client connecté !")
 })
 
+client.on('message', message => {
+  if (message.content === '-abs') {   
+    message.delete()
+      var embed = new Discord.RichEmbed()
+      .setTitle("**~~-+-------------[-~~ __Dark Commands__ ~~-]------------+-~~**")
+      .setColor(0x00AE86)
+      .setDescription("Permet de connaitre toutes les commandes absences")
+      .setColor("0xB40404") 
+	  .addField("**-sabs**", "Permet de signalé une absence")
+	  .addField("**-vabs**", "Permet d'affiché les absences signalé'")
+		.addField("**-gabs** + *id site*", "Permet de gérer les absences (commande admin)")
+      .setImage("https://i.imgur.com/A1wcXrl.png")
+      .setFooter("#__**DarkBot**__# by darkvince37")
+  message.channel.sendEmbed(embed)
+  };
+})
+
 client.login(process.env.TOKEN)
 var con = mysql.createConnection({
 	host: "81.185.161.208",
