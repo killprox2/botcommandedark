@@ -18,7 +18,7 @@ client.on('message', message => {
       .setColor(0x00AE86)
       .setDescription("Permet de connaitre toutes les commandes absences")
       .setColor("0xB40404") 
-	  .addField("**-sabs**", "Permet de signalé une absence")
+	  .addField("**-sabs**", "Permet de signalé une absence ex: 10/04 Je part en vacance")
 	  .addField("**-vabs**", "Permet d'affiché les absences signalé'")
 		.addField("**-gabs** + *id site*", "Permet de gérer les absences (commande admin)")
       .setImage("https://i.imgur.com/A1wcXrl.png")
@@ -98,14 +98,14 @@ client.on('message', message  => {
 													if(!object){
 																	var err_code = new Discord.RichEmbed()
 																	.setTitle('Error 400 - Bad Request')
-																	.setDescription("Tu n\'a pas précisé le temps de ton absence! :warning: -absent Temps + Information")
+																	.setDescription("Voici un exemple -sabs 10/04 je part en vacance")
 																	.setColor('#e74c3c')
 																	message.channel.send(err_code);
 													 
 													}else if(!detail){
 																	var err_code = new Discord.RichEmbed()
 																	.setTitle('Error 400 - Bad Request')
-																	.setDescription("Tu n\'a pas précisé les informations :warning: -absent Temps + Information")
+																	.setDescription("Tu n\'a pas précisé les informations :warning: -absent 10/04 + Information")
 																	.setColor('#e74c3c')
 																	message.channel.send(err_code);
 													 
@@ -116,6 +116,7 @@ client.on('message', message  => {
 																					var code = new Discord.RichEmbed()
 																					.setTitle('Succès :')
 																					.setDescription(":white_check_mark: Votre Absence a été envoyée")
+																					message.channel.send("Voici un résumé de votre absence: "+ message.author.username +" est absent jusqu'au " + object + " raison "+ detail +" ")
 																					.setColor('#8e44ad')
 																					
 																						var sql = "INSERT INTO absence (pseudo, temps, mule, detail, platform, date) VALUES ('"+ message.author.username +"', 'Aucune information' , '" + object + "', '" + detail + "', 'DISCORD', NOW())";
