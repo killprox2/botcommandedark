@@ -116,7 +116,7 @@ client.on('message', message  => {
 																					var code = new Discord.RichEmbed()
 																					.setTitle('Succès :')
 																					.setDescription(":white_check_mark: Votre Absence a été envoyée")
-																					message.channel.send("Voici un résumé de votre absence: "+ message.author.username +" est absent jusqu'au " + object + " raison "+ detail +" ")
+									
 																					.setColor('#8e44ad')
 																					
 																						var sql = "INSERT INTO absence (pseudo, temps, mule, detail, platform, date) VALUES ('"+ message.author.username +"', 'Aucune information' , '" + object + "', '" + detail + "', 'DISCORD', NOW())";
@@ -124,7 +124,7 @@ client.on('message', message  => {
 																							
 																							console.log(result);
 																							message.channel.send(code);
-																		
+																							message.channel.send("Voici un résumé de votre absence: "+ message.author.username +" est absent jusqu'au " + object + " raison "+ detail +" ")
 																					message.guild.channels.find("name", "test_admin").send(" Salut le joueur @"+ message.author.username +" est absent jusqu'au **"+ object +"** . Informations supplémentaires : **" + detail + "**");
 																						})
 																					}} 
@@ -225,7 +225,8 @@ client.on('message', message => {
       .setDescription("Permet de connaitre toutes les commandes")
       .setColor("0xB40404") 
 	  .addField("**-fm** *object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*", "Permet de passer une commande a un forgemage")
-	  .addField("**-loto**", "Permet de connaitre les commandes du loto")
+		.addField("**-loto**", "Permet de connaitre les commandes du loto")
+		.addField("**-abs**", "Signalé une absence")
 		.addField("**-id**", "Permet de connaitre ton ID")
 		.addField("**-sondage+**", "Permet de créer des sondages ")
 		.addField("**-dmall**", "Permet de DM tous les joueurs")
