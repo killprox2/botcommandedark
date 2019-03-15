@@ -118,7 +118,7 @@ client.on('message', message  => {
 																					.setDescription(":white_check_mark: Votre Absence a été envoyée")
 																					.setColor('#8e44ad')
 																					
-																						var sql = "INSERT INTO absence (pseudo, temps, detail) VALUES ('"+ message.author.username +"', '" + object + "', '" + detail + "')";
+																						var sql = "INSERT INTO absence (pseudo, temps, mule, detail, platform, date) VALUES ('"+ message.author.username +"', '" + object + "', '" + detail + "', 'DISCORD', NOW())";
 																						connection.query(sql, function (result) {
 																							
 																							console.log(result);
