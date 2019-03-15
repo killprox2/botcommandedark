@@ -1,8 +1,8 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
 const client = new Discord.Client()
 const prefix = "-";
 
-let os = require('os')
+let os = require('os');
 
 client.on('ready', function () {
   console.log("client connecté !")
@@ -24,13 +24,13 @@ client.on('message', message => {
       .setImage("https://i.imgur.com/A1wcXrl.png")
       .setFooter("#__**DarkBot**__# by darkvince37")
   message.channel.sendEmbed(embed)
-  };
+  }; return
 })
 client.on('message', message => {
   if (message.content === '-vabs') {   
     message.delete()
 		message.channel.send(`http://www.darkpandore.com/listabsence.php`);
-  };
+  }; return
 })
 client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
@@ -53,57 +53,41 @@ client.on('message', message => {
 															}else{
 																message.channel.send(`http://www.darkpandore.com/listabsence.php?id=` + object);
 		}
-	}
+	} return
 }
 })
 
-/*const mysql = require("mysql");
-var con = mysql.createConnection({
-  host: "mysql.cluster1.easy-hebergement.net",
-  user: "darkpandore3",
-  password: "alizee",
-  database: "darkpandore3"
-});
-var mySqlClient = mysql.createConnection({
-  host: "mysql.cluster1.easy-hebergement.net",
-  user: "darkpandore3",
-  password: "alizee",
-  database: "darkpandore3"
-});
-var selectQuery = 'SELECT * FROM absence';
+const mysql = require("mysql");
+var connection;
 
-mySqlClient.query(
-  selectQuery,
-  function select(error, results, fields) {
-    if (error) {
-      console.log(error);
-      mySqlClient.end();
-      return;
-    }
-      
-    if ( results.length > 0 )  { 
-      var firstResult = results[ 0 ];
-      console.log('id: ' + firstResult['id']);
-      console.log('label: ' + firstResult['label']);
-      console.log('valeur: ' + firstResult['valeur']);
-    } else {
-      console.log("Pas de données");
-    }
-    mySqlClient.end();
-  }
-);
-con.connect(function(err) {
-  console.log("Connected!");
-});
-con.connect(function(err) {
+function handleDisconnect() {
+  connection = mysql.createConnection({
+		host: "sql3.cluster1.easy-hebergement.net",
+		user: "darkpandore3",
+		password: process.env.MDP,
+		database: "darkpandore3"
+	}); // Recreate the connection, since
+                                                  // the old one cannot be reused.
 
-	var sql = "INSERT INTO absence (pseudo, temps, detail) VALUES ('test', 'test2', 'test3')";
-  con.query(sql, function (err, result) {
-		
-    console.log("1 record inserted, ID: " + result + con);
+  connection.connect(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      handleDisconnect();                         // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
   });
-});
-/*
+}
+
+handleDisconnect();
+
 client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -131,19 +115,19 @@ client.on('message', message  => {
 																				
 																					var code = new Discord.RichEmbed()
 																					.setTitle('Succès :')
-																					.setDescription(":white_check_mark: Votre Absence a été envoyé")
+																					.setDescription(":white_check_mark: Votre Absence a été envoyée")
 																					.setColor('#8e44ad')
 																					
-																						var sql = "INSERT INTO absence (pseudo, temps, detail) VALUES ('"+ message.author +"', '" + object + "', '" + detail + "')"
-																						con.query(sql, function (err, result) {
+																						var sql = "INSERT INTO absence (pseudo, temps, detail) VALUES ('"+ message.author.username +"', '" + object + "', '" + detail + "')";
+																						connection.query(sql, function (result) {
 																							
 																							console.log(result);
 																							message.channel.send(code);
 																		
 																					message.guild.channels.find("name", "test_admin").send(" Salut le joueur @"+ message.author.username +" est absent jusqu'au **"+ object +"** . Informations supplémentaires : **" + detail + "**");
 																						})
-																					}}
-																						});*/
+																					}} 
+																						});
 
 
 client.on('message', message => {
@@ -255,7 +239,7 @@ client.on('message', message => {
       .setImage("https://i.imgur.com/A1wcXrl.png")
       .setFooter("#__**DarkBot**__# by darkvince37")
   message.channel.sendEmbed(embed)
-  };
+  }; return
 })
 client.on("message", (message) => {
 if (message.content.startsWith(prefix + 'euromillion')) {
