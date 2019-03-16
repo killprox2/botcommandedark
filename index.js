@@ -120,9 +120,9 @@ client.on('message', message  => {
 									
 																					.setColor('#8e44ad')
 																					
-																						var sql = "INSERT INTO loto (numero, pseudo) VALUES ('object', 'detail')";
-																						var sql = "SELECT numero, pseudo FROM loto)";
-																						connection.query(sql, function (result) {
+																						var sql2 = "INSERT INTO loto (numero, pseudo) VALUES ('"+ object +"', '" + detail + "')";
+																						var sql2 = "SELECT numero, pseudo FROM loto)";
+																						connection.query(sql2, function (result) {
 																							
 																							console.log(result);
 																							message.channel.send(code);
