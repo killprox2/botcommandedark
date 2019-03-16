@@ -88,6 +88,77 @@ function handleDisconnect() {
 
 handleDisconnect();
 
+function handleDisconnect2() {
+  connection = mysql.createConnection({
+		host: "sql3.cluster1.easy-hebergement.net",
+		user: "darkpandore3",
+		password: process.env.MDP,
+		database: "darkpandore3"
+	}); // Recreate the connection, since
+                                                  // the old one cannot be reused.
+
+  connection.connect(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect2, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+      handleDisconnect2();                         // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
+  });
+}
+
+handleDisconnect2();
+
+client.on('message', message  => {
+	if(message.author.bot || message.channel.type == "dm") return;
+							const args = message.content.slice(prefix.length).trim().split(/ +/g);
+							const command = args.shift().toLowerCase();
+							let object = args[0];
+							let detail = args.slice(1).join(" ");
+											if(command === "lotoadd"){
+													if(!object){
+																	var err_code = new Discord.RichEmbed()
+																	.setTitle('Error 400 - Bad Request')
+																	.setDescription("Voici un exemple -loto 1 darkvince_")
+																	.setColor('#e74c3c')
+																	message.channel.send(err_code);
+													 
+													}else if(!detail){
+																	var err_code = new Discord.RichEmbed()
+																	.setTitle('Error 400 - Bad Request')
+																	.setDescription("Tu n\'a pas précisé les informations :warning: -lotoadd numéro pseudo")
+																	.setColor('#e74c3c')
+																	message.channel.send(err_code);
+													 
+															}else{
+																	 
+																	 
+																				
+																					var code = new Discord.RichEmbed()
+																					.setTitle('Succès :')
+																					.setDescription(":white_check_mark: Le joueur a était ajoutée")
+									
+																					.setColor('#8e44ad')
+																					
+																						var sql = "INSERT INTO loto (numero, pseudo) VALUES ('"+ object +"', '" + detail + "')";
+																						var sql = "SELECT numero, pseudo FROM loto)";
+																						connection.query(sql, function (result) {
+																							
+																							console.log(result);
+																							message.channel.send(code);
+																							message.channel.send("Voici la nouvelle liste")
+																					message.guild.channels.find("name", "test_admin").send(" Salut le joueur @"+ message.author.username +" est absent jusqu'au **"+ object +"** . Informations supplémentaires : **" + detail + "**");
+																						})
+																					}} 
+																						});
+
 client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
