@@ -169,6 +169,20 @@ client.on('message', message => {
 																				})} 
 		}	}});
 
+		client.on('message', message  => {
+			if(message.author.bot || message.channel.type == "dm") return;
+			if(message.member.hasPermission("MANAGE_MESSAGES")){
+				if(command === "lotosupp"){
+					var sql = "DELETE FROM loto";
+					connection.query(sql, function (result) {
+					message.channel.send("Le loto a était remis a zéro")
+					console.log(result);
+					})
+
+				}
+
+									}});
+
 /*	client.on("message", (message) => {
 	if (message.content.startsWith(prefix + 'tloto')) {
 		message.delete()
