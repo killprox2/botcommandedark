@@ -87,10 +87,160 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
+client.on('message', message => {
+	if (message.content === '-loto') {   
+		message.delete()
+		var embed = new Discord.RichEmbed()
+		.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
+		.setColor(0x00AE86)
+		.setDescription("Permet de connaitre toutes les commandes du loto")
+		.setColor("0xB40404") 
+		.addField("\n**-nloto**\n", "Permet d'effectué le tirage d'un numéro")
+		.addField("\n**-rloto**\n", "Permet de connaitre les résultats")
+		.addField("\n**-iloto**\n", "Permet de connaitre les inscrits")
+		.addField("\n**-lotoadd**\n", "Ajouté un membre au loto (commande admin)")
+		.setImage("https://i.imgur.com/A1wcXrl.png")
+		.setFooter("#__**DarkBot**__# by darkvince37")
+	message.channel.sendEmbed(embed)
+	}return
+	})
 
+	client.on('message', message  => {
+		if(message.author.bot || message.channel.type == "dm") return;
+		if(message.member.hasPermission("MANAGE_MESSAGES")){
+								const args = message.content.slice(prefix.length).trim().split(/ +/g);
+								const command = args.shift().toLowerCase();
+								let un = args[0];
+								let deux = args[1];
+								let trois = args[2];
+								let quatre = args[3];
+								let cinq = args[4];
+												if(command === "rloto"){
+														if(!un){
+																		var err_code = new Discord.RichEmbed()
+																		.setTitle('Error 400 - Bad Request')
+																		.setColor('#e74c3c')
+																		message.channel.send(err_code);
+														 
+														}else if(!deux){
+																		var err_code = new Discord.RichEmbed()
+																		.setTitle('Error 400 - Bad Request')
+																		.setColor('#e74c3c')
+																		message.channel.send(err_code);
+																	}else if(!trois){
+																		var err_code = new Discord.RichEmbed()
+																		.setTitle('Error 400 - Bad Request')
+																	
+																		.setColor('#e74c3c')
+																		message.channel.send(err_code);
+																	}else if(!quatre){
+																		var err_code = new Discord.RichEmbed()
+																		.setTitle('Error 400 - Bad Request')
+																		
+																		.setColor('#e74c3c')
+																		message.channel.send(err_code);
+																	}else if(!cinq){
+																		var err_code = new Discord.RichEmbed()
+																		.setTitle('Error 400 - Bad Request')
+																	
+																		.setColor('#e74c3c')
+																		message.channel.send(err_code);
+														 
+																}else{
+																	var code = new Discord.RichEmbed()
+																	
+																	var sql = "INSERT INTO lotor (un, deux, trois, quatre, cinq) VALUES ('" + un + "', '" + deux + "', '" + trois + "', '" + quatre + "', '" + cinq + "')";
+																	
+																		connection.query(sql, function (result) {
+																			
+																			console.log(result);
+																		 
+																					
+																	var embed = new Discord.RichEmbed()
+																	.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
+																	.setColor(0x00AE86)
+																	.addField("**1.**", un)
+																	.addField("**2.**", deux)
+																	.addField("**3.**", trois)
+																	.addField("**4.**", quatre)
+																	.addField("**5.**", cinq)
+																message.channel.sendEmbed(embed)
+
+																				})} 
+		}	}});
+
+/*	client.on("message", (message) => {
+	if (message.content.startsWith(prefix + 'tloto')) {
+		message.delete()
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+			var pollEmbed = new Discord.RichEmbed()
+			.setDescription('Pas la permission "MANAGE_MESSAGES".')
+			.setColor(color)
+			message.channel.send(pollEmbed)
+		}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
+			var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Leloverdark', 'Ultrawguri', 'Preskapwal', 'Dak-man', 'Hilduren', 'Natrakh', 'Kroonembourg', 'Reyanni', 'Asianax', 'Nanitendayo', 'Soo-vetage', 'Broog', 'Heaven', 'Tashira', 'Lyween', 'Mecho', 'Prying-heart', 'Hook', 'Pedhal', 'Droma', 'Eh-derien-monchou', 'Ipazzio ', 'Golryhol'];				//var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
+		var maissuiterdm = Math.floor(Math.random()*maissuite.length);
+		var embed = new Discord.RichEmbed()
+		.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
+		.setColor(0x00AE86)
+			.addField("Félicitation à ", maissuite[maissuiterdm])
+
+			message.channel.sendEmbed(embed)}
+	}return
+	})*/
+
+	client.on("message", (message) => {
+		const args = message.content.slice(prefix.length).trim().split(/ +/g);
+		const command = args.shift().toLowerCase();
+		if (command ==='nloto') {
+			if(!args[0]){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 400 - Bad Request')
+				.setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else if(!message.member.hasPermission("MANAGE_MESSAGES")){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 403 - Unauthorized')
+				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else if(isNaN(args[0])){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 400 - Bad Request')
+				.setDescription('L\'argument donné n\'est pas un nombre !')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else if(parseInt(args[0]) > 99){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 400 - Bad Request')
+				.setDescription('Tu ne peux pas mettre plus que 99 max. !')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else{
+
+				 //rand = randomnum(1, args[0]);
+				 let rand = Math.floor((Math.random(1) * args[0]));
+				var embed = new Discord.RichEmbed()
+			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
+			.setColor(0x00AE86)
+			.addField("Le numéro ", rand)
+			.addField("Félicitation à toi")
+			message.channel.send("Voici la liste des numéros: http://www.darkpandore.com/loto.php")
+			message.channel.sendEmbed(embed)}
+
+			
+
+		}})
+	client.on("message", (message) => {
+		if (message.content.startsWith(prefix + 'iloto')) {
+			message.delete()	
+			message.channel.send("http://www.darkpandore.com/loto.php")}
+		})
 
 client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
+	if(message.member.hasPermission("MANAGE_MESSAGES")){
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
 							let object = args[0];
@@ -120,16 +270,17 @@ client.on('message', message  => {
 									
 																					.setColor('#8e44ad')
 																					
-																						var sql2 = "INSERT INTO loto (numero, pseudo) VALUES ('"+ object +"', '" + detail + "')";
-																						var sql2 = "SELECT numero, pseudo FROM loto)";
-																						connection.query(sql2, function (result) {
+																					var sql = "INSERT INTO loto (numero, pseudo, date) VALUES ('" + object + "', '" + detail + "', NOW())";
+																					
+																						connection.query(sql, function (result) {
 																							
 																							console.log(result);
+																							console.log("Number of records inserted: " + result);
 																							message.channel.send(code);
-																							message.channel.send("Voici la nouvelle liste")
+																						
 																						})
 																					}} 
-																						});
+	}	});
 
 client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
@@ -306,129 +457,7 @@ if (message.content.startsWith(prefix + 'euromillion')) {
 	message.channel.sendMessage("Les numéros: **"  + maissuite[maissuiterdm] +"** **" +  maissuite2[maissuiterdm2] + "** **" + maissuite3[maissuiterdm3] +"** **" + maissuite4[maissuiterdm4] + "** **" + maissuite5[maissuiterdm5] + "** n° complémentaire **" + maissuite6[maissuiterdm6] + "**")
 }
 })	
-	client.on('message', message => {
-		if (message.content === '-loto') {   
-		  message.delete()
-			var embed = new Discord.RichEmbed()
-			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
-			.setColor(0x00AE86)
-			.setDescription("Permet de connaitre toutes les commandes du loto")
-			.setColor("0xB40404") 
-			.addField("\n**-tloto**\n", "Permet d'effectué le tirage")
-			.addField("\n**-nloto**\n", "Permet d'effectué le tirage d'un numéro")
-			.addField("\n**-rloto**\n", "Permet de connaitre les résultats")
-			.addField("\n**-iloto**\n", "Permet de connaitre les informations")
-			.addField("\n**-mloto**\n", "Permet de connaitre la liste des membres inscrits")
-			.setImage("https://i.imgur.com/A1wcXrl.png")
-			.setFooter("#__**DarkBot**__# by darkvince37")
-		message.channel.sendEmbed(embed)
-		}return
-		})
 
-	
-		
-	  client.on('message', message => {
-		if (message.content === '-iloto') {   
-		  message.delete()
-			var embed = new Discord.RichEmbed()
-			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
-			.setColor(0x00AE86)
-			.setColor("0xB40404") 
-			.addField("**1.**", "Pour participer MP Scharky in Game")
-			.addField("**2.**", "FIN des inscriptions 13/10/18")
-			.addField("**3.**", "Il est possible que le même pseudo soit tiré au sort à plusieurs reprises. Le joueur ne peut gagner que le premier lot sur lequel il est tombé ")
-
-
-			message.channel.sendEmbed(embed)
-		}return
-	  })
-	  client.on('message', message => {
-		if (message.content === '-rloto') {   
-		  message.delete()
-			var embed = new Discord.RichEmbed()
-			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
-			.setColor(0x00AE86)
-			.addField("**1.**", "Downshift")
-			.addField("**2.**", "Leloverdark")
-			.addField("**3.**", "Aprix")
-			.addField("**4.**", "Wytexx")
-			.addField("**5.**", "Hook")
-			.addField("**Bonus.**", "Preskapwal")
-		message.channel.sendEmbed(embed)
-		}return
-		})
-	  client.on("message", (message) => {
-		if (message.content.startsWith(prefix + 'tloto')) {
-			message.delete()
-			if(!message.member.hasPermission("MANAGE_MESSAGES")) {
-				var pollEmbed = new Discord.RichEmbed()
-				.setDescription('Pas la permission "MANAGE_MESSAGES".')
-				.setColor(color)
-				message.channel.send(pollEmbed)
-			}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
-				var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Leloverdark', 'Ultrawguri', 'Preskapwal', 'Dak-man', 'Hilduren', 'Natrakh', 'Kroonembourg', 'Reyanni', 'Asianax', 'Nanitendayo', 'Soo-vetage', 'Broog', 'Heaven', 'Tashira', 'Lyween', 'Mecho', 'Prying-heart', 'Hook', 'Pedhal', 'Droma', 'Eh-derien-monchou', 'Ipazzio ', 'Golryhol'];				//var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
-			var maissuiterdm = Math.floor(Math.random()*maissuite.length);
-		  var embed = new Discord.RichEmbed()
-		  .setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
-		  .setColor(0x00AE86)
-				.addField("Félicitation à ", maissuite[maissuiterdm])
-
-				message.channel.sendEmbed(embed)}
-		}return
-		})
-
-		client.on("message", (message) => {
-			const args = message.content.slice(prefix.length).trim().split(/ +/g);
-			const command = args.shift().toLowerCase();
-			if (command ==='nloto') {
-				if(!args[0]){
-					var err_code = new Discord.RichEmbed()
-					.setTitle('Error 400 - Bad Request')
-					.setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
-					.setColor('#e74c3c')
-					message.channel.send(err_code);
-	}else if(!message.member.hasPermission("MANAGE_MESSAGES")){
-					var err_code = new Discord.RichEmbed()
-					.setTitle('Error 403 - Unauthorized')
-					.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
-					.setColor('#e74c3c')
-					message.channel.send(err_code);
-	}else if(isNaN(args[0])){
-					var err_code = new Discord.RichEmbed()
-					.setTitle('Error 400 - Bad Request')
-					.setDescription('L\'argument donné n\'est pas un nombre !')
-					.setColor('#e74c3c')
-					message.channel.send(err_code);
-	}else if(parseInt(args[0]) > 99){
-					var err_code = new Discord.RichEmbed()
-					.setTitle('Error 400 - Bad Request')
-					.setDescription('Tu ne peux pas mettre plus que 99 max. !')
-					.setColor('#e74c3c')
-					message.channel.send(err_code);
-	}else{
-
-					 //rand = randomnum(1, args[0]);
-					 let rand = Math.floor((Math.random(1) * args[0]));
-					var embed = new Discord.RichEmbed()
-				.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
-				.setColor(0x00AE86)
-				.addField("Le numéro ", rand)
-				message.channel.sendEmbed(embed)}
-
-				
-
-			}})
-		client.on("message", (message) => {
-			if (message.content.startsWith(prefix + 'mloto')) {
-				message.delete()	
-				var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Leloverdark', 'Ultrawguri', 'Preskapwal', 'Dak-man', 'Hilduren', 'Natrakh', 'Kroonembourg', 'Reyanni', 'Asianax', 'Nanitendayo', 'Soo-vetage', 'Broog', 'Heaven', 'Tashira', 'Lyween', 'Mecho', 'Prying-heart', 'Hook', 'Pedhal', 'Droma', 'Eh-derien-monchou', 'Ipazzio ', 'Golryhol'];	
-				var embed = new Discord.RichEmbed()
-				.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
-				.setColor(0x00AE86)
-				.addField("Liste joueur inscrit ", maissuite)
-				.setFooter(`Liste actualisé le 14/10/18 à 17h30 ${message.author.username}`);
-					message.channel.sendEmbed(embed)}
-			})
 
 client.on('message', message => {
   if (message.content === '-info') {   
