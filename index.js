@@ -175,8 +175,8 @@ client.on('message', message => {
 			if(message.member.hasPermission("MANAGE_MESSAGES")){
 				if (message.content === '-lotosupp') { 
 					var sql = "DELETE FROM loto";
-					var sql = "DELETE FROM lotor";
-					connection.query(sql, function (result) {
+					var sql2 = "DELETE FROM lotor";
+					connection.query(sql, sql2, function (result) {
 					message.channel.send("Le loto a était remis a zéro")
 					console.log(result);
 					})
