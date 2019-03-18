@@ -215,7 +215,7 @@ client.on('message', message => {
 				.setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
 				.setColor('#e74c3c')
 				message.channel.send(err_code);
-}else if(!message.member.hasPermission("MANAGE_MESSAGES")){
+}else if(message.member.hasPermission("MANAGE_MESSAGES")){
 				var err_code = new Discord.RichEmbed()
 				.setTitle('Error 403 - Unauthorized')
 				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
