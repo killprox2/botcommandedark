@@ -99,6 +99,7 @@ client.on('message', message => {
 		.addField("\n**-rloto**\n", "Permet de connaitre les résultats")
 		.addField("\n**-iloto**\n", "Permet de connaitre les inscrits")
 		.addField("\n**-lotoadd**\n", "Ajouté un membre au loto (commande admin)")
+		.addField("\n**-lotosupp**\n", "Remttre le loto a zéro (commande admin)")
 		.setImage("https://i.imgur.com/A1wcXrl.png")
 		.setFooter("#__**DarkBot**__# by darkvince37")
 	message.channel.sendEmbed(embed)
@@ -174,6 +175,7 @@ client.on('message', message => {
 			if(message.member.hasPermission("MANAGE_MESSAGES")){
 				if (message.content === '-lotosupp') { 
 					var sql = "DELETE FROM loto";
+					var sql = "DELETE FROM lotor";
 					connection.query(sql, function (result) {
 					message.channel.send("Le loto a était remis a zéro")
 					console.log(result);
@@ -239,7 +241,6 @@ client.on('message', message => {
 			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
 			.setColor(0x00AE86)
 			.addField("Le numéro ", rand)
-			.addField("Félicitation à toi")
 			message.channel.send("Voici la liste des numéros: http://www.darkpandore.com/loto.php")
 			message.channel.sendEmbed(embed)}
 
