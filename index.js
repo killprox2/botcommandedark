@@ -187,7 +187,7 @@ client.on('message', message => {
 									client.on('message', message  => {
 										if(message.author.bot || message.channel.type == "dm") return;
 										if(message.member.hasPermission("MANAGE_MESSAGES")){
-											if (message.content === '-lotosupp+') { 
+											if (message.content === '-lotosuppr') { 
 												var sql2 = "DELETE FROM lotor";
 												connection.query(sql2, function (result) {
 												message.channel.send("Le loto a était remis a zéro")
@@ -197,6 +197,44 @@ client.on('message', message => {
 											}
 							
 																}});
+																client.on('message', message  => {
+																	if(message.author.bot || message.channel.type == "dm") return;
+																	if(message.member.hasPermission("MANAGE_MESSAGES")){
+																							const args = message.content.slice(prefix.length).trim().split(/ +/g);
+																							const command = args.shift().toLowerCase();
+																							let un = args[0];
+																											if(command === "lotosupp+"){
+																													if(!un){
+																																	var err_code = new Discord.RichEmbed()
+																																	.setTitle('Error 400 - Bad Request')
+																																	.setColor('#e74c3c')
+																																	message.channel.send(err_code);
+																													 
+																													}else{
+																																var code = new Discord.RichEmbed()
+																																
+																																var sql = "DELETE FROM loto WHERE numero =" + un + "";
+																																
+																																	connection.query(sql, function (result) {
+																																		message.channel.send("Le numéro " + un + " a était supprimé")
+																																		console.log(result);
+
+																																			})} 
+																	}	}});
+															
+																client.on('message', message  => {
+																	if(message.author.bot || message.channel.type == "dm") return;
+																	if(message.member.hasPermission("MANAGE_MESSAGES")){
+																		if (message.content === '-lotosupp+') { 
+																			var sql2 = "DELETE FROM lotor";
+																			connection.query(sql2, function (result) {
+																			message.channel.send("Le loto a était remis a zéro")
+																			console.log(result);
+																			})
+														
+																		}
+														
+																							}});
 							
 
 /*	client.on("message", (message) => {
