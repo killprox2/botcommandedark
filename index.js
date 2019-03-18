@@ -95,11 +95,13 @@ client.on('message', message => {
 		.setColor(0x00AE86)
 		.setDescription("Permet de connaitre toutes les commandes du loto")
 		.setColor("0xB40404") 
-		.addField("\n**-nloto**\n", "Permet d'effectué le tirage d'un numéro")
-		.addField("\n**-rloto**\n", "Permet de connaitre les résultats")
 		.addField("\n**-iloto**\n", "Permet de connaitre les inscrits")
+		.addField("\n**-rloto**\n", "Permet de connaitre les résultats")
+		.addField("\n**-nloto**\n", "Permet de tirer un numéro random ex: -nloto 12 (commande admin)")
 		.addField("\n**-lotoadd**\n", "Ajouté un membre au loto (commande admin)")
-		.addField("\n**-lotosupp**\n", "Remttre le loto a zéro (commande admin)")
+		.addField("\n**-lotosupp**\n", "Remettre la liste loto a zéro (commande admin)")
+		.addField("\n**-lotosuppr**\n", "Remettre les résultat a zéro (commande admin)")
+		.addField("\n**-lotosupp+**\n", "Supprimé un joueur du loto (commande admin)")
 		.setImage("https://i.imgur.com/A1wcXrl.png")
 		.setFooter("#__**DarkBot**__# by darkvince37")
 	message.channel.sendEmbed(embed)
@@ -207,6 +209,7 @@ client.on('message', message => {
 																													if(!un){
 																																	var err_code = new Discord.RichEmbed()
 																																	.setTitle('Error 400 - Bad Request')
+																																	.setDescription("Tu n\'a pas précisé le numéro! :warning: -lotosupp+ numero")
 																																	.setColor('#e74c3c')
 																																	message.channel.send(err_code);
 																													 
@@ -235,6 +238,18 @@ client.on('message', message => {
 																		}
 														
 																							}});
+																							client.on('message', message  => {
+																								if(message.author.bot || message.channel.type == "dm") return;
+																							
+																									if (message.content === '-lotolist') { 
+																										
+																									
+																										message.channel.send("http://www.darkpandore.com/loto.php")
+																									
+																					
+																									
+																					
+																														}});
 							
 
 /*	client.on("message", (message) => {
