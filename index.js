@@ -171,20 +171,7 @@ var code = new Discord.RichEmbed()
 				}return
 					});
 									
-									client.on('message', message  => {
-										if(message.author.bot || message.channel.type == "dm") return;
-	
-		
-												
-												var sql2 = "DELETE FROM lotor";
-												connection.query(sql2, function (result) {
-												message.channel.send("Les résulats on était remis a zéro")
-												console.log(result);
-												})
-							
-											
-							
-																});
+									
 																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
 																	if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
@@ -211,11 +198,11 @@ var code = new Discord.RichEmbed()
 																																			})} 
 																	}	}});
 															
-																/*client.on('message', message  => {
+																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
 																	let perms = message.member.permissions;
 																	
-																		if (message.content === '-lotosupp+') { 
+																		if (message.content === '-lotosuppr') { 
 																			var sql2 = "DELETE FROM lotor";
 																			connection.query(sql2, function (result) {
 																			message.channel.send("Le loto a était remis a zéro")
@@ -224,7 +211,7 @@ var code = new Discord.RichEmbed()
 														
 																		
 														
-																							}});*/
+																							}});
 																							client.on('message', message  => {
 																								if(message.author.bot || message.channel.type == "dm") return;
 																							
