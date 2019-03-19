@@ -116,7 +116,7 @@ client.on('message', message => {
 								let trois = args[2];
 								let quatre = args[3];
 								let cinq = args[4];
-			
+			let perms = message.member.permissions;
 		if(command === "rloto"){
 			if(!args[0]){
 				var err_code = new Discord.RichEmbed()
@@ -124,7 +124,7 @@ client.on('message', message => {
 				.setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
 				.setColor('#e74c3c')
 				message.channel.send(err_code);
-}else if(message.guild.roles.find(role => role.name === "~ LE STAFF ~"));{
+}else if(perms.has("KICK_MEMBERS")){
 				var err_code = new Discord.RichEmbed()
 				.setTitle('Error 403 - Unauthorized')
 				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
