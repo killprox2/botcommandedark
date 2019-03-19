@@ -211,7 +211,7 @@ var code = new Discord.RichEmbed()
 																																			})} 
 																	}	}});
 															
-																client.on('message', message  => {
+																/*client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
 																	let perms = message.member.permissions;
 																	
@@ -224,7 +224,7 @@ var code = new Discord.RichEmbed()
 														
 																		
 														
-																							}});
+																							}});*/
 																							client.on('message', message  => {
 																								if(message.author.bot || message.channel.type == "dm") return;
 																							
