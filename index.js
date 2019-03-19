@@ -130,7 +130,7 @@ client.on('message', message => {
 				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
 				.setColor('#e74c3c')
 				message.channel.send(err_code);
-}else{
+}else (message.member.hasPermission("MANAGE_MESSAGES")){
 
 var code = new Discord.RichEmbed()
 																	
