@@ -159,9 +159,7 @@ var code = new Discord.RichEmbed()
 
 
 		client.on('message', message  => {
-			if(message.author.bot || message.channel.type == "dm") return;
-			
-	
+			if(message.author.bot || message.channel.type == "dm") return;	
 				if (message.content === '-lotosupp') { 
 					var sql = "DELETE FROM loto";
 					var sql2 = "DELETE FROM lotor";
@@ -170,8 +168,8 @@ var code = new Discord.RichEmbed()
 					console.log(result);
 					})
 
-				}
-									});
+				}return
+					});
 									
 									client.on('message', message  => {
 										if(message.author.bot || message.channel.type == "dm") return;
@@ -180,7 +178,7 @@ var code = new Discord.RichEmbed()
 												
 												var sql2 = "DELETE FROM lotor";
 												connection.query(sql2, function (result) {
-												message.channel.send("Le loto a était remis a zéro")
+												message.channel.send("Les résulats on était remis a zéro")
 												console.log(result);
 												})
 							
