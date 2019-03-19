@@ -32,7 +32,7 @@ client.on('message', message => {
 		message.channel.send(`http://www.darkpandore.com/listabsence.php`);
   }; return
 })
-client.on('message', message => {
+/*client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
@@ -41,10 +41,9 @@ client.on('message', message => {
 							if(!perms.has("KICK_MEMBERS")) {
 								var pollEmbed = new Discord.RichEmbed()
 								.setDescription('Pas la permission "MANAGE_MESSAGES".')
-								.setColor(color)
 								message.channel.send(pollEmbed)
-							}else if(perms.has("KICK_MEMBERS")) {
-											if(command === "gabs"){
+							}else if{
+											if(command == "gabs"){
 													if(!object){
 																	var err_code = new Discord.RichEmbed()
 																	.setTitle('Error 400 - Bad Request')
@@ -56,7 +55,7 @@ client.on('message', message => {
 		}
 	} return
 }
-})
+})*/
 
 const mysql = require("mysql");
 var connection;
@@ -97,7 +96,7 @@ client.on('message', message => {
 		.setDescription("Permet de connaitre toutes les commandes du loto")
 		.setColor("0xB40404") 
 		.addField("\n**-iloto**\n", "Permet de connaitre les inscrits")
-		.addField("\n**-rloto**\n", "Permet de connaitre les résultats")
+		.addField("\n**-rloto**\n", "Permet d'afficher les résultats (commande admin)")
 		.addField("\n**-nloto**\n", "Permet de tirer un numéro random ex: -nloto 12 (commande admin)")
 		.addField("\n**-lotoadd**\n", "Ajouté un membre au loto (commande admin)")
 		.addField("\n**-lotosupp**\n", "Remettre la liste loto a zéro (commande admin)")
@@ -163,7 +162,7 @@ client.on('message', message => {
 			if(!args[0]){
 				var err_code = new Discord.RichEmbed()
 				.setTitle('Error 400 - Bad Request')
-				.setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
+				.setDescription('Tu n\'a pas précisé le nom des gagnants ex: -rloto darkvince Hildu Deuss RV Ygg!')
 				.setColor('#e74c3c')
 				message.channel.send(err_code);
 }else if(!perms.has("KICK_MEMBERS")){
@@ -221,7 +220,6 @@ var code = new Discord.RichEmbed()
 									
 																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
-																	if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
 																							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 																							const command = args.shift().toLowerCase();
 																							let un = args[0];
@@ -233,7 +231,14 @@ var code = new Discord.RichEmbed()
 																																	.setColor('#e74c3c')
 																																	message.channel.send(err_code);
 																													 
-																													}else{
+																													}
+																													else if(!message.member.hasPermission("KICK_MEMBERS")){
+																														var err_code = new Discord.RichEmbed()
+																														.setTitle('Error 403 - Unauthorized')
+																														.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+																														.setColor('#e74c3c')
+																														message.channel.send(err_code);
+																										}else{
 																																var code = new Discord.RichEmbed()
 																																
 																																var sql = "DELETE FROM loto WHERE numero =" + un + "";
@@ -243,22 +248,28 @@ var code = new Discord.RichEmbed()
 																																		console.log(result);
 
 																																			})} 
-																	}	}});
+																	}	});
 															
 																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
-																	let perms = message.member.permissions;
-																	
 																		if (message.content === '-lotosuppr') { 
+																			if(!message.member.hasPermission("KICK_MEMBERS")){
+																				var err_code = new Discord.RichEmbed()
+																				.setTitle('Error 403 - Unauthorized')
+																				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+																				.setColor('#e74c3c')
+																				message.channel.send(err_code);
+																}else{
 																			var sql2 = "DELETE FROM lotor";
 																			connection.query(sql2, function (result) {
-																			message.channel.send("Le loto a était remis a zéro")
+																			message.channel.send("Les résultat du loto a était remis a zéro")
 																			console.log(result);
-																			})
+																	}	)
 														
 																		
 														
-																							}});
+																							}}});
+
 																							client.on('message', message  => {
 																								if(message.author.bot || message.channel.type == "dm") return;
 																							
@@ -273,25 +284,6 @@ var code = new Discord.RichEmbed()
 																														}});
 							
 
-/*	client.on("message", (message) => {
-	if (message.content.startsWith(prefix + 'tloto')) {
-		message.delete()
-		if(!message.member.hasPermission("MANAGE_MESSAGES")) {
-			var pollEmbed = new Discord.RichEmbed()
-			.setDescription('Pas la permission "MANAGE_MESSAGES".')
-			.setColor(color)
-			message.channel.send(pollEmbed)
-		}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
-			var maissuite = ['Aprix', 'Eh-merce', "So-paroxisme", 'Stoyw', 'Ishtarnel-Nakir', 'Artik-fx', 'Watoo', 'Maiys', 'Londubat', 'Analaween', 'Tet-soin', 'Downshift', 'In-tuable', 'Wytexx', 'Yam-I', 'Nagatsune', 'Zeilla', 'ZeyZey', 'Stroheim', 'Nagazou', 'Leloverdark', 'Ultrawguri', 'Preskapwal', 'Dak-man', 'Hilduren', 'Natrakh', 'Kroonembourg', 'Reyanni', 'Asianax', 'Nanitendayo', 'Soo-vetage', 'Broog', 'Heaven', 'Tashira', 'Lyween', 'Mecho', 'Prying-heart', 'Hook', 'Pedhal', 'Droma', 'Eh-derien-monchou', 'Ipazzio ', 'Golryhol'];				//var maissuite = ['01', '02', "03", '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90'];
-		var maissuiterdm = Math.floor(Math.random()*maissuite.length);
-		var embed = new Discord.RichEmbed()
-		.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
-		.setColor(0x00AE86)
-			.addField("Félicitation à ", maissuite[maissuiterdm])
-			message.channel.sendEmbed(embed)}
-	}return
-	})*/
-
 	
 	client.on("message", (message) => {
 		if (message.content.startsWith(prefix + 'iloto')) {
@@ -301,7 +293,6 @@ var code = new Discord.RichEmbed()
 
 client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
-	let perms = message.member.permissions;
 		
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
@@ -314,7 +305,12 @@ client.on('message', message  => {
 																	.setDescription("Voici un exemple -lotoadd 1 darkvince_")
 																	.setColor('#e74c3c')
 																	message.channel.send(err_code);
-													 
+														}	else if(!message.member.hasPermission("KICK_MEMBERS")){
+															var err_code = new Discord.RichEmbed()
+															.setTitle('Error 403 - Unauthorized')
+															.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+															.setColor('#e74c3c')
+															message.channel.send(err_code);
 													}else if(!detail){
 																	var err_code = new Discord.RichEmbed()
 																	.setTitle('Error 400 - Bad Request')
@@ -357,8 +353,13 @@ client.on('message', message  => {
 																	.setDescription("Voici un exemple -sabs 10/04 je part en vacance")
 																	.setColor('#e74c3c')
 																	message.channel.send(err_code);
-													 
-													}else if(!detail){
+													}else if(!message.member.hasPermission("KICK_MEMBERS")){
+																		var err_code = new Discord.RichEmbed()
+																		.setTitle('Error 403 - Unauthorized')
+																		.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+																		.setColor('#e74c3c')
+																		message.channel.send(err_code);
+																}else if(!detail){
 																	var err_code = new Discord.RichEmbed()
 																	.setTitle('Error 400 - Bad Request')
 																	.setDescription("Tu n\'a pas précisé les informations :warning: -absent 10/04 + Information")
