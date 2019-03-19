@@ -173,7 +173,7 @@ var code = new Discord.RichEmbed()
 									}});
 									
 									client.on('message', message  => {
-									r	if(message.author.bot || message.channel.type == "dm") return;
+										if(message.author.bot || message.channel.type == "dm") return;
 										if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
 											if (message.content === '-lotosuppr') { 
 												var sql2 = "DELETE FROM lotor";
