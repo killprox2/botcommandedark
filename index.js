@@ -160,7 +160,7 @@ var code = new Discord.RichEmbed()
 
 		client.on('message', message  => {
 			if(message.author.bot || message.channel.type == "dm") return;
-			let perms = message.member.permissions;
+			
 			if(!perms.has("KICK_MEMBERS"){
 				if (message.content === '-lotosupp') { 
 					var sql = "DELETE FROM loto";
@@ -171,8 +171,8 @@ var code = new Discord.RichEmbed()
 					})
 
 				}
-
-									}});
+})
+									});
 									
 									client.on('message', message  => {
 										if(message.author.bot || message.channel.type == "dm") return;
