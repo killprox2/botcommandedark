@@ -202,15 +202,21 @@ var code = new Discord.RichEmbed()
 		client.on('message', message  => {
 			if(message.author.bot || message.channel.type == "dm") return;	
 				if (message.content === '-lotosupp') { 
+					if(!message.member.hasPermission("KICK_MEMBERS")){
+						var err_code = new Discord.RichEmbed()
+						.setTitle('Error 403 - Unauthorized')
+						.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+						.setColor('#e74c3c')
+						message.channel.send(err_code);
+		}else{
 					var sql = "DELETE FROM loto";
-					var sql2 = "DELETE FROM lotor";
-					connection.query(sql, sql2, function (result) {
+					connection.query(sql, function (result) {
 					message.channel.send("Le loto a était remis a zéro")
 					console.log(result);
 					})
 
 				}return
-					});
+			}	});
 									
 									
 																client.on('message', message  => {
