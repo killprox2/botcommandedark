@@ -108,7 +108,48 @@ client.on('message', message => {
 	message.channel.sendEmbed(embed)
 	}return
 	})
-	
+		client.on("message", (message) => {
+		const args = message.content.slice(prefix.length).trim().split(/ +/g);
+		const command = args.shift().toLowerCase();
+		if (command ==='nloto') {
+			if(!args[0]){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 400 - Bad Request')
+				.setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else if(message.member.hasPermission("MANAGE_MESSAGES")){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 403 - Unauthorized')
+				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else if(isNaN(args[0])){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 400 - Bad Request')
+				.setDescription('L\'argument donné n\'est pas un nombre !')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else if(parseInt(args[0]) > 99){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 400 - Bad Request')
+				.setDescription('Tu ne peux pas mettre plus que 99 max. !')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else{
+
+				 //rand = randomnum(1, args[0]);
+				 let rand = Math.floor((Math.random(1) * args[0]));
+				var embed = new Discord.RichEmbed()
+			.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
+			.setColor(0x00AE86)
+			.addField("Le numéro ", rand)
+			message.channel.send("Voici la liste des numéros: http://www.darkpandore.com/loto.php")
+			message.channel.sendEmbed(embed)}
+
+			
+
+		}})
 	client.on("message", (message) => {
 								const args = message.content.slice(prefix.length).trim().split(/ +/g);
 								const command = args.shift().toLowerCase();
