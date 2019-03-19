@@ -173,8 +173,8 @@ var code = new Discord.RichEmbed()
 									
 									client.on('message', message  => {
 										if(message.author.bot || message.channel.type == "dm") return;
-										if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
-											let perms = message.member.permissions;
+	
+		
 												
 												var sql2 = "DELETE FROM lotor";
 												connection.query(sql2, function (result) {
@@ -182,7 +182,7 @@ var code = new Discord.RichEmbed()
 												console.log(result);
 												})
 							
-											}
+											
 							
 																});
 																client.on('message', message  => {
