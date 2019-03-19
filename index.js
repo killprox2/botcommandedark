@@ -201,7 +201,7 @@ client.on('message', message => {
 																}});
 																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
-																	if(message.member.hasPermission("MANAGE_MESSAGES")){
+																	if(message.guild.roles.find(role => role.name === "Moderators")){
 																							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 																							const command = args.shift().toLowerCase();
 																							let un = args[0];
