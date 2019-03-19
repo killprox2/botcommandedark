@@ -107,7 +107,6 @@ client.on('message', message => {
 	message.channel.sendEmbed(embed)
 	}return
 	})
-
 client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -119,7 +118,7 @@ client.on('message', message => {
 								.setColor(color)
 								message.channel.send(pollEmbed)
 							}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
-																						const args = message.content.slice(prefix.length).trim().split(/ +/g);
+											const args = message.content.slice(prefix.length).trim().split(/ +/g);
 								const command = args.shift().toLowerCase();
 								let un = args[0];
 								let deux = args[1];
@@ -175,11 +174,13 @@ client.on('message', message => {
 																	.addField("**3.**", trois)
 																	.addField("**4.**", quatre)
 																	.addField("**5.**", cinq)
-																message.channel.sendEmbed(embed)
-
+																message.channel.sendEmbed(embed)									 
+														
+		}
 	} return
 }
 })
+
 
 		client.on('message', message  => {
 			if(message.author.bot || message.channel.type == "dm") return;
@@ -276,7 +277,6 @@ client.on('message', message => {
 		.setTitle("**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**")
 		.setColor(0x00AE86)
 			.addField("Félicitation à ", maissuite[maissuiterdm])
-
 			message.channel.sendEmbed(embed)}
 	}return
 	})*/
@@ -663,7 +663,6 @@ client.on('message', message => {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 				description: `${DMALL}
-
 				`+ ` ***Message de ` +` **${message.author.username}*** `
 				
 				
@@ -963,5 +962,3 @@ client.on('message', message => {
 										}return
 								
 								})
-					
-            
