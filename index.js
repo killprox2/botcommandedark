@@ -108,7 +108,7 @@ client.on('message', message => {
 	}return
 	})
 	
-		/*	client.on("message", (message) => {
+	client.on("message", (message) => {
 								const args = message.content.slice(prefix.length).trim().split(/ +/g);
 								const command = args.shift().toLowerCase();
 								let un = args[0];
@@ -154,7 +154,7 @@ var code = new Discord.RichEmbed()
 
 	})	}
 		}
-		})*/
+		})
 
 
 		client.on('message', message  => {
