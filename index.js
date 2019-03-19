@@ -108,10 +108,18 @@ client.on('message', message => {
 	}return
 	})
 
-	client.on('message', message  => {
-		if(message.author.bot || message.channel.type == "dm") return;
-		if(message.member.roles.some(r=>["~ LE STAFF ~", "Mod"].includes(r.name)) ) {
-											const args = message.content.slice(prefix.length).trim().split(/ +/g);
+client.on('message', message => {
+	if(message.author.bot || message.channel.type == "dm") return;
+							const args = message.content.slice(prefix.length).trim().split(/ +/g);
+							const command = args.shift().toLowerCase();
+							let object = args[0];
+							if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+								var pollEmbed = new Discord.RichEmbed()
+								.setDescription('Pas la permission "MANAGE_MESSAGES".')
+								.setColor(color)
+								message.channel.send(pollEmbed)
+							}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
+																						const args = message.content.slice(prefix.length).trim().split(/ +/g);
 								const command = args.shift().toLowerCase();
 								let un = args[0];
 								let deux = args[1];
@@ -169,13 +177,9 @@ client.on('message', message => {
 																	.addField("**5.**", cinq)
 																message.channel.sendEmbed(embed)
 
-																				})} 
-} else {
-  var pollEmbed = new Discord.RichEmbed()
-								.setDescription('Pas la permission "MANAGE_MESSAGES".')
-								.setColor(color)
-								message.channel.send(pollEmbed)
-}	}});
+	} return
+}
+})
 
 		client.on('message', message  => {
 			if(message.author.bot || message.channel.type == "dm") return;
