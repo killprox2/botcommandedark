@@ -110,7 +110,7 @@ client.on('message', message => {
 
 	client.on('message', message  => {
 		if(message.author.bot || message.channel.type == "dm") return;
-		if(message.member.hasPermission("MANAGE_MESSAGES")){
+		if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
 								const args = message.content.slice(prefix.length).trim().split(/ +/g);
 								const command = args.shift().toLowerCase();
 								let un = args[0];
@@ -174,7 +174,7 @@ client.on('message', message => {
 
 		client.on('message', message  => {
 			if(message.author.bot || message.channel.type == "dm") return;
-			if(message.member.hasPermission("MANAGE_MESSAGES")){
+			if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
 				if (message.content === '-lotosupp') { 
 					var sql = "DELETE FROM loto";
 					var sql2 = "DELETE FROM lotor";
@@ -188,7 +188,7 @@ client.on('message', message => {
 									}});
 									client.on('message', message  => {
 										if(message.author.bot || message.channel.type == "dm") return;
-										if(message.member.hasPermission("MANAGE_MESSAGES")){
+										if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
 											if (message.content === '-lotosuppr') { 
 												var sql2 = "DELETE FROM lotor";
 												connection.query(sql2, function (result) {
@@ -227,7 +227,7 @@ client.on('message', message => {
 															
 																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
-																	if(message.member.hasPermission("MANAGE_MESSAGES")){
+																	if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
 																		if (message.content === '-lotosupp+') { 
 																			var sql2 = "DELETE FROM lotor";
 																			connection.query(sql2, function (result) {
@@ -322,7 +322,7 @@ client.on('message', message => {
 
 client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
-	if(message.member.hasPermission("MANAGE_MESSAGES")){
+	if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
 							let object = args[0];
