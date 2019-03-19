@@ -210,7 +210,17 @@ var code = new Discord.RichEmbed()
 
 																																			})} 
 																	}	}});
-															
+															client.on('message', message  => {
+			if(message.author.bot || message.channel.type == "dm") return;	
+				if (message.content === '-lotosuppr') { 
+var sql2 = "DELETE FROM lotor";
+																			connection.query(sql2, function (result) {
+																			message.channel.send("Le loto a était remis a zéro")
+					console.log(result);
+					})
+
+				}return
+					});
 																/*client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
 																	let perms = message.member.permissions;
