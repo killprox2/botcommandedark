@@ -37,12 +37,13 @@ client.on('message', message => {
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
 							let object = args[0];
-							if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+							let perms = message.member.permissions;
+							if(!perms.has("KICK_MEMBERS")) {
 								var pollEmbed = new Discord.RichEmbed()
 								.setDescription('Pas la permission "MANAGE_MESSAGES".')
 								.setColor(color)
 								message.channel.send(pollEmbed)
-							}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
+							}else if(perms.has("KICK_MEMBERS")) {
 											if(command === "gabs"){
 													if(!object){
 																	var err_code = new Discord.RichEmbed()
@@ -159,7 +160,8 @@ var code = new Discord.RichEmbed()
 
 		client.on('message', message  => {
 			if(message.author.bot || message.channel.type == "dm") return;
-			if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
+			let perms = message.member.permissions;
+			if(!perms.has("KICK_MEMBERS"){
 				if (message.content === '-lotosupp') { 
 					var sql = "DELETE FROM loto";
 					var sql2 = "DELETE FROM lotor";
@@ -175,7 +177,8 @@ var code = new Discord.RichEmbed()
 									client.on('message', message  => {
 										if(message.author.bot || message.channel.type == "dm") return;
 										if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
-											if (message.content === '-lotosuppr') { 
+											let perms = message.member.permissions;
+												if(!perms.has("KICK_MEMBERS"){
 												var sql2 = "DELETE FROM lotor";
 												connection.query(sql2, function (result) {
 												message.channel.send("Le loto a était remis a zéro")
@@ -213,7 +216,8 @@ var code = new Discord.RichEmbed()
 															
 																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
-																	if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
+																	let perms = message.member.permissions;
+																	if(!perms.has("KICK_MEMBERS"){
 																		if (message.content === '-lotosupp+') { 
 																			var sql2 = "DELETE FROM lotor";
 																			connection.query(sql2, function (result) {
@@ -266,7 +270,8 @@ var code = new Discord.RichEmbed()
 
 client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
-	if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
+	let perms = message.member.permissions;
+			if(!perms.has("KICK_MEMBERS"){
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
 							let object = args[0];
