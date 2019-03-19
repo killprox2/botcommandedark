@@ -107,57 +107,32 @@ client.on('message', message => {
 	message.channel.sendEmbed(embed)
 	}return
 	})
-client.on('message', message => {
-	if(message.author.bot || message.channel.type == "dm") return;
-							const args = message.content.slice(prefix.length).trim().split(/ +/g);
-							const command = args.shift().toLowerCase();
-							let object = args[0];
-							if(!message.member.hasPermission("MANAGE_MESSAGES")) {
-								var pollEmbed = new Discord.RichEmbed()
-								.setDescription('Pas la permission "MANAGE_MESSAGES".')
-								.setColor(color)
-								message.channel.send(pollEmbed)
-							}else if(message.member.hasPermission("MANAGE_MESSAGES")) {
-											const args = message.content.slice(prefix.length).trim().split(/ +/g);
+	
+			client.on("message", (message) => {
+								const args = message.content.slice(prefix.length).trim().split(/ +/g);
 								const command = args.shift().toLowerCase();
 								let un = args[0];
 								let deux = args[1];
 								let trois = args[2];
 								let quatre = args[3];
 								let cinq = args[4];
-												if(command === "rloto"){
-														if(!un){
-																		var err_code = new Discord.RichEmbed()
-																		.setTitle('Error 400 - Bad Request')
-																		.setColor('#e74c3c')
-																		message.channel.send(err_code);
-														 
-														}else if(!deux){
-																		var err_code = new Discord.RichEmbed()
-																		.setTitle('Error 400 - Bad Request')
-																		.setColor('#e74c3c')
-																		message.channel.send(err_code);
-																	}else if(!trois){
-																		var err_code = new Discord.RichEmbed()
-																		.setTitle('Error 400 - Bad Request')
-																	
-																		.setColor('#e74c3c')
-																		message.channel.send(err_code);
-																	}else if(!quatre){
-																		var err_code = new Discord.RichEmbed()
-																		.setTitle('Error 400 - Bad Request')
-																		
-																		.setColor('#e74c3c')
-																		message.channel.send(err_code);
-																	}else if(!cinq){
-																		var err_code = new Discord.RichEmbed()
-																		.setTitle('Error 400 - Bad Request')
-																	
-																		.setColor('#e74c3c')
-																		message.channel.send(err_code);
-														 
-																}else{
-																	var code = new Discord.RichEmbed()
+			
+		if(command === "rloto"){
+			if(!args[0]){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 400 - Bad Request')
+				.setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else if(message.member.hasPermission("MANAGE_MESSAGES")){
+				var err_code = new Discord.RichEmbed()
+				.setTitle('Error 403 - Unauthorized')
+				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+				.setColor('#e74c3c')
+				message.channel.send(err_code);
+}else{
+
+var code = new Discord.RichEmbed()
 																	
 																	var sql = "INSERT INTO lotor (un, deux, trois, quatre, cinq) VALUES ('" + un + "', '" + deux + "', '" + trois + "', '" + quatre + "', '" + cinq + "')";
 																	
@@ -174,12 +149,12 @@ client.on('message', message => {
 																	.addField("**3.**", trois)
 																	.addField("**4.**", quatre)
 																	.addField("**5.**", cinq)
-																message.channel.sendEmbed(embed)									 
-														
+																message.channel.sendEmbed(embed)
+																		
+
+	})	}
 		}
-	} return
-}
-})
+		})
 
 
 		client.on('message', message  => {
@@ -196,6 +171,7 @@ client.on('message', message => {
 				}
 
 									}});
+									
 									client.on('message', message  => {
 										if(message.author.bot || message.channel.type == "dm") return;
 										if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
@@ -284,7 +260,7 @@ client.on('message', message => {
 	client.on("message", (message) => {
 		const args = message.content.slice(prefix.length).trim().split(/ +/g);
 		const command = args.shift().toLowerCase();
-		if (command ==='nloto') {
+		if (command ==='rloto') {
 			if(!args[0]){
 				var err_code = new Discord.RichEmbed()
 				.setTitle('Error 400 - Bad Request')
@@ -323,6 +299,7 @@ client.on('message', message => {
 			
 
 		}})
+	
 	client.on("message", (message) => {
 		if (message.content.startsWith(prefix + 'iloto')) {
 			message.delete()	
