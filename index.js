@@ -216,7 +216,7 @@ var code = new Discord.RichEmbed()
 																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
 																	let perms = message.member.permissions;
-																	if(!perms.has("KICK_MEMBERS"){
+																	
 																		if (message.content === '-lotosupp+') { 
 																			var sql2 = "DELETE FROM lotor";
 																			connection.query(sql2, function (result) {
@@ -224,9 +224,9 @@ var code = new Discord.RichEmbed()
 																			console.log(result);
 																			})
 														
-																		}
+																		
 														
-																							});
+																							}});
 																							client.on('message', message  => {
 																								if(message.author.bot || message.channel.type == "dm") return;
 																							
@@ -270,7 +270,7 @@ var code = new Discord.RichEmbed()
 client.on('message', message  => {
 	if(message.author.bot || message.channel.type == "dm") return;
 	let perms = message.member.permissions;
-			if(!perms.has("KICK_MEMBERS"){
+		
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
 							let object = args[0];
