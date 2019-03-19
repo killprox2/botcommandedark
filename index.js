@@ -201,7 +201,7 @@ client.on('message', message => {
 																}});
 																client.on('message', message  => {
 																	if(message.author.bot || message.channel.type == "dm") return;
-																	if(message.guild.roles.find(role => role.name === "Moderators")){
+																	if(message.guild.roles.find(role => role.name === "~ le Staff ~")){
 																							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 																							const command = args.shift().toLowerCase();
 																							let un = args[0];
