@@ -43,24 +43,6 @@ client.login(process.env.TOKEN)
 	  }
 })
 
-	  
-		  message.guild.members.forEach((player) => {
-			  message.guild.member(object).send({embed: {
-				color: 0x00c1c1,
-				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${DM}
-				`+ ` ***Message de ` +` **${message.author.username}*** `
-				
-				
-			  }});
-		  });
-		  message.channel.send({embed: {
-			color: 0xC64540,
-			description: ":white_check_mark: Tous les joueurs de ce serveur discord ont reçu votre message."
-		}});
-	  }
-})
-
 client.on('message', message => {
   if (message.content === '-abs') {   
     message.delete()
