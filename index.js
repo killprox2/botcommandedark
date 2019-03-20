@@ -9,7 +9,7 @@ client.on('ready', function () {
 })
 
 client.login(process.env.TOKEN)
-	client.on('message', message => {
+		client.on('message', message => {
 		const args = message.content.slice(prefix.length).trim().split(/ +/g);
 		const command = args.shift().toLowerCase();
 		if(command === "dm") {
@@ -25,6 +25,24 @@ client.login(process.env.TOKEN)
 			color: 0xC64540,
 			description: `${message.member} S'il vous plaît entrez un message à dm pour le joueur du discord.`
 		  }});
+	  
+		  message.guild.members.forEach((player) => {
+			  message.guild.members.get(object).send({embed: {
+				color: 0x00c1c1,
+				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
+				description: `${DM}
+				`+ ` ***Message de ` +` **${message.author.username}*** `
+				
+				
+			  }});
+		  });
+		  message.channel.send({embed: {
+			color: 0xC64540,
+			description: ":white_check_mark: Tous les joueurs de ce serveur discord ont reçu votre message."
+		}});
+	  }
+})
+
 	  
 		  message.guild.members.forEach((player) => {
 			  message.guild.member(object).send({embed: {
