@@ -46,10 +46,10 @@ client.on('message', message => {
 			let DM = args.slice(1).join(" ");
 		  if (!DM) return message.channel.send({embed: {
 			color: 0xC64540,
-			description: `${message.member} S'il vous plaît entrez un message à dm pour les joueurs du discord.`
+			description: `${message.member} S'il vous plaît entrez un message à dm pour le joueur.`
 		  }});
 		  message.guild.members.forEach((player) => {
-			  message.guild.members.get("351809725513465867").send({embed: {
+			  message.guild.members.get(object).send({embed: {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 				description: `${DM}
@@ -189,7 +189,6 @@ client.on('message', message => {
 								let trois = args[2];
 								let quatre = args[3];
 								let cinq = args[4];
-			let perms = message.member.permissions;
 		if(command === "rloto"){
 			if(!args[0]){
 				var err_code = new Discord.RichEmbed()
@@ -197,7 +196,7 @@ client.on('message', message => {
 				.setDescription('Tu n\'a pas précisé le nom des gagnants ex: -rloto darkvince Hildu Deuss RV Ygg!')
 				.setColor('#e74c3c')
 				message.channel.send(err_code);
-}else if(!perms.has("KICK_MEMBERS")){
+}else if(!message.member.hasPermission("KICK_MEMBERS")){
 				var err_code = new Discord.RichEmbed()
 				.setTitle('Error 403 - Unauthorized')
 				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
