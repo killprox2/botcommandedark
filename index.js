@@ -62,7 +62,7 @@ client.on('message', message => {
 			color: 0xC64540,
 			description: ":white_check_mark: Le joueur a était MP"
 		}});
-	  }
+	  } return
 })
 /*client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
