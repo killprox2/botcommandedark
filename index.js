@@ -32,7 +32,7 @@ client.on('message', message => {
 		message.channel.send(`http://www.darkpandore.com/listabsence.php`);
   }; return
 })
-client.on('message', message => {
+/*client.on('message', message => {
                         const args = message.content.slice(prefix.length).trim().split(/ +/g);
 						const command = args.shift().toLowerCase();
 		if(command === "dm") {
@@ -63,7 +63,7 @@ client.on('message', message => {
 			description: ":white_check_mark: Le joueur a était MP"
 		}});
 	  } return
-})
+})*/
 /*client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
