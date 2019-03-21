@@ -125,6 +125,52 @@ client.on('message', message => {
 			
 
 		}})
+client.on('message', message => {
+	if(message.author.bot || message.channel.type == "dm") return;
+				const args = message.content.slice(prefix.length).trim().split(/ +/g);
+				const command = args.shift().toLowerCase();
+				const member = message.author.username.id;
+				let pseudo = args[0];
+				let classe = args[1];
+ 
+						if(command === "inscription"){
+							if(!pseudo){
+									var err_code = new Discord.RichEmbed()
+									.setTitle('Error 400 - Bad Request')
+									.setDescription("Tu n\'a pas précisé ton pseudo! :warning: -inscription pseudo + classe + lvl")
+									.setColor('#e74c3c')
+									message.channel.send(err_code);
+							}else if(!classe){
+										var err_code = new Discord.RichEmbed()
+										.setTitle('Error 400 - Bad Request')
+										.setDescription("Tu n\'a pas précisé ta classe! :warning: -inscription pseudo + classe + lvl")
+										.setColor('#e74c3c')
+										message.channel.send(err_code);
+								
+								}else if(!lvl
+										var err_code = new Discord.RichEmbed()
+										.setTitle('Error 400 - Bad Request')
+										.setDescription("Tu n\'a pas précisé ta lvl! :warning: -inscription pseudo + classe + lvl")
+										.setColor('#e74c3c')
+										message.channel.send(err_code);
+							}else{
+									
+									
+											try {
+											var code = new Discord.RichEmbed()
+											.setTitle('Succès :')
+											.setDescription(":white_check_mark: Votre inscription a bien était envoyé")
+											.setColor('#8e44ad')
+											message.channel.send(code);
+											message.guild.channels.find("name", "test").send("" + pseudo + " avec sont " + classe + " lvl " + lvl + "ces inscrits a l'event");
+											} catch (err) {
+											console.log(err);
+											}
+									
+							}
+					}return
+			
+			})
 	client.on("message", (message) => {
 								const args = message.content.slice(prefix.length).trim().split(/ +/g);
 								const command = args.shift().toLowerCase();
