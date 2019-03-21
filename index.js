@@ -327,6 +327,24 @@ client.on('message', (message) => {
     }
   }
 });
+client.on('message', (message) => {
+  if (message.author.bot || message.channel.type == 'dm') return;
+  if (message.content === '-iremove') {
+    if (!message.member.hasPermission('KICK_MEMBERS')) {
+      const err_code = new Discord.RichEmbed()
+        .setTitle('Error 403 - Unauthorized')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
+        .setColor('#e74c3c');
+      message.channel.send(err_code);
+    } else {
+      const sql2 = 'DELETE FROM event';
+      connection.query(sql2, (result) => {
+        message.channel.send("L'event a été remis à zéro");
+        console.log(result);
+      });
+    }
+  }
+});
 
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
