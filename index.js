@@ -147,7 +147,7 @@ client.on('message', message => {
 										.setColor('#e74c3c')
 										message.channel.send(err_code);
 								
-								}else if(!lvl
+								}else if(!lvl){
 										var err_code = new Discord.RichEmbed()
 										.setTitle('Error 400 - Bad Request')
 										.setDescription("Tu n\'a pas précisé ta lvl! :warning: -inscription pseudo + classe + lvl")
