@@ -158,15 +158,20 @@ client.on('message', (message) => {
           .setDescription(':white_check_mark: Votre inscription a bien été envoyée')
 					.setColor('#8e44ad');
 					const sql = `INSERT INTO event (pseudo, classe, lvl) VALUES ('${pseudo}', '${classe}', '${lvl}')`;
+					const sql2 = `SELECT COUNT(pseudo) as event FROM event`;
 
 					connection.query(sql, (result) => {
 						console.log(result);
 						console.log(`Number of records inserted: ${result}`);
 						message.channel.send(code);
+					});	connection.query(sql2, (result) => {
+						console.log(result);
+						console.log(`Number of records inserted: ${result}`);
+						message.channel.send(code);
 					});
         message.guild.channels.find('name', 'test').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
-   	    message.guild.channels.find('name', 'test').send(`Il y a maintenant **undefined** d'inscrits pour cet event`);
-        message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **undefined** d'inscrits pour cet event`);
+   	    message.guild.channels.find('name', 'test').send(`Il y a maintenant **${sql2}** d'inscrits pour cet event`);
+      //  message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **${sql2}** d'inscrits pour cet event`);
      
       } catch (err) {
         console.log(err);
