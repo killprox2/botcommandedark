@@ -158,7 +158,7 @@ client.on('message', (message) => {
           .setDescription(':white_check_mark: Votre inscription a bien était envoyé')
           .setColor('#8e44ad');
         message.channel.send(code);
-        message.guild.channels.find('name', 'test').send(`${pseudo} avec sont ${classe} lvl ${lvl}ces inscrits a l'event`);
+        message.guild.channels.find('name', 'test').send(`**${pseudo}** avec sont **${classe}** lvl **${lvl}** ces inscrits a l'event`);
       } catch (err) {
         console.log(err);
       }
