@@ -160,7 +160,7 @@ client.on('message', (message) => {
         message.channel.send(code);
         message.guild.channels.find('name', 'test').send(`**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
    	    message.guild.channels.find('name', 'test').send(`Il y a maintenant **undefined** d'inscrits pour cet event`);
-        message.guild.channels.find('name', ':tada:event_en_cours').send(`Il y a maintenant **undefined** d'inscrits pour cet event`);
+        message.guild.channels.find('name', 'event_en_cours').send(`Il y a maintenant **undefined** d'inscrits pour cet event`);
      
       } catch (err) {
         console.log(err);
