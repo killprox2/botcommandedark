@@ -18,9 +18,9 @@ client.on('message', (message) => {
       .setColor(0x00AE86)
       .setDescription('Permet de connaitre toutes les commandes absences')
       .setColor('0xB40404')
-	  .addField('**-sabs**', 'Permet de signalé une absence ex: 10/04 Je part en vacance')
-	  .addField('**-vabs**', "Permet d'affiché les absences signalé'")
-      .addField("**-absupp+** + *id de l'absence*", "Permet de supprimé l'absences (commande admin)")
+	  			.addField('**-sabs**', 'Permet de signaler une absence, par exexemple : 10/04 Je pars en vacances')
+			.addField('**-vabs**', "Permet d'afficher les absences signalées'")
+			.addField("**-absupp+** + *id de l'absence*", "Permet de supprimer une absence (commande admin)")
       .setImage('https://i.imgur.com/A1wcXrl.png')
       .setFooter('#__**DarkBot**__# by darkvince37');
     message.channel.sendEmbed(embed);
@@ -74,10 +74,10 @@ client.on('message', (message) => {
       .addField('\n**-iloto**\n', 'Permet de connaitre les inscrits')
       .addField('\n**-rloto**\n', "Permet d'afficher les résultats (commande admin)")
       .addField('\n**-nloto**\n', 'Permet de tirer un numéro random ex: -nloto 12 (commande admin)')
-      .addField('\n**-lotoadd**\n', 'Ajouté un membre au loto (commande admin)')
+      .addField('\n**-lotoadd**\n', 'Ajouter un membre au loto (commande admin)')
       .addField('\n**-lotosupp**\n', 'Remettre la liste loto a zéro (commande admin)')
-      .addField('\n**-lotosuppr**\n', 'Remettre les résultat a zéro (commande admin)')
-      .addField('\n**-lotosupp+**\n', 'Supprimé un joueur du loto (commande admin)')
+      .addField('\n**-lotosuppr**\n', 'Remettre les résultats à zéro (commande admin)')
+      .addField('\n**-lotosupp+**\n', 'Supprim un joueur du loto (commande admin)')
       .setImage('https://i.imgur.com/A1wcXrl.png')
       .setFooter('#__**DarkBot**__# by darkvince37');
     message.channel.sendEmbed(embed);
@@ -90,13 +90,13 @@ client.on('message', (message) => {
     if (!args[0]) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription('Tu n\'a pas précisé le nombre de joueur 99 max!')
+        .setDescription('Tu n\'as pas précisé le nombre de joueurs 99 max!')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!message.member.hasPermission('KICK_MEMBERS')) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 403 - Unauthorized')
-        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (isNaN(args[0])) {
@@ -136,19 +136,19 @@ client.on('message', (message) => {
     if (!pseudo) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé ton pseudo! :warning: -inscription pseudo + classe + lvl")
+        .setDescription("Tu n\'as pas précisé ton pseudo! :warning: -inscription pseudo + classe + lvl")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!classe) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé ta classe! :warning: -inscription pseudo + classe + lvl")
+        .setDescription("Tu n\'as pas précisé ta classe! :warning: -inscription pseudo + classe + lvl")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!lvl) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé ta lvl! :warning: -inscription pseudo + classe + lvl")
+        .setDescription("Tu n\'as pas précisé ton level ! :warning: -inscription pseudo + classe + lvl")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -180,7 +180,7 @@ client.on('message', (message) => {
     if (!args[0]) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription('Tu n\'a pas précisé le nom des gagnants ex: -rloto darkvince Hildu Deuss RV Ygg!')
+        .setDescription('Tu n\'as pas précisé le nom des gagnants ex: -rloto darkvince Hildu Deuss RV Ygg!')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!message.member.hasPermission('KICK_MEMBERS')) {
@@ -221,13 +221,13 @@ client.on('message', (message) => {
     if (!un) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé l'id de l'absence! :warning: -absupp+ id")
+        .setDescription("Tu n\'as pas précisé l'id de l'absence! :warning: -absupp+ id")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!message.member.hasPermission('KICK_MEMBERS')) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 403 - Unauthorized')
-        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -236,7 +236,7 @@ client.on('message', (message) => {
       const sql = `DELETE FROM absence WHERE id =${un}`;
 
       connection.query(sql, (result) => {
-        message.channel.send(`L'abs ${un} a était supprimé`);
+        message.channel.send(`L'absence ${un} a été supprimée`);
         console.log(result);
       });
     }
@@ -248,13 +248,13 @@ client.on('message', (message) => {
     if (!message.member.hasPermission('KICK_MEMBERS')) {
       const err_code = new Discord.RichEmbed()
         .setTitle('Error 403 - Unauthorized')
-        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
       const sql = 'DELETE FROM loto';
       connection.query(sql, (result) => {
-        message.channel.send('Le loto a était remis a zéro');
+        message.channel.send('Le loto a été remis à zéro');
         console.log(result);
       });
     }
@@ -271,13 +271,13 @@ client.on('message', (message) => {
     if (!un) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé le numéro! :warning: -lotosupp+ numero")
+       .setDescription("Tu n\'as pas précisé le numéro! :warning: -lotosupp+ numéro")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!message.member.hasPermission('KICK_MEMBERS')) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 403 - Unauthorized')
-        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -286,7 +286,7 @@ client.on('message', (message) => {
       const sql = `DELETE FROM loto WHERE numero =${un}`;
 
       connection.query(sql, (result) => {
-        message.channel.send(`Le numéro ${un} a était supprimé`);
+        message.channel.send(`Le numéro ${un} a été supprimé`);
         console.log(result);
       });
     }
@@ -299,13 +299,13 @@ client.on('message', (message) => {
     if (!message.member.hasPermission('KICK_MEMBERS')) {
       const err_code = new Discord.RichEmbed()
         .setTitle('Error 403 - Unauthorized')
-        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
       const sql2 = 'DELETE FROM lotor';
       connection.query(sql2, (result) => {
-        message.channel.send('Les résultat du loto a était remis a zéro');
+        message.channel.send('Les résultats du loto a été remis à zéro');
         console.log(result);
       });
     }
@@ -345,19 +345,19 @@ client.on('message', (message) => {
     }	else if (!message.member.hasPermission('KICK_MEMBERS')) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 403 - Unauthorized')
-        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!detail) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé les informations :warning: -lotoadd numéro pseudo")
+        .setDescription("Tu n\'as pas précisé les informations :warning: -lotoadd numéro pseudo")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
       const code = new Discord.RichEmbed()
         .setTitle('Succès :')
-        .setDescription(':white_check_mark: Le joueur a était ajoutée')
+        .setDescription(':white_check_mark: Le joueur a été ajouté')
 
         .setColor('#8e44ad');
 
@@ -382,19 +382,19 @@ client.on('message', (message) => {
     if (!object) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription('Voici un exemple -sabs 10/04 je part en vacance')
+        .setDescription('Voici un exemple -sabs 10/04 je pars en vacances')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!message.member.hasPermission('KICK_MEMBERS')) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 403 - Unauthorized')
-        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!detail) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé les informations :warning: -absent 10/04 + Information")
+        .setDescription("Tu n\'as pas précisé les informations :warning: -absent 10/04 + Informations")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -426,19 +426,18 @@ client.on('message', (message) => {
 
     for (let i = 0; i < args.length; i++) args[i] = args[i].trim();
 
-    if (!args[0]) return message.channel.send('je ne peut pas creer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (9 choix max)');
-
+   if (!args[0]) return message.channel.send('Je ne peux pas créer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (9 choix max)');
     const nbrpoll = +args[0];
 
 		 if (!isNumeric(nbrpoll)) {
-      return message.reply(`Desolé mais tu peut pas mettre${nbrpoll} choix! C'est pas un chiffre quoi`);
+     return message.reply(`Desolé mais tu ne peux pas mettre${nbrpoll} choix! C'est pas un chiffre quoi`);
     }
 
-		 if (nbrpoll < 2 || nbrpoll > 9) return message.reply('Tu peut mettre seulement entre 2 et 9 choix');
+		 if (nbrpoll < 2 || nbrpoll > 9) return message.reply('Tu peux mettre seulement entre 2 et 9 choix');
 
-    if (!args[1]) return message.reply('Tu doit mettre une question!');
-    if (!args[2]) return message.reply('Tu doit mettre des choix!');
-    if (!args[3]) return message.reply('Tu doit mettre 2 choix minimum!');
+   if (!args[1]) return message.reply('Tu dois mettre une question!');
+ if (!args[2]) return message.reply('Tu dois mettre des choix!');
+ if (!args[3]) return message.reply('Tu dois mettre 2 choix minimum!');
 
 
     let choix;
@@ -478,6 +477,7 @@ client.on('message', (message) => {
   }
 });
 
+
 client.on('message', (message) => {
   if (message.content === `${prefix}ntf_on`) {
     var role = message.guild.roles.find('name', 'Notification');
@@ -487,7 +487,7 @@ client.on('message', (message) => {
       .addField('Succès ! Vous avez bien activé vos notifications.', 'Vous pouvez à tout instant désactiver les notifications avec la commande -ntf_off )')
       .setColor('0xD7DF01');
     message.channel.sendEmbed(embedon);
-    if (!role) return message.reply('Une erreur est survenue ! Rôle non trouvé. Réssayer plus tard.');
+   if (!role) return message.reply('Une erreur est survenue ! Rôle non trouvé. Réessayer plus tard.');
   }
   if (message.content === `${prefix}ntf_off`) {
     const roledel = message.guild.roles.find('name', 'Notification');
@@ -497,7 +497,7 @@ client.on('message', (message) => {
       .addField('Succès ! Vous avez bien désactivé vos notifications.', 'Vous pouvez à tout instant réactiver les notifications avec la commande -ntf_on')
       .setColor('0xD7DF01');
     message.channel.sendEmbed(embedoff);
-    if (role) return message.reply('Une erreur est survenue ! Réssayer plus tard.');
+    if (role) return message.reply('Une erreur est survenue ! Réessayer plus tard.');
   }
 });
 
@@ -511,18 +511,18 @@ client.on('message', (message) => {
       .setColor('0xB40404')
 	  .addField('**-fm** *object_souhaite Informations_sur_ce_que_vous_voulez_faire_comme_fm*', 'Permet de passer une commande a un forgemage')
       .addField('**-loto**', 'Permet de connaitre les commandes du loto')
-      .addField('**-abs**', 'Signalé une absence')
-      .addField('**-id**', 'Permet de connaitre ton ID')
+      .addField('**-abs**', 'Permet de signaler une absence qui sera envoyée au Staff. Utilisation de cette commande vous évite un kick pour inactivité')
+      .addField('**-id**', 'Permet de connaitre ton ID unique sur Discord')
       .addField('**-sondage+**', 'Permet de créer des sondages ')
-      .addField('**-dmall**', 'Permet de DM tous les joueurs')
+      .addField('**-dmall**', 'Permet de MP tous les membres du serveur en un coup (commande admin)')
       .addField('**-info**', 'Permet de connaitre les infos du Discord')
       .addField('**-bot**', 'Permet de connaitre toute les infos du bot')
       .addField('**-ping**', 'Permet de connaitre sa latence')
 	  // .addField("**-report**", "Permet de signalé un joueur")
 	  .addField('**-bug** *decrire_le_bug*', 'Permet de rapporter un bug sur le bot')
-      .addField('**-idee** *votre_idee*', 'Permet de donner vos idée pour le bot')
-	  .addField('**-clear**', ':warning:*Commande Admin*:warning: Permet de supprimer le tchat')
-	  .addField('**-clear+**', ':warning:*Commande Admin*:warning: Permet de supprimer un nombre exacte de message')
+      .addField('**-idee** *votre_idee*', 'Permet de donner vos idées pour le bot')
+	 .addField('**-clear**', ':warning:*Commande Admin*:warning: Permet de supprimer le tchat(commande admin)')
+	  .addField('**-clear+**', ':warning:*Commande Admin*:warning: Permet de supprimer un nombre exact de messages')
       .setImage('https://i.imgur.com/A1wcXrl.png')
       .setFooter('#__**DarkBot**__# by darkvince37');
     message.channel.sendEmbed(embed);
@@ -544,7 +544,7 @@ client.on('message', (message) => {
     const maissuite6 = ['01', '02', '03', '04', '05', '06', '07', '08', '09'];
     const maissuiterdm6 = Math.floor(Math.random() * maissuite6.length);
     message.delete();
-    message.channel.sendMessage("Voici les numéro de l'euromillion");
+    message.channel.sendMessage("Voici les numéros de l'euromillion");
     message.channel.sendMessage(`Les numéros: **${maissuite[maissuiterdm]}** **${maissuite2[maissuiterdm2]}** **${maissuite3[maissuiterdm3]}** **${maissuite4[maissuiterdm4]}** **${maissuite5[maissuiterdm5]}** n° complémentaire **${maissuite6[maissuiterdm6]}**`);
   }
 });
@@ -634,11 +634,11 @@ client.on('message', (message) => {
 
     message.delete();
     if (!reason) {
-      message.channel.send("**Aide pour la commande BUG :** \n\n Pour utilisé la commande BUG, mettais votre bug remarqué \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-bug Il y a un bug au niveau d'ici` \n");
+      message.channel.send("**Aide pour la commande BUG :** \n\n Pour utiliser la commande BUG, mettez votre bug remarqué. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-bug Il y a un bug au niveau d'ici` \n");
     } else {
       message.delete();
-      message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyée.`);
-      message.guild.channels.find('name', 'bugs').send(`${hereRole} Salut ${message.author.username} rapport un bug le voici: ${reason}.`);
+     message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyé. Merci pour votre report`);
+      message.guild.channels.find('name', 'bugs').send(`${hereRole} Salut ${message.author.username} rapporte un bug le voici: ${reason}.`);
     }
   }
 });
@@ -707,7 +707,7 @@ client.on('message', (message) => {
 
     message.delete();
     if (!idee) {
-      message.channel.send('**Aide pour la commande IDEE :** \n\n Pour utilisé la commande IDEE, mettais votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-idee Voici mon idée ajoute sa` \n');
+      message.channel.send('**Aide pour la commande IDEE :** \n\n Pour utiliser la commande IDEE, mettez votre idée \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-idee Voici mon idée ajoute ça` \n');
     } else {
       message.delete();
       message.guild.channels.find('name', 'bugs').send(`${hereRole} Salut ${member.user.tag} a une idée la voici: ${idee}.`);
@@ -726,13 +726,13 @@ client.on('message', (message) => {
     if (!args[0]) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription('Tu n\'a pas précisé le nombre de message 99 max! EXEMPLE: -clear+ 99')
+       .setDescription('Tu n\'as pas précisé le nombre de messages, 99 max! EXEMPLE: -clear+ 99')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!message.member.hasPermission('MANAGE_MESSAGES')) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 403 - Unauthorized')
-        .setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+        .setDescription('Tu n\'as pas la permission d\'exécuter cette commande !')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (isNaN(args[0])) {
@@ -754,7 +754,7 @@ client.on('message', (message) => {
             message.channel.bulkDelete(parseInt(args[0]));
             const clear_code = new Discord.RichEmbed()
               .setTitle('Succès :')
-              .setDescription(`${args[0]} message(s) ont été supprimé !`)
+              .setDescription(`${args[0]} message(s) ont été supprimé(s) !`)
               .setColor('#8e44ad');
             message.channel.send(clear_code);
           } catch (err) {
@@ -777,20 +777,20 @@ client.on('message', (message) => {
     if (!object) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé le pseudo! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
+        .setDescription("Tu n\'as pas précisé le pseudo! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!pseudo) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé le pseudo du joueur refusé! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
+       .setDescription("Tu n\'as pas précisé le pseudo du joueur refusé! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
       try {
         const code = new Discord.RichEmbed()
           .setTitle('Succès :')
-          .setDescription(':white_check_mark: Votre réponse a bien était envoyé')
+          .setDescription(':white_check_mark: Votre réponse a bien été envoyée')
           .setColor('#8e44ad');
         message.channel.send(code);
         message.guild.channels.find('name', '✅commandes_fm_dj').send(` Salut, **${pseudo}** le joueur **@${message.author.username}** est OK pour traiter ta commande de fm, n'hésite pas à le MP en jeu lorsque tu le vois connecté ^^`);
@@ -812,20 +812,20 @@ client.on('message', (message) => {
     if (!pseudo) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé le pseudo du joueur refusé! :warning: -fmno personne_refusé + Information sur le refus")
+        .setDescription("Tu n\'as pas précisé le pseudo du joueur refusé! :warning: -fmno personne_refusé + Informations sur le refus (champ libre)")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!detail) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé les informations :warning: -fmno personne_refusé + Information sur le refus")
+        .setDescription("Tu n\'as pas précisé les informations :warning: -fmno personne_refusé + Informations sur le refus (champ libre)")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
       try {
         const code = new Discord.RichEmbed()
           .setTitle('Succès :')
-          .setDescription(':white_check_mark: Votre réponse a bien était envoyé')
+          .setDescription(':white_check_mark: Votre réponse a bien été envoyée')
           .setColor('#8e44ad');
         message.channel.send(code);
         message.guild.channels.find('name', '✅commandes_fm_dj').send(` Salut, **${pseudo}** malheureusement les Forgemages pensent que ta commande est trop compliquée à réaliser, voici leurs raisons : **${detail} **. le DarkBot te recommande de te tourner soit vers l'HDV, soit d'aller voir dans le Livre des Artisans In-Game si personne ne peut t'aider si tu tiens vraiment à fm l'item toi même. Désolé, et bon jeu !`);
@@ -848,13 +848,13 @@ client.on('message', (message) => {
     if (!object) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé l'object! :warning: -fm Object + Information")
+        .setDescription("Tu n\'as pas précisé l'objet! :warning: -fm Objet + Informations")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!detail) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé les informations :warning: -fm Object + Information")
+        .setDescription("Tu n\'as pas précisé les informations :warning: -fm Objet + Informations")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -884,20 +884,20 @@ client.on('message', (message) => {
     if (!object) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé le donjon! :warning: -dj Nom_du_donjon + Information")
+        .setDescription("Tu n\'as pas précisé le donjon! :warning: -dj Nom_du_donjon + Informations (champ libre : besoin de succès ? précisez le ici)")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!detail) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé les informations :warning: -dj Nom_du_donjon + Information")
+       .setDescription("Tu n\'as pas précisé les informations :warning: -dj Nom_du_donjon + Informations")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
       try {
         const code = new Discord.RichEmbed()
           .setTitle('Succès :')
-          .setDescription(":white_check_mark: Votre commande a été envoyée, un Passeurs DJ va prendre contact avec vous dès qu'il sera disponible")
+         .setDescription(":white_check_mark: Votre commande a été envoyée, un Passeur DJ va prendre contact avec vous dès qu'il sera disponible")
           .setColor('#8e44ad');
         message.channel.send(code);
         message.guild.channels.find('name', '⛔liste_commandes_dj').send(`${hereRole} Salut le joueur @${message.author.username} souhaiterait passer un donjon. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici le donjon en question: **${object}** . Informations supplémentaires sur le passage du donjon: **${detail}**`);
@@ -919,13 +919,13 @@ client.on('message', (message) => {
     if (!object) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé le donjon! :warning: -dj Nom_du_donjon + Information")
+        .setDescription("Tu n\'as pas précisé le donjon! :warning: -dj Nom_du_donjon + Informations")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!detail) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'a pas précisé les informations :warning: -dj Nom_du_donjon + Information")
+        .setDescription("Tu n\'as pas précisé les informations :warning: -dj Nom_du_donjon + Informations")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
