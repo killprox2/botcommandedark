@@ -20,7 +20,7 @@ client.on('message', message => {
       .setColor("0xB40404") 
 	  .addField("**-sabs**", "Permet de signalé une absence ex: 10/04 Je part en vacance")
 	  .addField("**-vabs**", "Permet d'affiché les absences signalé'")
-		.addField("**-gabs** + *id site*", "Permet de gérer les absences (commande admin)")
+		.addField("**-absupp+** + *id de l'absence*", "Permet de supprimé l'absences (commande admin)")
       .setImage("https://i.imgur.com/A1wcXrl.png")
       .setFooter("#__**DarkBot**__# by darkvince37")
   message.channel.sendEmbed(embed)
@@ -32,62 +32,6 @@ client.on('message', message => {
 		message.channel.send(`http://www.darkpandore.com/listabsence.php`);
   }; return
 })
-/*client.on('message', message => {
-                        const args = message.content.slice(prefix.length).trim().split(/ +/g);
-						const command = args.shift().toLowerCase();
-		if(command === "dm") {
-			let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-			if(!message.member.hasPermission("ADMINISTRATOR"))
-				return message.reply({embed: {
-				  color: 0xC64540,
-				  description: "Pas la permission."
-				}});
-			let object = args[0];
-			let DM = args.slice(1).join(" ");
-		  if (!DM) return message.channel.send({embed: {
-			color: 0xC64540,
-			description: `${message.member} S'il vous plaît entrez un message à dm pour le joueur.`
-		  }});
-		  message.guild.members.forEach((player) => {
-			  message.guild.members.get(object).send({embed: {
-				color: 0x00c1c1,
-				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `${DM}
-				`+ ` ***Message de ` +` **${message.author.username}*** `
-				
-				
-			  }});
-		  });
-		  message.channel.send({embed: {
-			color: 0xC64540,
-			description: ":white_check_mark: Le joueur a était MP"
-		}});
-	  } return
-})*/
-/*client.on('message', message => {
-	if(message.author.bot || message.channel.type == "dm") return;
-							const args = message.content.slice(prefix.length).trim().split(/ +/g);
-							const command = args.shift().toLowerCase();
-							let object = args[0];
-							let perms = message.member.permissions;
-							if(!perms.has("KICK_MEMBERS")) {
-								var pollEmbed = new Discord.RichEmbed()
-								.setDescription('Pas la permission "MANAGE_MESSAGES".')
-								message.channel.send(pollEmbed)
-							}else if{
-											if(command == "gabs"){
-													if(!object){
-																	var err_code = new Discord.RichEmbed()
-																	.setTitle('Error 400 - Bad Request')
-																	.setDescription("Tu n\'a pas précisé ton ID site! :warning: -gabs ID")
-																	.setColor('#e74c3c')
-																	message.channel.send(err_code);											 
-															}else{
-																message.channel.send(`http://www.darkpandore.com/listabsence.php?id=` + object);
-		}
-	} return
-}
-})*/
 
 const mysql = require("mysql");
 var connection;
@@ -228,7 +172,37 @@ var code = new Discord.RichEmbed()
 		}
 		})
 
+client.on('message', message  => {
+																	if(message.author.bot || message.channel.type == "dm") return;
+																							const args = message.content.slice(prefix.length).trim().split(/ +/g);
+																							const command = args.shift().toLowerCase();
+																							let un = args[0];
+																											if(command === "absupp+"){
+																													if(!un){
+																																	var err_code = new Discord.RichEmbed()
+																																	.setTitle('Error 400 - Bad Request')
+																																	.setDescription("Tu n\'a pas précisé l'id de l'absence! :warning: -absupp+ id")
+																																	.setColor('#e74c3c')
+																																	message.channel.send(err_code);
+																													 
+																													}
+																													else if(!message.member.hasPermission("KICK_MEMBERS")){
+																														var err_code = new Discord.RichEmbed()
+																														.setTitle('Error 403 - Unauthorized')
+																														.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
+																														.setColor('#e74c3c')
+																														message.channel.send(err_code);
+																										}else{
+																																var code = new Discord.RichEmbed()
+																																
+																																var sql = "DELETE FROM absent WHERE id =" + un + "";
+																																
+																																	connection.query(sql, function (result) {
+																																		message.channel.send("L'abs " + un + " a était supprimé")
+																																		console.log(result);
 
+																																			})} 
+																	}	});
 		client.on('message', message  => {
 			if(message.author.bot || message.channel.type == "dm") return;	
 				if (message.content === '-lotosupp') { 
