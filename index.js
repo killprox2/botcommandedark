@@ -77,7 +77,7 @@ client.on('message', (message) => {
       .addField('\n**-lotoadd**\n', 'Ajouter un membre au loto (commande admin)')
       .addField('\n**-lotosupp**\n', 'Remettre la liste loto a zéro (commande admin)')
       .addField('\n**-lotosuppr**\n', 'Remettre les résultats à zéro (commande admin)')
-      .addField('\n**-lotosupp+**\n', 'Supprim un joueur du loto (commande admin)')
+      .addField('\n**-lotosupp+**\n', 'Supprime un joueur du loto (commande admin)')
       .setImage('https://i.imgur.com/A1wcXrl.png')
       .setFooter('#__**DarkBot**__# by darkvince37');
     message.channel.sendEmbed(embed);
@@ -156,8 +156,14 @@ client.on('message', (message) => {
         const code = new Discord.RichEmbed()
           .setTitle('Succès :')
           .setDescription(':white_check_mark: Votre inscription a bien été envoyée')
-          .setColor('#8e44ad');
-        message.channel.send(code);
+					.setColor('#8e44ad');
+					const sql = `INSERT INTO event (pseudo, classe, lvl) VALUES ('${pseudo}', '${classe}', '${lvl}')`;
+
+					connection.query(sql, (result) => {
+						console.log(result);
+						console.log(`Number of records inserted: ${result}`);
+						message.channel.send(code);
+					});
         message.guild.channels.find('name', 'test').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
    	    message.guild.channels.find('name', 'test').send(`Il y a maintenant **undefined** d'inscrits pour cet event`);
         message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **undefined** d'inscrits pour cet event`);
