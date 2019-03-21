@@ -33,6 +33,38 @@ client.on('message', message => {
   }; return
 })
 /*client.on('message', message => {
+                        const args = message.content.slice(prefix.length).trim().split(/ +/g);
+						const command = args.shift().toLowerCase();
+		if(command === "dm") {
+			let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+			if(!message.member.hasPermission("ADMINISTRATOR"))
+				return message.reply({embed: {
+				  color: 0xC64540,
+				  description: "Pas la permission."
+				}});
+			let object = args[0];
+			let DM = args.slice(1).join(" ");
+		  if (!DM) return message.channel.send({embed: {
+			color: 0xC64540,
+			description: `${message.member} S'il vous plaît entrez un message à dm pour le joueur.`
+		  }});
+		  message.guild.members.forEach((player) => {
+			  message.guild.members.get(object).send({embed: {
+				color: 0x00c1c1,
+				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
+				description: `${DM}
+				`+ ` ***Message de ` +` **${message.author.username}*** `
+				
+				
+			  }});
+		  });
+		  message.channel.send({embed: {
+			color: 0xC64540,
+			description: ":white_check_mark: Le joueur a était MP"
+		}});
+	  } return
+})*/
+/*client.on('message', message => {
 	if(message.author.bot || message.channel.type == "dm") return;
 							const args = message.content.slice(prefix.length).trim().split(/ +/g);
 							const command = args.shift().toLowerCase();
@@ -157,7 +189,6 @@ client.on('message', message => {
 								let trois = args[2];
 								let quatre = args[3];
 								let cinq = args[4];
-			let perms = message.member.permissions;
 		if(command === "rloto"){
 			if(!args[0]){
 				var err_code = new Discord.RichEmbed()
@@ -165,7 +196,7 @@ client.on('message', message => {
 				.setDescription('Tu n\'a pas précisé le nom des gagnants ex: -rloto darkvince Hildu Deuss RV Ygg!')
 				.setColor('#e74c3c')
 				message.channel.send(err_code);
-}else if(!perms.has("KICK_MEMBERS")){
+}else if(!message.member.hasPermission("KICK_MEMBERS")){
 				var err_code = new Discord.RichEmbed()
 				.setTitle('Error 403 - Unauthorized')
 				.setDescription('Tu n\'a pas la permission d\'executer cette commande !')
