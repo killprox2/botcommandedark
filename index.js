@@ -164,7 +164,7 @@ client.on('message', (message) => {
 						console.log(result);
 						console.log(`Number of records inserted: ${result}`);
 						message.guild.channels.find('name', 'test').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
-						message.guild.channels.find('name', 'test').send(`Il y a maintenant **` + result[0].total + `** d'inscrits pour cet event`);
+						message.guild.channels.find('name', 'test').send(`Il y a maintenant **` + result[0].event + `** d'inscrits pour cet event`);
 						message.channel.send(code);
 					});
 					
