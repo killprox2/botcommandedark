@@ -195,7 +195,7 @@ client.on('message', message  => {
 																										}else{
 																																var code = new Discord.RichEmbed()
 																																
-																																var sql = "DELETE FROM absent WHERE id =" + un + "";
+																																var sql = "DELETE FROM absence WHERE id =" + un + "";
 																																
 																																	connection.query(sql, function (result) {
 																																		message.channel.send("L'abs " + un + " a était supprimé")
