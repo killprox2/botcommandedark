@@ -155,11 +155,11 @@ client.on('message', (message) => {
       try {
         const code = new Discord.RichEmbed()
           .setTitle('Succès :')
-          .setDescription(':white_check_mark: Votre inscription a bien était envoyé')
+          .setDescription(':white_check_mark: Votre inscription a bien était envoyée')
           .setColor('#8e44ad');
         message.channel.send(code);
-        message.guild.channels.find('name', 'test').send(`**${pseudo}** avec sont **${classe}** lvl **${lvl}** ces inscrits a l'event`);
-   	    message.guild.channels.find('name', 'test').send(`Il y a undefined d'inscrits`);
+        message.guild.channels.find('name', 'test').send(`**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
+   	    message.guild.channels.find('name', 'test').send(`Il y a **undefined** d'inscrits pour cet event`);
      
       } catch (err) {
         console.log(err);
