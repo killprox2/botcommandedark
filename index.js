@@ -163,14 +163,17 @@ client.on('message', (message) => {
 					connection.query(sql, (result) => {
 						console.log(result);
 						console.log(`Number of records inserted: ${result}`);
-						message.channel.send(code);
-					});	connection.query(sql2, (result) => {
-						console.log(result);
-						console.log(`Number of records inserted: ${result}`);
+						message.guild.channels.find('name', 'test').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
 						message.channel.send(code);
 					});
-        message.guild.channels.find('name', 'test').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
-   	    message.guild.channels.find('name', 'test').send(`Il y a maintenant **${event}** d'inscrits pour cet event`);
+						connection.query(sql2, (result) => {
+						console.log(result);
+						console.log(`Number of records inserted: ${result}`);
+						message.guild.channels.find('name', 'test').send(`Il y a maintenant **` + result[0].total + `** d'inscrits pour cet event`);
+						message.channel.send(code);
+					});
+  
+   	   
       //  message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **${sql2}** d'inscrits pour cet event`);
      
       } catch (err) {
