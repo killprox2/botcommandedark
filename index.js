@@ -802,19 +802,11 @@ client.on('message', (message) => {
   const command = args.shift().toLowerCase();
   const member = message.author.username.id;
   const object = args[0];
-  const pseudo = args[1];
-  const detail = args.slice(1).join(' ');
   if (command === 'fmyes') {
     if (!object) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'as pas précisé le pseudo! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
-        .setColor('#e74c3c');
-      message.channel.send(err_code);
-    } else if (!pseudo) {
-      var err_code = new Discord.RichEmbed()
-        .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'as pas précisé le pseudo du joueur refusé! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
+        .setDescription("Tu n\'as pas précisé le pseudo! :warning: -fmyes pseudo_du_joueur_accepter")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -824,7 +816,7 @@ client.on('message', (message) => {
           .setDescription(':white_check_mark: Votre réponse a bien été envoyée')
           .setColor('#8e44ad');
         message.channel.send(code);
-        message.guild.channels.find('name', 'test').send(` Salut, **${pseudo}** le joueur **@${message.author.username}** est OK pour traiter ta commande de fm, n'hésite pas à le MP en jeu lorsque tu le vois connecté ^^`);
+        message.guild.channels.find('name', 'test').send(` Salut, **${object}** le joueur **@${message.author.username}** est OK pour traiter ta commande de fm, n'hésite pas à le MP en jeu lorsque tu le vois connecté ^^`);
       } catch (err) {
         console.log(err);
       }
