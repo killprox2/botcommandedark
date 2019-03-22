@@ -83,31 +83,6 @@ client.on('message', (message) => {
     message.channel.sendEmbed(embed);
   }
 });
-client.on('message', message => {
-                        const args = message.content.slice(prefix.length).trim().split(/ +/g);
-						const command = args.shift().toLowerCase();
-		if(command === "fmyes2") {
-			let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-			let object = args[0];
-		  if (!object) return message.channel.send({embed: {
-			color: 0xC64540,
-			description: `${message.member} S'il vous plaît sélectionné un joueur.`
-		  }});
-		  message.guild.members.forEach((player) => {
-			  message.guild.members.get(object).send({embed: {
-				color: 0x00c1c1,
-				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
-				description: `:white_check_mark: Réponse FM: Demande accepté prend contacte avec **${message.author.id}** `
-				
-				
-			  }});
-		  });
-		  message.channel.send({embed: {
-			color: 0xC64540,
-			description: ":white_check_mark: Le joueur a était MP"
-		}});
-	  } return
-})
 
 
 client.on('message', (message) => {
