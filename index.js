@@ -170,7 +170,15 @@ client.on('message', (message) => {
 					var query = connection.query(sql2, function(err, result) {
 					 
 					 console.log("Total Records:- " + result[0].total);
-					 message.guild.channels.find('name', 'test').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
+						 const embed = new Discord.RichEmbed()
+        					  .setTitle('**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**')
+        					  .setColor(0x00AE86)
+						  .addField("**🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event**")
+        					  .addField("**Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event**")
+        					  
+
+    					    message.channel.find('name', 'test')sendEmbed(embed);
+					// message.guild.channels.find('name', 'test').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
 					 message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
 					});
 
