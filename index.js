@@ -88,7 +88,8 @@ client.on('message', (message) => {
   const command = args.shift().toLowerCase();
   if (command === 'fmyes2') {
     const member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-    const FMYES = args.join(' ').slice(0);
+    const pseudo = args[0];
+    const FMYES = args.join(' ').slice(1);
 		  if (!FMYES) {
       return message.channel.send({
         embed: {
@@ -97,9 +98,9 @@ client.on('message', (message) => {
 		  },
       });
     }
-
-		  message.guild.members.forEach(("@Deuss") => {
-			  message.guild.member("@Deuss").send({
+        const player2 = pseudo;
+		  message.guild.members.forEach((player2) => {
+			  message.guild.member(player2).send({
         embed: {
           color: 0x00c1c1,
           title: '**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**',
