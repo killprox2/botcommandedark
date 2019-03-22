@@ -90,7 +90,7 @@ client.on('message', (message) => {
   const pseudo = args[0];
   if (command === 'fmyes2') {
     const player2 = pseudo;
-    message.send(player2, `:white_check_mark: Réponse FM: Demande accepté prend contacte avec **${message.author.id}**`);
+    client.send_message(player2, `:white_check_mark: Réponse FM: Demande accepté prend contacte avec **${message.author.id}**`);
     message.channel.send(':white_check_mark: ID envoyé en MP');
     message.author.createDM().then((player2) => {
       channel.send(`:white_check_mark: Réponse FM: Demande accepté prend contacte avec **${message.author.id}**`);
