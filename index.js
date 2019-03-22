@@ -91,8 +91,8 @@ client.on('message', message => {
 		if(command === "fmyes2") {
               const player2 = pseudo;
 			let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-		  message.guild.members.forEach((player2) => {
-			  message.guild.members.get(player2).send({embed: {
+		  message.guild.members.forEach((player) => {
+			  message.guild.members.get(pseudo).send({embed: {
 				color: 0x00c1c1,
 				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
 				description: `:white_check_mark: Réponse FM: Demande accepté prend contacte avec **${message.author.id}**`
