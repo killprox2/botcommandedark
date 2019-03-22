@@ -869,12 +869,28 @@ client.on('message', (message) => {
 
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
+  if (command === 'fm') {
+    try {
+      const code = new Discord.RichEmbed()
+        .setTitle('Instruction passage commande FM :')
+        .setDescription(':white_check_mark: Merci de précisé les informations nécessaires:')
+        .setField('Le jet voulu / Les marges possible, si tu veux du perf perf ou si tu accepte -5 vita ou -2 stats par exemple / Le prix / La date de livraison')
+        .setFiel('Pour passé la commande fait -fmgo les informations')
+        .setColor('#8e44ad');
+      message.channel.send(code);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+});
+client.on('message', (message) => {
+  if (message.author.bot || message.channel.type == 'dm') return;
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   const member = message.author.username.id;
   const detail = args.slice(0).join(' ');
   const hereRole = message.guild.roles.find('name', 'Forgemages');
-  if (command === 'fm') {
+  if (command === 'fmgo') {
     if (!detail) {
       const err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
@@ -888,7 +904,8 @@ client.on('message', (message) => {
           .setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
           .setColor('#8e44ad');
         message.channel.send(code);
-        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur @${message.author.username} souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **${detail}** .`);
+        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur @${user} souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **${detail}** .`);
+        message.guild.channels.find('name', 'test').send('Tu peut accepté ou non de faire le FM avec la commande Fmyes ou Fmno');
       } catch (err) {
         console.log(err);
       }
