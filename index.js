@@ -83,20 +83,29 @@ client.on('message', (message) => {
     message.channel.sendEmbed(embed);
   }
 });
-client.on('message', (message) => {
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+client.on('message', message => {
+                         const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   const member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   const pseudo = args[0];
-  if (command === 'fmyes2') {
-    const player2 = pseudo;
-    client.send_message(player2, `:white_check_mark: Réponse FM: Demande accepté prend contacte avec **${message.author.id}**`);
-    message.channel.send(':white_check_mark: ID envoyé en MP');
-    message.author.createDM().then((player2) => {
-      channel.send(`:white_check_mark: Réponse FM: Demande accepté prend contacte avec **${message.author.id}**`);
-    });
-  }
-});
+		if(command === "fmyes2") {
+              const player2 = pseudo;
+			let member = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+		  message.guild.members.forEach((player2) => {
+			  message.guild.members.get(player2).send({embed: {
+				color: 0x00c1c1,
+				title: `**~~-+-------------[-~~ __Dark_BOT__ ~~-]------------+-~~**`,
+				description: `:white_check_mark: Réponse FM: Demande accepté prend contacte avec **${message.author.id}**`
+				
+				
+			  }});
+		  });
+		  message.channel.send({embed: {
+			color: 0xC64540,
+			description: ":white_check_mark: Le joueur a était MP"
+		}});
+	  } return
+})
 
 
 client.on('message', (message) => {
