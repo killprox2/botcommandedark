@@ -900,7 +900,7 @@ client.on('message', (message) => {
           .setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
           .setColor('#8e44ad');
         message.channel.send(code);
-        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur **@${message.author.username}* souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **${detail}** .`);
+        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur **@${message.author.username}** souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **${detail}** .`);
         message.guild.channels.find('name', 'test').send('**Tu peut accepté ou non de faire le FM avec la commande Fmyes ou Fmno**');
       } catch (err) {
         console.log(err);
