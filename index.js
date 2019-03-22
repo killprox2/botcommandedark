@@ -874,7 +874,7 @@ client.on('message', (message) => {
       .setColor(0x00AE86)
       .setDescription(':white_check_mark: Merci de précisé les informations nécessaires:')
       .setColor('0xB40404')
-      .addField('Le jet voulu / Les marges possible, si tu veux du perf perf ou si tu accepte -5 vita ou -2 stats par exemple / Le prix / La date de livraison')
+      .addField('**Information a suivre:**', "Le jet voulu / Les marges possible, si tu veux du perf perf ou si tu accepte -5 vita ou -2 stats par exemple / Le prix / La date de livraison")
       .addField('**-fmgo informations**', "Pour passé la commande")
     message.channel.sendEmbed(embed);
   }
