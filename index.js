@@ -870,19 +870,16 @@ client.on('message', (message) => {
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
   if (command === 'fm') {
-    try {
-      const code = new Discord.RichEmbed()
-        .setTitle('Instruction passage commande FM :')
-        .setDescription(':white_check_mark: Merci de précisé les informations nécessaires:')
-        .setField('Le jet voulu / Les marges possible, si tu veux du perf perf ou si tu accepte -5 vita ou -2 stats par exemple / Le prix / La date de livraison')
-        .setFiel('Pour passé la commande fait -fmgo les informations')
-        .setColor('#8e44ad');
-      message.channel.send(code);
-    } catch (err) {
-      console.log(err);
-    }
+    const code = new Discord.RichEmbed()
+      .setTitle('Instruction passage commande FM :')
+      .setDescription(':white_check_mark: Merci de précisé les informations nécessaires:')
+      .setField('Le jet voulu / Les marges possible, si tu veux du perf perf ou si tu accepte -5 vita ou -2 stats par exemple / Le prix / La date de livraison')
+      .setFiel('Pour passé la commande fait -fmgo les informations')
+      .setColor('#8e44ad');
+    message.channel.send(code);
   }
 });
+
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
