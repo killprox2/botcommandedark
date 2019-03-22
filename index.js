@@ -98,8 +98,8 @@ client.on('message', (message) => {
 		  },
       });
     }
-        const player2 = pseudo;
-		  message.guild.members.forEach((player2) => {
+     const player2 = pseudo;
+        message.author.createDM().then((player2) => {
 			  message.guild.member(player2).send({
         embed: {
           color: 0x00c1c1,
