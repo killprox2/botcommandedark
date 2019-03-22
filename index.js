@@ -874,12 +874,11 @@ client.on('message', (message) => {
       .setColor(0x00AE86)
       .setDescription(':white_check_mark: Merci de précisé les informations nécessaires:')
       .setColor('0xB40404')
-      .addField('**Information a suivre:**', "Le jet voulu / Les marges possible, si tu veux du perf perf ou si tu accepte -5 vita ou -2 stats par exemple / Le prix / La date de livraison")
-      .addField('**-fmgo informations**', "Pour passé la commande")
+      .addField('**Information a indiqué dans votre commande:**', 'Le jet voulu / Les marges possible, si tu veux du perf perf ou si tu accepte -5 vita ou -2 stats par exemple / Le prix / La date de livraison')
+      .addField('**-fmgo informations**', 'Pour passé la commande');
     message.channel.sendEmbed(embed);
   }
-  });
-
+});
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -891,7 +890,7 @@ client.on('message', (message) => {
     if (!detail) {
       const err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'as pas précisé! :warning: Merci d'indiqué ces informations, Le type de fm, Le jet désiré, le Budget, Item à craft Oui/Non")
+        .setDescription("Tu n\'as pas précisé! :warning: Merci de préciser le type de fm, (exo? over? jet perf? arme de chasse?), le jet désiré, ton budget. Précise également si le forgemage doit crafter l'item.")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -909,6 +908,8 @@ client.on('message', (message) => {
     }
   }
 });
+
+
 
 
 client.on('message', (message) => {
