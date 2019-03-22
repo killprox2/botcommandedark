@@ -177,7 +177,7 @@ client.on('message', (message) => {
         					  .addField("**Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event**")
         					  
 
-    					    message.channel.find('name', 'test')sendEmbed(embed);
+    					    message.channel.find('name', 'test').sendEmbed(embed);
 					// message.guild.channels.find('name', 'test').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
 					 message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
 					});
