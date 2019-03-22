@@ -869,25 +869,16 @@ client.on('message', (message) => {
 
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
-  const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args1.shift().toLowerCase();
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
   const member = message.author.username.id;
+  const detail = args.slice(0).join(' ');
   const hereRole = message.guild.roles.find('name', 'Forgemages');
-  const object =  args.slice(0).join(' ');
-  const detail = args.slice(1).join(' ');
   if (command === 'fm') {
-    const split = ';';
-    args = args1.join(' ').split(split);
-    if (!object) {
+    if (!detail) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'as pas précisé l'objet! :warning: -fm Objet + Informations")
-        .setColor('#e74c3c');
-      message.channel.send(err_code);
-    } else if (!detail) {
-      var err_code = new Discord.RichEmbed()
-        .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'as pas précisé les informations :warning: -fm Objet + Informations")
+        .setDescription("Tu n\'as pas précisé l'objet! :warning: -fm Informations du fm")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -897,7 +888,7 @@ client.on('message', (message) => {
           .setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
           .setColor('#8e44ad');
         message.channel.send(code);
-        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur @${message.author.username} souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **${object}** . Informations supplémentaires sur la FM: **${detail}**`);
+        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur @${message.author.username} souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **${detail}** .`);
       } catch (err) {
         console.log(err);
       }
