@@ -901,7 +901,7 @@ client.on('message', (message) => {
           .setDescription(":white_check_mark: Votre commande a été envoyée, un forgemage va prendre contact avec vous dès qu'il sera disponible")
           .setColor('#8e44ad');
         message.channel.send(code);
-        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur @${user} souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **${detail}** .`);
+        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur souhaiterait une FM. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici sa commande: **${detail}** .`);
         message.guild.channels.find('name', 'test').send('Tu peut accepté ou non de faire le FM avec la commande Fmyes ou Fmno');
       } catch (err) {
         console.log(err);
@@ -974,7 +974,7 @@ client.on('message', (message) => {
           .setDescription(":white_check_mark: Votre commande a été envoyée, un Passeurs DJ va prendre contact avec vous dès qu'il sera disponible")
           .setColor('#8e44ad');
         message.channel.send(code);
-        message.guild.channels.find('name', '⛔liste_commandes_dj').send(`${hereRole} Salut le joueur @${message.author.username} souhaiterait passer un donjon. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici le donjon en question: **${object}** . Informations supplémentaires sur le passage du donjon: **${detail}**`);
+        message.guild.channels.find('name', 'test').send(`${hereRole} Salut le joueur @${message.author.username} souhaiterait passer un donjon. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici le donjon en question: **${object}** . Informations supplémentaires sur le passage du donjon: **${detail}**`);
       } catch (err) {
         console.log(err);
       }
