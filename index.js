@@ -19,8 +19,8 @@ client.on('message', (message) => {
       .setDescription('Permet de connaitre toutes les commandes absences')
       .setColor('0xB40404')
 	  			.addField('**-sabs**', 'Permet de signaler une absence, par exexemple : 10/04 Je pars en vacances')
-			.addField('**-vabs**', "Permet d'afficher les absences signalées'")
-			.addField("**-absupp+** + *id de l'absence*", "Permet de supprimer une absence (commande admin)")
+      .addField('**-vabs**', "Permet d'afficher les absences signalées'")
+      .addField("**-absupp+** + *id de l'absence*", 'Permet de supprimer une absence (commande admin)')
       .setImage('https://i.imgur.com/A1wcXrl.png')
       .setFooter('#__**DarkBot**__# by darkvince37');
     message.channel.sendEmbed(embed);
@@ -130,7 +130,7 @@ client.on('message', (message) => {
   const member = message.author.username.id;
   const pseudo = args[0];
   const classe = args[1];
-    const lvl = args[2];
+  const lvl = args[2];
 
   if (command === 'inscription') {
     if (!pseudo) {
@@ -156,28 +156,25 @@ client.on('message', (message) => {
         const code = new Discord.RichEmbed()
           .setTitle('Succès :')
           .setDescription(':white_check_mark: Votre inscription a bien été envoyée')
-					.setColor('#8e44ad');
-					const sql = `INSERT INTO event (pseudo, classe, lvl) VALUES ('${pseudo}', '${classe}', '${lvl}')`;
+          .setColor('#8e44ad');
+        const sql = `INSERT INTO event (pseudo, classe, lvl) VALUES ('${pseudo}', '${classe}', '${lvl}')`;
 
-					connection.query(sql, (result) => {
-						console.log(result);
-						console.log(`Number of records inserted: ${result}`);
-						message.guild.channels.find('name', '📛inscriptions_events').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
-						message.channel.send(code);
-					});
-					var sql2 = "SELECT COUNT(pseudo) as total FROM event";
- 
-					var query = connection.query(sql2, function(err, result) {
-					 
-					 console.log("Total Records:- " + result[0].total);
-					 message.guild.channels.find('name', '📛inscriptions_events').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
-					 message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
-					});
+        connection.query(sql, (result) => {
+          console.log(result);
+          console.log(`Number of records inserted: ${result}`);
+          message.guild.channels.find('name', '📛inscriptions_events').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
+          message.channel.send(code);
+        });
+        const sql2 = 'SELECT COUNT(pseudo) as total FROM event';
 
-  
-   	   
+        const query = connection.query(sql2, (err, result) => {
+					 console.log(`Total Records:- ${result[0].total}`);
+					 message.guild.channels.find('name', '📛inscriptions_events').send(`Il y a maintenant **${result[0].total}** joueurs d'inscrits pour cet event`);
+					 message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **${result[0].total}** joueurs d'inscrits pour cet event`);
+        });
+
+
       //  message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **${sql2}** d'inscrits pour cet event`);
-     
       } catch (err) {
         console.log(err);
       }
@@ -287,7 +284,7 @@ client.on('message', (message) => {
     if (!un) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-       .setDescription("Tu n\'as pas précisé le numéro! :warning: -lotosupp+ numéro")
+        .setDescription("Tu n\'as pas précisé le numéro! :warning: -lotosupp+ numéro")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!message.member.hasPermission('KICK_MEMBERS')) {
@@ -460,18 +457,18 @@ client.on('message', (message) => {
 
     for (let i = 0; i < args.length; i++) args[i] = args[i].trim();
 
-   if (!args[0]) return message.channel.send('Je ne peux pas créer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (9 choix max)');
+    if (!args[0]) return message.channel.send('Je ne peux pas créer de sondage vide! syntaxe : `-sondage+ nbrchoix ; question ; choix1 ; choix2 ..... choixX` (9 choix max)');
     const nbrpoll = +args[0];
 
 		 if (!isNumeric(nbrpoll)) {
-     return message.reply(`Desolé mais tu ne peux pas mettre${nbrpoll} choix! C'est pas un chiffre quoi`);
+      return message.reply(`Desolé mais tu ne peux pas mettre${nbrpoll} choix! C'est pas un chiffre quoi`);
     }
 
 		 if (nbrpoll < 2 || nbrpoll > 9) return message.reply('Tu peux mettre seulement entre 2 et 9 choix');
 
-   if (!args[1]) return message.reply('Tu dois mettre une question!');
- if (!args[2]) return message.reply('Tu dois mettre des choix!');
- if (!args[3]) return message.reply('Tu dois mettre 2 choix minimum!');
+    if (!args[1]) return message.reply('Tu dois mettre une question!');
+    if (!args[2]) return message.reply('Tu dois mettre des choix!');
+    if (!args[3]) return message.reply('Tu dois mettre 2 choix minimum!');
 
 
     let choix;
@@ -521,7 +518,7 @@ client.on('message', (message) => {
       .addField('Succès ! Vous avez bien activé vos notifications.', 'Vous pouvez à tout instant désactiver les notifications avec la commande -ntf_off )')
       .setColor('0xD7DF01');
     message.channel.sendEmbed(embedon);
-   if (!role) return message.reply('Une erreur est survenue ! Rôle non trouvé. Réessayer plus tard.');
+    if (!role) return message.reply('Une erreur est survenue ! Rôle non trouvé. Réessayer plus tard.');
   }
   if (message.content === `${prefix}ntf_off`) {
     const roledel = message.guild.roles.find('name', 'Notification');
@@ -671,7 +668,7 @@ client.on('message', (message) => {
       message.channel.send("**Aide pour la commande BUG :** \n\n Pour utiliser la commande BUG, mettez votre bug remarqué. \n\n Ne vous amusez pas à abuser cette commande à tout va, merci :wink: ! \n\n **Exemple :** `-bug Il y a un bug au niveau d'ici` \n");
     } else {
       message.delete();
-     message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyé. Merci pour votre report`);
+      message.channel.send(`:white_check_mark: **${message.author.username}**, Votre bug a été envoyé. Merci pour votre report`);
       message.guild.channels.find('name', 'bugs').send(`${hereRole} Salut ${message.author.username} rapporte un bug le voici: ${reason}.`);
     }
   }
@@ -760,7 +757,7 @@ client.on('message', (message) => {
     if (!args[0]) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-       .setDescription('Tu n\'as pas précisé le nombre de messages, 99 max! EXEMPLE: -clear+ 99')
+        .setDescription('Tu n\'as pas précisé le nombre de messages, 99 max! EXEMPLE: -clear+ 99')
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else if (!message.member.hasPermission('MANAGE_MESSAGES')) {
@@ -817,7 +814,7 @@ client.on('message', (message) => {
     } else if (!pseudo) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-       .setDescription("Tu n\'as pas précisé le pseudo du joueur refusé! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
+        .setDescription("Tu n\'as pas précisé le pseudo du joueur refusé! :warning: -fmyes pseudo_du_fm + pseudo_du_joueur")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -872,13 +869,15 @@ client.on('message', (message) => {
 
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
+  const args1 = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args1.shift().toLowerCase();
   const member = message.author.username.id;
-  const object = args[0];
-  const detail = args.slice(1).join(' ');
   const hereRole = message.guild.roles.find('name', 'Forgemages');
+  const object =  args.slice(0).join(' ');
+  const detail = args.slice(1).join(' ');
   if (command === 'fm') {
+    const split = ';';
+    args = args1.join(' ').split(split);
     if (!object) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
@@ -924,14 +923,14 @@ client.on('message', (message) => {
     } else if (!detail) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-       .setDescription("Tu n\'as pas précisé les informations :warning: -dj Nom_du_donjon + Informations")
+        .setDescription("Tu n\'as pas précisé les informations :warning: -dj Nom_du_donjon + Informations")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
       try {
         const code = new Discord.RichEmbed()
           .setTitle('Succès :')
-         .setDescription(":white_check_mark: Votre commande a été envoyée, un Passeur DJ va prendre contact avec vous dès qu'il sera disponible")
+          .setDescription(":white_check_mark: Votre commande a été envoyée, un Passeur DJ va prendre contact avec vous dès qu'il sera disponible")
           .setColor('#8e44ad');
         message.channel.send(code);
         message.guild.channels.find('name', '⛔liste_commandes_dj').send(`${hereRole} Salut le joueur @${message.author.username} souhaiterait passer un donjon. Prenez contact avec lui dès que vous êtes disponible pour cette commande directement dans le jeu ou en MP Discord ! Voici le donjon en question: **${object}** . Informations supplémentaires sur le passage du donjon: **${detail}**`);
