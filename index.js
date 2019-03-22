@@ -876,9 +876,9 @@ client.on('message', (message) => {
   const hereRole = message.guild.roles.find('name', 'Forgemages');
   if (command === 'fm') {
     if (!detail) {
-      var err_code = new Discord.RichEmbed()
+      const err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
-        .setDescription("Tu n\'as pas précisé l'objet! :warning: -fm Informations du fm")
+        .setDescription("Tu n\'as pas précisé! :warning: Merci d'indiqué ces informations, Le type de fm, Le jet désiré, le Budget, Item à craft Oui/Non")
         .setColor('#e74c3c');
       message.channel.send(err_code);
     } else {
@@ -895,6 +895,7 @@ client.on('message', (message) => {
     }
   }
 });
+
 
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
