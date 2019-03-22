@@ -867,7 +867,7 @@ client.on('message', (message) => {
   }
 });
 
-client.on('message', (message) => {
+/*client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
   if (command === 'fm') {
     const code = new Discord.RichEmbed()
@@ -878,7 +878,7 @@ client.on('message', (message) => {
       .setColor('#8e44ad');
     message.channel.send(code);
   }
-});
+});*/
 
 client.on('message', (message) => {
   if (message.author.bot || message.channel.type == 'dm') return;
