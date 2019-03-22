@@ -162,7 +162,7 @@ client.on('message', (message) => {
 					connection.query(sql, (result) => {
 						console.log(result);
 						console.log(`Number of records inserted: ${result}`);
-						message.guild.channels.find('name', 'test').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
+						message.guild.channels.find('name', '📛inscriptions_events').send(`🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event`);
 						message.channel.send(code);
 					});
 					var sql2 = "SELECT COUNT(pseudo) as total FROM event";
@@ -170,15 +170,7 @@ client.on('message', (message) => {
 					var query = connection.query(sql2, function(err, result) {
 					 
 					 console.log("Total Records:- " + result[0].total);
-						 const embed = new Discord.RichEmbed()
-        					  .setTitle('**~~-+-------------[-~~ __Dark Loto__ ~~-]------------+-~~**')
-        					  .setColor(0x00AE86)
-						  .addField("**🆕**${pseudo}** avec son **${classe}** niveau **${lvl}** s'est inscrit à l'event**")
-        					  .addField("**Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event**")
-        					  
-
-    					    message.channel.find('name', 'test').sendEmbed(embed);
-					// message.guild.channels.find('name', 'test').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
+					 message.guild.channels.find('name', '📛inscriptions_events').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
 					 message.guild.channels.find('name', '🎉event_en_cours').send(`Il y a maintenant **` + result[0].total + `** joueurs d'inscrits pour cet event`); 
 					});
 
