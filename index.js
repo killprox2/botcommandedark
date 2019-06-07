@@ -135,6 +135,7 @@ client.on('message', (message) => {
   const lvl = args[2];
 
   if (command === 'inscription') {
+	  message.delete();
     if (!pseudo) {
       var err_code = new Discord.RichEmbed()
         .setTitle('Error 400 - Bad Request')
